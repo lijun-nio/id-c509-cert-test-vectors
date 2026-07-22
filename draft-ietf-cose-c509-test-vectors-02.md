@@ -44,13 +44,6 @@ normative:
   I-D.ietf-cose-cbor-encoded-cert:
 
 informative:
-  CborMe:
-    target: https://cbor.me/
-    title: CBOR Playground
-    author:
-    -
-      ins: C. Bormann
-    date: July 2026
 
 --- abstract
 
@@ -62,7 +55,7 @@ This document contains examples of CBOR-encoded X.509 (C509) certificates, certi
 
 This document contains examples of CBOR-encoded X.509 (C509) certificates, certification requests, and certification request templates encoded in CBOR {{RFC8949}} according to the C509 specification {{I-D.ietf-cose-cbor-encoded-cert}}. It complements the C509 specification by providing an extensive set of readable examples that illustrate the encodings of certificate and certification request fields, and that can be used to test interoperability between C509 implementations.
 
-The examples are shown in multiple encodings and formats: X.509 certificates and certification requests in PEM format, and C509 certificates and certification requests in plain hexadecimal (which can be inspected using the CBOR playground {{CborMe}}) and annotated forms.
+The examples are shown in multiple encodings and formats: X.509 certificates and certification requests in PEM format, and C509 certificates and certification requests in plain hexadecimal and annotated forms.
 
 The examples include two types of C509 certificates, distinguished by the value of the c509CertificateType field (see {{Section 4.2 of I-D.ietf-cose-cbor-encoded-cert}}):
 
