@@ -94,10 +94,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 Readers are expected to be familiar with C509 certificates {{I-D.ietf-cose-cbor-encoded-cert}}.
 
 ## Target version of draft-ietf-cose-cbor-encoded-cert
-> **RFC Editor's Note:** Please remove this version prior to publication of a
-> final version of this document.
 
-The test vectors in this document align with version draft-ietf-cose-cbor-encoded-cert-20.
+> **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
+
+The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-20.
 
 # CA Certificate {#sec-ca}
 
@@ -6160,8 +6160,7 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 # Change log
 {:unnumbered}
 
-> **RFC Editor's Note:** Please remove this section prior to publication of a
-> final version of this document.
+> **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
 
 ## Since draft-ietf-cose-c509-test-vectors-01
 {:numbered="false"}
