@@ -248,7 +248,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   41             # [1]. certificateSerialNumber=byte[1]
   3:     01
-  4:   05             # [2]. signature alg=5: unsigned
+  4:   05             # [2]. signature alg=unsigned (5)
   5:   F6             # [3]. issuer=<null>
   6:   1A 67748580    # [4]. notBefore=1735689600:
                       #      2025-01-01T00:00:00Z
@@ -256,26 +256,26 @@ Annotated hex:
                       #      2026-12-31T23:59:59Z
  16:   67             # [6]. subject=char[7]
  17:     74657374206361  # "test ca"
- 24:   0C             # [7]. subjectPublicKeyAlg=12: Ed25519
+ 24:   0C             # [7]. subjectPublicKeyAlg=Ed25519 (12)
  25:   58 20          # [8]. subject public key=EC point=byte[32]
  27:     5A9414AC56D1B6AF0C966FC53B9476B5C95D0EEAAEF764D9EFE86DB732
  56:     0C36E1
  59:   88             # [9]. extensions=array[8]
                         #---extension[0]---
- 60:     01             # type=1: SubjectKeyIdentifier
- 61:     54             # value=byte[20]
+ 60:     01             # [0]. type=SubjectKeyIdentifier (1)
+ 61:     54             # [1]. value=byte[20]
  62:       0369D71F96FE1258A746AC2B208E756E6D1D3ED9
                         #---extension[1]---
- 82:     21             # type=-2: KeyUsage, critical
- 83:     18 60          # value=96: [keyCertSign, cRLSign]
+ 82:     21             # [2]. type=KeyUsage, critical (-2)
+ 83:     18 60          # [3]. value=96: [keyCertSign, cRLSign]
                         #---extension[2]---
- 85:     03             # type=3: SubjectAlternativeName
- 86:     6B             # value: DNS, value=char[11]
+ 85:     03             # [4]. type=SubjectAlternativeName (3)
+ 86:     6B             # [5]. value: DNS, value=char[11]
  87:       6578616D706C652E636F6D # "example.com"
                         #---extension[3]---
- 98:     23             # type=-4: BasicConstraints, critical
- 99:     20             # value=-1: CA: true, pathLenConstraint:
-                        # unlimited
+ 98:     23             # [6]. type=BasicConstraints, critical (-4)
+ 99:     20             # [7]. value=-1: CA: true,
+                        #      pathLenConstraint: unlimited
 100:   40             # [10]. signature value=byte[0]
 ~~~~~
 
@@ -425,8 +425,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   17             # [2]. signature alg=23:
-                      #      sha256WithRSAEncryption
+  5:   17             # [2]. signature alg=sha256WithRSAEncryption
+                      #      (23)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -434,7 +434,7 @@ Annotated hex:
  13:   D8 30          # [6]. subject=tag(48)
  15:     46             # byte[6]
  16:       1234567890AB
- 22:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 22:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  23:   58 80          # [8]. subject public key=modulus=byte[128]
  25:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  54:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -593,8 +593,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 18          # [2]. signature alg=24:
-                      #      sha384WithRSAEncryption
+  5:   18 18          # [2]. signature alg=sha384WithRSAEncryption
+                      #      (24)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -603,15 +603,15 @@ Annotated hex:
  18:   D8 30          # [6]. subject=tag(48)
  20:     48             # byte[8]
  21:       1234567890ABCDEF
- 29:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 29:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  30:   82             # [8]. subject public key=array[2]
- 31:     58 80          # modulus=byte[128]
+ 31:     58 80          # [0]. modulus=byte[128]
  33:       B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73
  61:       FACE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E
  89:       0D3F727A763E16013F89F8FEAC59D0FBDD5E8B0C52827E5490F13B84
 117:       C3634E89C6D1731AE5F1A60F88ED118D080E1AB2CAA532D06C2F7D2A
 145:       0874DEE4E6B6E57283F6478DAF4253DB
-161:     45             # exponent=byte[5]
+161:     45             # [1]. exponent=byte[5]
 162:       0100000001
 167:   20             # [9]. extensions=-1, KeyUsage, critical:
                       #      [digitalSignature]
@@ -746,7 +746,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   00             # [2]. signature alg=0: ecdsa-with-sha256
+  5:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -754,27 +754,27 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   48             # [6]. subject=byte[8]
  18:     1234567890ABCDEF
- 26:   01             # [7]. subjectPublicKeyAlg=1: EC public key on
-                      #      curve secp256r1
+ 26:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
  27:   58 41          # [8]. subject public key=EC point=byte[65]
  29:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
  58:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
  87:     78D3930436C857
  94:   88             # [9]. extensions=array[8]
                         #---extension[0]---
- 95:     01             # type=1: SubjectKeyIdentifier
- 96:     54             # value=byte[20]
+ 95:     01             # [0]. type=SubjectKeyIdentifier (1)
+ 96:     54             # [1]. value=byte[20]
  97:       1F3BC19DE194830066C6EAE7CB9D211339EDD942
                         #---extension[1]---
-117:     02             # type=2: KeyUsage
-118:     18 60          # value=96: [keyCertSign, cRLSign]
+117:     02             # [2]. type=KeyUsage (2)
+118:     18 60          # [3]. value=96: [keyCertSign, cRLSign]
                         #---extension[2]---
-120:     23             # type=-4: BasicConstraints, critical
-121:     20             # value=-1: CA: true, pathLenConstraint:
-                        # unlimited
+120:     23             # [4]. type=BasicConstraints, critical (-4)
+121:     20             # [5]. value=-1: CA: true,
+                        #      pathLenConstraint: unlimited
                         #---extension[3]---
-122:     08             # type=8: ExtendedKeyUsage
-123:     01             # value=1: serverAuth
+122:     08             # [6]. type=ExtendedKeyUsage (8)
+123:     01             # [7]. value=serverAuth (1)
 124:   58 40          # [10]. signature value=byte[64]
 126:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
 155:     22E6E71EF91E63F35636A4D497E1FB4D3C393ADCDB09D92E02E0194D70
@@ -844,7 +844,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   00             # [2]. signature alg=0: ecdsa-with-sha256
+  5:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -852,26 +852,26 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   48             # [6]. subject=byte[8]
  18:     1234567890ABCDEF
- 26:   01             # [7]. subjectPublicKeyAlg=1: EC public key on
-                      #      curve secp256r1
+ 26:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
  27:   58 21          # [8]. subject public key=EC point=byte[33]
  29:     FDF413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
  58:     F9078DDB
  62:   88             # [9]. extensions=array[8]
                         #---extension[0]---
- 63:     01             # type=1: SubjectKeyIdentifier
- 64:     54             # value=byte[20]
+ 63:     01             # [0]. type=SubjectKeyIdentifier (1)
+ 64:     54             # [1]. value=byte[20]
  65:       26CD540B3E3D99A64AAB0B62ECA277B4359EAD04
                         #---extension[1]---
- 85:     02             # type=2: KeyUsage
- 86:     18 60          # value=96: [keyCertSign, cRLSign]
+ 85:     02             # [2]. type=KeyUsage (2)
+ 86:     18 60          # [3]. value=96: [keyCertSign, cRLSign]
                         #---extension[2]---
- 88:     23             # type=-4: BasicConstraints, critical
- 89:     20             # value=-1: CA: true, pathLenConstraint:
-                        # unlimited
+ 88:     23             # [4]. type=BasicConstraints, critical (-4)
+ 89:     20             # [5]. value=-1: CA: true,
+                        #      pathLenConstraint: unlimited
                         #---extension[3]---
- 90:     08             # type=8: ExtendedKeyUsage
- 91:     01             # value=1: serverAuth
+ 90:     08             # [6]. type=ExtendedKeyUsage (8)
+ 91:     01             # [7]. value=serverAuth (1)
  92:   58 40          # [10]. signature value=byte[64]
  94:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
 123:     22E6E7017CEE1E3B865C5EEA2A7946503C5BA1C39424F71ACDC6AFA5FB
@@ -1022,7 +1022,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   01             # [2]. signature alg=1: ecdsa-with-sha384
+  5:   01             # [2]. signature alg=ecdsa-with-sha384 (1)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -1031,8 +1031,8 @@ Annotated hex:
  17:   72             # [6]. subject=char[18]
  18:     73656C667369676E2D73656370333834 # "selfsign-secp384"
  34:     7231                             # "r1"
- 36:   02             # [7]. subjectPublicKeyAlg=2: EC public key on
-                      #      curve secp384r1
+ 36:   02             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp384r1 (2)
  37:   58 61          # [8]. subject public key=EC point=byte[97]
  39:     04DD6762F035899451372B2FE9B52A8314AD10E2C4363C5A5849E296FE
  68:     51AAB9BFD03AB038D33418A0BCD83280ABA0BD9104017165C048B5346B
@@ -1040,38 +1040,41 @@ Annotated hex:
 126:     4A4C1A0EE46E924A5C29
 136:   8A             # [9]. extensions=array[10]
                         #---extension[0]---
-137:     02             # type=2: KeyUsage
-138:     18 60          # value=96: [keyCertSign, cRLSign]
+137:     02             # [0]. type=KeyUsage (2)
+138:     18 60          # [1]. value=96: [keyCertSign, cRLSign]
                         #---extension[1]---
-140:     23             # type=-4: BasicConstraints, critical
-141:     01             # value=1: CA: true, pathLenConstraint: 1
+140:     23             # [2]. type=BasicConstraints, critical (-4)
+141:     01             # [3]. value=1: CA: true, pathLenConstraint:
+                        #      1
                         #---extension[2]---
-142:     06             # type=6: CertificatePolicies
-143:     84             # value=array[4]
+142:     06             # [4]. type=CertificatePolicies (6)
+143:     84             # [5]. value=array[4]
                           #---CertificatePolicy[0]---
-144:       03             # PolicyIdentifier=3: individual-validated
-145:       80             # PolicyQualifierInfos=array[0]
+144:       03             # [0]. PolicyIdentifier=individual-validat
+                          #      ed (3)
+145:       80             # [1]. PolicyQualifierInfos=array[0]
                           #---CertificatePolicy[1]---
-146:       00             # PolicyIdentifier=0: anyPolicy
-147:       84             # PolicyQualifierInfos=array[4]
+146:       00             # [2]. PolicyIdentifier=anyPolicy (0)
+147:       84             # [3]. PolicyQualifierInfos=array[4]
                             #---PolicyQualifierInfo[0]---
-148:         01             # policyQualifierId=1: domain-validated
-149:         76             # qualifier=char[22]
+148:         01             # [0]. policyQualifierId=domain-validate
+                            #      d (1)
+149:         76             # [1]. qualifier=char[22]
 150:           687474703A2F2F6370732E6578616D # "http://cps.exam"
 165:           706C652E636F6D                 # "ple.com"
                             #---PolicyQualifierInfo[1]---
-172:         02             # policyQualifierId=2:
-                            # organization-validated
-173:         77             # qualifier=char[23]
+172:         02             # [2]. policyQualifierId=organization-va
+                            #      lidated (2)
+173:         77             # [3]. qualifier=char[23]
 174:           746869732069732074686520757365 # "this is the use"
 189:           72206E6F74696365               # "r notice"
                         #---extension[3]---
-197:     08             # type=8: ExtendedKeyUsage
-198:     49             # value=byte[9]: 
+197:     08             # [6]. type=ExtendedKeyUsage (8)
+198:     49             # [7]. value=byte[9]: 
 199:       2B0601040181FD5904 # oid: 1.3.6.1.4.1.32473.4
                         #---extension[4]---
-208:     18 1E          # type=30: InhibitAnyPolicy
-210:     00             # value=simple-uint(0)
+208:     18 1E          # [8]. type=InhibitAnyPolicy (30)
+210:     00             # [9]. value=simple-uint(0)
 211:   58 60          # [10]. signature value=byte[96]
 213:     347EB5ED49E1F6536E2A3F3B5DF1C12D9BAEF440DFBC42BD45D31F4B3F
 242:     DABDFA9D685A84582D98B1B2474210F1C785DA055BE26787AB4DD58FD3
@@ -1252,7 +1255,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   02             # [2]. signature alg=2: ecdsa-with-sha512
+  5:   02             # [2]. signature alg=ecdsa-with-sha512 (2)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -1261,8 +1264,8 @@ Annotated hex:
  17:   72             # [6]. subject=char[18]
  18:     73656C667369676E2D73656370353231 # "selfsign-secp521"
  34:     7231                             # "r1"
- 36:   03             # [7]. subjectPublicKeyAlg=3: EC public key on
-                      #      curve secp521r1
+ 36:   03             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp521r1 (3)
  37:   58 85          # [8]. subject public key=EC point=byte[133]
  39:     04005538CE8F7CDE229335C85958AACD029DDF65CFC2A72A75055E63B8
  68:     FE59D07FB4BDF10DB7B8BA7D57C5C691EB96EAB97411615A6A430E5178
@@ -1271,80 +1274,83 @@ Annotated hex:
 155:     A5223AF12901EB2E19A6C288951C939B05
 172:   88             # [9]. extensions=array[8]
                         #---extension[0]---
-173:     02             # type=2: KeyUsage
-174:     01             # value=1: [digitalSignature]
+173:     02             # [0]. type=KeyUsage (2)
+174:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-175:     03             # type=3: SubjectAlternativeName
-176:     96             # value=array[22]
+175:     03             # [2]. type=SubjectAlternativeName (3)
+176:     96             # [3]. value=array[22]
                           #---GeneralName[0]---
-177:       04             # GeneralNameType=4: directoryName
-178:       84             # GeneralNameValue=array[4], 2 attributes
+177:       04             # [0]. GeneralNameType=4: directoryName
+178:       84             # [1]. GeneralNameValue=array[4], 2
+                          #      attributes
                             #---attribute[0]---
-179:         04             # type=4: country
-180:         62             # value=char[2]
+179:         04             # [0]. type=4: country
+180:         62             # [1]. value=char[2]
 181:           4445           # "DE"
                             #---attribute[1]---
-183:         01             # type=1: commonName
-184:         67             # value=char[7]
+183:         01             # [2]. type=1: commonName
+184:         67             # [3]. value=char[7]
 185:           6578616D706C65 # "example"
                           #---GeneralName[1]---
-192:       02             # GeneralNameType=2: dNSName
-193:       6F             # GeneralNameValue=char[15]
+192:       02             # [2]. GeneralNameType=2: dNSName
+193:       6F             # [3]. GeneralNameValue=char[15]
 194:         6162632E6578616D706C652E636F6D # "abc.example.com"
                           #---GeneralName[2]---
-209:       01             # GeneralNameType=1: rfc822Name
-210:       6F             # GeneralNameValue=char[15]
+209:       01             # [4]. GeneralNameType=1: rfc822Name
+210:       6F             # [5]. GeneralNameValue=char[15]
 211:         616263406578616D706C652E636F6D # "abc@example.com"
                           #---GeneralName[3]---
-226:       21             # GeneralNameType=-2: on-SmtpUTF8Mailbox
-227:       74             # GeneralNameValue=char[20]
+226:       21             # [6]. GeneralNameType=-2:
+                          #      on-SmtpUTF8Mailbox
+227:       74             # [7]. GeneralNameValue=char[20]
 228:         736D747075746638406578616D706C65 # "smtputf8@example"
 244:         2E636F6D                         # ".com"
                           #---GeneralName[4]---
-248:       06             # GeneralNameType=6: uri
-249:       78 1C          # GeneralNameValue=char[28]
+248:       06             # [8]. GeneralNameType=6: uri
+249:       78 1C          # [9]. GeneralNameValue=char[28]
 251:         687474703A2F2F6D797572692E657861 # "http://myuri.exa"
 267:         6D706C652E636F6D2F616263         # "mple.com/abc"
                           #---GeneralName[5]---
-279:       08             # GeneralNameType=8: registeredID
-280:       49             # GeneralNameValue=byte[9]: 
+279:       08             # [10]. GeneralNameType=8: registeredID
+280:       49             # [11]. GeneralNameValue=byte[9]: 
 281:         2B0601040181FD5908 # oid: 1.3.6.1.4.1.32473.8
                           #---GeneralName[6]---
-290:       07             # GeneralNameType=7: iPAddress
-291:       44             # GeneralNameValue=byte[4]
+290:       07             # [12]. GeneralNameType=7: iPAddress
+291:       44             # [13]. GeneralNameValue=byte[4]
 292:         11111111
                           #---GeneralName[7]---
-296:       00             # GeneralNameType=0: otherName
-297:       82             # GeneralNameValue=array[2]
-298:         49             # id=byte[9]: 
+296:       00             # [14]. GeneralNameType=0: otherName
+297:       82             # [15]. GeneralNameValue=array[2]
+298:         49             # [0]. id=byte[9]: 
 299:           2B0601040181FD5901 # oid: 1.3.6.1.4.1.32473.1
-308:         4C             # value=byte[12]
+308:         4C             # [1]. value=byte[12]
 309:           040A22222222222222222222
                           #---GeneralName[8]---
-321:       22             # GeneralNameType=-3: on-MACAddress
-322:       46             # GeneralNameValue=byte[6]
+321:       22             # [16]. GeneralNameType=-3: on-MACAddress
+322:       46             # [17]. GeneralNameValue=byte[6]
 323:         222222222222
                           #---GeneralName[9]---
-329:       21             # GeneralNameType=-2: on-SmtpUTF8Mailbox
-330:       78 1C          # GeneralNameValue=char[28]
+329:       21             # [18]. GeneralNameType=-2:
+                          #       on-SmtpUTF8Mailbox
+330:       78 1C          # [19]. GeneralNameValue=char[28]
 332:         736D74702E757466386D61696C626F78 # "smtp.utf8mailbox"
 348:         406578616D706C652E636F6D         # "@example.com"
                           #---GeneralName[10]---
-360:       20             # GeneralNameType=-1:
-                          # on-hardwareModuleName
-361:       82             # GeneralNameValue=array[2]
-362:         49             # id=byte[9]: 
+360:       20             # [20]. GeneralNameType=-1:
+                          #       on-hardwareModuleName
+361:       82             # [21]. GeneralNameValue=array[2]
+362:         49             # [0]. id=byte[9]: 
 363:           2B0601040181FD5902 # oid: 1.3.6.1.4.1.32473.2
-372:         52             # value=byte[18]
+372:         52             # [1]. value=byte[18]
 373:           041033333333333333333333333333333333
                         #---extension[2]---
-391:     23             # type=-4: BasicConstraints, critical
-392:     21             # value=-2: CA: false
+391:     23             # [4]. type=BasicConstraints, critical (-4)
+392:     21             # [5]. value=-2: CA: false
                         #---extension[3]---
-393:     08             # type=8: ExtendedKeyUsage
-394:     82             # value=array[2]
-395:       02             # 2: clientAuth
-396:       01             # 1: serverAuth
+393:     08             # [6]. type=ExtendedKeyUsage (8)
+394:     82             # [7]. value=array[2]
+395:       02             # clientAuth (2)
+396:       01             # serverAuth (1)
 397:   58 84          # [10]. signature value=byte[132]
 399:     012F8358F64621CA68F7DB644AEFE37958041A686436AFCEDDE70ACEBA
 428:     73744D70147784A41AD67673A1EE5B3B9B1A8351553A29E87815ABFCCA
@@ -1497,7 +1503,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   08             # [2]. signature alg=8: sm2-with-sm3
+  5:   08             # [2]. signature alg=sm2-with-sm3 (8)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -1505,58 +1511,58 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   8A             # [6]. subject=array[10], 5 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     72             # value=char[18]
+ 18:     01             # [0]. type=1: commonName
+ 19:     72             # [1]. value=char[18]
  20:       73656C667369676E2D736D3270323536 # "selfsign-sm2p256"
  36:       7631                             # "v1"
                         #---attribute[1]---
- 38:     03             # type=3: serialNumber
- 39:     6F             # value=char[15]
+ 38:     03             # [2]. type=3: serialNumber
+ 39:     6F             # [3]. value=char[15]
  40:       6D792073657269616C4E756D626572 # "my serialNumber"
                         #---attribute[2]---
- 55:     08             # type=8: organization
- 56:     6F             # value=char[15]
+ 55:     08             # [4]. type=8: organization
+ 56:     6F             # [5]. value=char[15]
  57:       6D79206F7267616E697A6174696F6E # "my organization"
                         #---attribute[3]---
- 72:     09             # type=9: organizationalUnit
- 73:     75             # value=char[21]
+ 72:     09             # [6]. type=9: organizationalUnit
+ 73:     75             # [7]. value=char[21]
  74:       6D79206F7267616E697A6174696F6E61 # "my organizationa"
  90:       6C556E6974                       # "lUnit"
                         #---attribute[4]---
- 95:     12             # type=18: organizationIdentifier
- 96:     78 19          # value=char[25]
+ 95:     12             # [8]. type=18: organizationIdentifier
+ 96:     78 19          # [9]. value=char[25]
  98:       6D79206F7267616E697A6174696F6E49 # "my organizationI"
 114:       64656E746966696572               # "dentifier"
-123:   06             # [7]. subjectPublicKeyAlg=6: EC public key on
-                      #      curve sm2p256v1
+123:   06             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve sm2p256v1 (6)
 124:   58 41          # [8]. subject public key=EC point=byte[65]
 126:     0495FFF4BE8611C8149C81ADEC14125DACCA746A2F3FE38CD2EAB711E8
 155:     C99F101FBB448423F166F9FFD98F0E321597BB394835A6FB240337A389
 184:     12907A22C3F04A
 191:   86             # [9]. extensions=array[6]
                         #---extension[0]---
-192:     02             # type=2: KeyUsage
-193:     01             # value=1: [digitalSignature]
+192:     02             # [0]. type=KeyUsage (2)
+193:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-194:     18 1A          # type=26: NameConstraints
-196:     82             # value=array[2]
-197:       F6             # permittedSubtrees=<null>
-198:       84             # excludedSubtrees=array[4]
+194:     18 1A          # [2]. type=NameConstraints (26)
+196:     82             # [3]. value=array[2]
+197:       F6             # [0]. permittedSubtrees=<null>
+198:       84             # [1]. excludedSubtrees=array[4]
                             #---GeneralName[0]---
-199:         02             # GeneralNameType=2: dNSName
-200:         78 19          # GeneralNameValue=char[25]
+199:         02             # [0]. GeneralNameType=2: dNSName
+200:         78 19          # [1]. GeneralNameValue=char[25]
 202:           6578636C756465642E646E73312E65 # "excluded.dns1.e"
 217:           78616D706C652E636F6D           # "xample.com"
                             #---GeneralName[1]---
-227:         02             # GeneralNameType=2: dNSName
-228:         78 19          # GeneralNameValue=char[25]
+227:         02             # [2]. GeneralNameType=2: dNSName
+228:         78 19          # [3]. GeneralNameValue=char[25]
 230:           6578636C756465642E646E73322E65 # "excluded.dns2.e"
 245:           78616D706C652E636F6D           # "xample.com"
                         #---extension[2]---
-255:     18 1C          # type=28: PolicyConstraints
-257:     82             # value=array[2]
-258:       F6             # requireExplicitPolicy=<null>
-259:       02             # inhibitPolicyMapping=2
+255:     18 1C          # [4]. type=PolicyConstraints (28)
+257:     82             # [5]. value=array[2]
+258:       F6             # [0]. requireExplicitPolicy=<null>
+259:       02             # [1]. inhibitPolicyMapping=2
 260:   58 40          # [10]. signature value=byte[64]
 262:     59F40C77AE8AC0BD0638E0B822001FD47EEF15667C7034436A95C97E94
 291:     CEEE5FEFA1441C1F6537A76692605BED70A1168D2AFE6B03B4E9F92502
@@ -1710,7 +1716,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   03             # [2]. signature alg=3: ecdsa-with-shake128
+  5:   03             # [2]. signature alg=ecdsa-with-shake128 (3)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -1718,72 +1724,72 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   8C             # [6]. subject=array[12], 6 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     78 18          # value=char[24]
+ 18:     01             # [0]. type=1: commonName
+ 19:     78 18          # [1]. value=char[24]
  21:       73656C667369676E2D627261696E706F # "selfsign-brainpo"
  37:       6F6C703235367231                 # "olp256r1"
                         #---attribute[1]---
- 45:     04             # type=4: country
- 46:     62             # value=char[2]
+ 45:     04             # [2]. type=4: country
+ 46:     62             # [3]. value=char[2]
  47:       4445            # "DE"
                         #---attribute[2]---
- 49:     05             # type=5: locality
- 50:     6B             # value=char[11]
+ 49:     05             # [4]. type=5: locality
+ 50:     6B             # [5]. value=char[11]
  51:       6D79206C6F63616C697479 # "my locality"
                         #---attribute[3]---
- 62:     06             # type=6: state
- 63:     68             # value=char[8]
+ 62:     06             # [6]. type=6: state
+ 63:     68             # [7]. value=char[8]
  64:       6D79207374617465 # "my state"
                         #---attribute[4]---
- 72:     07             # type=7: street
- 73:     69             # value=char[9]
+ 72:     07             # [8]. type=7: street
+ 73:     69             # [9]. value=char[9]
  74:       6D7920737472656574 # "my street"
                         #---attribute[5]---
- 83:     0C             # type=12: postalCode
- 84:     6D             # value=char[13]
+ 83:     0C             # [10]. type=12: postalCode
+ 84:     6D             # [11]. value=char[13]
  85:       6D7920706F7374616C436F6465 # "my postalCode"
- 98:   18 18          # [7]. subjectPublicKeyAlg=24: EC public key
-                      #      on curve brainpoolp256r1
+ 98:   18 18          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve brainpoolp256r1 (24)
 100:   58 41          # [8]. subject public key=EC point=byte[65]
 102:     0477B077412EE98950779ED882FFCB1648E014272354469624F5BCE2F1
 131:     4F3242AD4ACC5686A86508D59FB729FDC29811188D8BF016CE4A515105
 160:     4DAF888C48D5ED
 167:   8A             # [9]. extensions=array[10]
                         #---extension[0]---
-168:     02             # type=2: KeyUsage
-169:     01             # value=1: [digitalSignature]
+168:     02             # [0]. type=KeyUsage (2)
+169:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-170:     18 20          # type=32: IPAddrBlocks
-172:     86             # value=array[6]
-                          #---IPAddrBlock[0]---
-173:       01             # AFI=1: IPv4
-174:       F6             # SAFI=<null>
-175:       F6             # IP Address Choice=<null>
-                          #---IPAddrBlock[1]---
-176:       02             # AFI=2: IPv6
-177:       F6             # SAFI=<null>
-178:       F6             # IP Address Choice=<null>
+170:     18 20          # [2]. type=IPAddrBlocks (32)
+172:     86             # [3]. value=array[6]
+                          #---IPAddrBlocks[0]---
+173:       01             # [0]. AFI=1: IPv4
+174:       F6             # [1]. SAFI=<null>
+175:       F6             # [2]. IP Address Choice=<null>
+                          #---IPAddrBlocks[1]---
+176:       02             # [3]. AFI=2: IPv6
+177:       F6             # [4]. SAFI=<null>
+178:       F6             # [5]. IP Address Choice=<null>
                         #---extension[2]---
-179:     18 21          # type=33: ASIdentifiers
-181:     82             # value=array[2]
-182:       02             # id=2
-183:       82             # range=array[2]
-184:         01             # min=1
-185:         03             # max=3
+179:     18 21          # [4]. type=ASIdentifiers (33)
+181:     82             # [5]. value=array[2]
+182:       02             # [0]. id=2
+183:       82             # [1]. range=array[2]
+184:         01             # [0]. min=1
+185:         03             # [1]. max=3
                         #---extension[3]---
-186:     18 22          # type=34: IPAddrBlocksV2
-188:     86             # value=array[6]
-                          #---IPAddrBlock[0]---
-189:       01             # AFI=1: IPv4
-190:       01             # SAFI=1: unicast
-191:       F6             # IP Address Choice=<null>
-                          #---IPAddrBlock[1]---
-192:       02             # AFI=2: IPv6
-193:       01             # SAFI=1: unicast
-194:       F6             # IP Address Choice=<null>
+186:     18 22          # [6]. type=IPAddrBlocksV2 (34)
+188:     86             # [7]. value=array[6]
+                          #---IPAddrBlocks[0]---
+189:       01             # [0]. AFI=1: IPv4
+190:       01             # [1]. SAFI=1: unicast
+191:       F6             # [2]. IP Address Choice=<null>
+                          #---IPAddrBlocks[1]---
+192:       02             # [3]. AFI=2: IPv6
+193:       01             # [4]. SAFI=1: unicast
+194:       F6             # [5]. IP Address Choice=<null>
                         #---extension[4]---
-195:     18 23          # type=35: ASIdentifiersV2
-197:     F6             # value=<null>
+195:     18 23          # [8]. type=ASIdentifiersV2 (35)
+197:     F6             # [9]. value=<null>
 198:   58 40          # [10]. signature value=byte[64]
 200:     4BF673AB08781A572889717416F5B662A188B3218506F1780EB1D17C8B
 229:     0207FF9F318BB7DBFD17F6C829E93C0CDCB657E795436FA8FC4240A71F
@@ -1951,7 +1957,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   01             # [2]. signature alg=1: ecdsa-with-sha384
+  5:   01             # [2]. signature alg=ecdsa-with-sha384 (1)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -1959,28 +1965,28 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   8A             # [6]. subject=array[10], 5 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     78 18          # value=char[24]
+ 18:     01             # [0]. type=1: commonName
+ 19:     78 18          # [1]. value=char[24]
  21:       73656C667369676E2D627261696E706F # "selfsign-brainpo"
  37:       6F6C703338347231                 # "olp384r1"
                         #---attribute[1]---
- 45:     02             # type=2: surname
- 46:     6A             # value=char[10]
+ 45:     02             # [2]. type=2: surname
+ 46:     6A             # [3]. value=char[10]
  47:       6D79207375726E616D65 # "my surname"
                         #---attribute[2]---
- 57:     0A             # type=10: title
- 58:     68             # value=char[8]
+ 57:     0A             # [4]. type=10: title
+ 58:     68             # [5]. value=char[8]
  59:       6D79207469746C65 # "my title"
                         #---attribute[3]---
- 67:     0D             # type=13: givenName
- 68:     6C             # value=char[12]
+ 67:     0D             # [6]. type=13: givenName
+ 68:     6C             # [7]. value=char[12]
  69:       6D7920676976656E4E616D65 # "my givenName"
                         #---attribute[4]---
- 81:     18 19          # type=25: name
- 83:     67             # value=char[7]
+ 81:     18 19          # [8]. type=25: name
+ 83:     67             # [9]. value=char[7]
  84:       6D79206E616D65  # "my name"
- 91:   18 19          # [7]. subjectPublicKeyAlg=25: EC public key
-                      #      on curve brainpoolp384r1
+ 91:   18 19          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve brainpoolp384r1 (25)
  93:   58 61          # [8]. subject public key=EC point=byte[97]
  95:     046709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F41
 124:     8543B023D59E8BF25D133FB1A094E9D42C8FA6ED3B46E9883A35ABD4B0
@@ -1988,46 +1994,47 @@ Annotated hex:
 182:     67197FEC0F7429822B95
 192:   86             # [9]. extensions=array[6]
                         #---extension[0]---
-193:     02             # type=2: KeyUsage
-194:     01             # value=1: [digitalSignature]
+193:     02             # [0]. type=KeyUsage (2)
+194:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-195:     18 20          # type=32: IPAddrBlocks
-197:     86             # value=array[6]
-                          #---IPAddrBlock[0]---
-198:       01             # AFI=1: IPv4
-199:       F6             # SAFI=<null>
-200:       83             # IntIPAddressChoice=array[3]
-201:         1A 01C00002    # [0]=AddressPrefix=29360130
-206:         1B 00000005C47363FE # [1]=AddressPrefix=24770733054
-215:         3B 00000005C468638E # [2]=AddressPrefix=-24770012047
-                          #---IPAddrBlock[1]---
-224:       02             # AFI=2: IPv6
-225:       F6             # SAFI=<null>
-226:       82             # IntIPAddressChoice=array[2]
-227:         1B 000120010DB81234 # [0]=AddressPrefix=316663873933876
-236:         82             # [1]=AddressRange=array[2]
-237:           3B 000120010C78132D # min=-316663852962606
-246:           09             # max=9
+195:     18 20          # [2]. type=IPAddrBlocks (32)
+197:     86             # [3]. value=array[6]
+                          #---IPAddrBlocks[0]---
+198:       01             # [0]. AFI=1: IPv4
+199:       F6             # [1]. SAFI=<null>
+200:       83             # [2]. IntIPAddressChoice=array[3]
+201:         1A 01C00002    # [0]. AddressPrefix=29360130
+206:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+215:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+224:       02             # [3]. AFI=2: IPv6
+225:       F6             # [4]. SAFI=<null>
+226:       82             # [5]. IntIPAddressChoice=array[2]
+227:         1B 000120010DB81234 # [0]. AddressPrefix=31666387393387
+                                 #      6
+236:         82             # [1]. AddressRange=array[2]
+237:           3B 000120010C78132D # [0]. min=-316663852962606
+246:           09             # [1]. max=9
                         #---extension[2]---
-247:     18 22          # type=34: IPAddrBlocksV2
-249:     86             # value=array[6]
-                          #---IPAddrBlock[0]---
-250:       01             # AFI=1: IPv4
-251:       01             # SAFI=1: unicast
-252:       83             # IntIPAddressChoice=array[3]
-253:         1A 01C00002    # [0]=AddressPrefix=29360130
-258:         1B 00000005C47363FE # [1]=AddressPrefix=24770733054
-267:         3B 00000005C468638E # [2]=AddressPrefix=-24770012047
-                          #---IPAddrBlock[1]---
-276:       02             # AFI=2: IPv6
-277:       01             # SAFI=1: unicast
-278:       82             # IPAddressChoice=array[2]
-279:         47             # [0]=AddressPrefix=byte[7]
+247:     18 22          # [4]. type=IPAddrBlocksV2 (34)
+249:     86             # [5]. value=array[6]
+                          #---IPAddrBlocks[0]---
+250:       01             # [0]. AFI=1: IPv4
+251:       01             # [1]. SAFI=1: unicast
+252:       83             # [2]. IntIPAddressChoice=array[3]
+253:         1A 01C00002    # [0]. AddressPrefix=29360130
+258:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+267:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+276:       02             # [3]. AFI=2: IPv6
+277:       01             # [4]. SAFI=1: unicast
+278:       82             # [5]. IPAddressChoice=array[2]
+279:         47             # [0]. AddressPrefix=byte[7]
 280:           0020010DB81234
-287:         82             # [1]=AddressRange=array[2]
-288:           45             # min=byte[5]
+287:         82             # [1]. AddressRange=array[2]
+288:           45             # [0]. min=byte[5]
 289:             003FFF0003
-294:           4D             # max=byte[13]
+294:           4D             # [1]. max=byte[13]
 295:             003FFF01220000223333445566
 308:   58 60          # [10]. signature value=byte[96]
 310:     6709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F4185
@@ -2201,7 +2208,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   04             # [2]. signature alg=4: ecdsa-with-shake256
+  5:   04             # [2]. signature alg=ecdsa-with-shake256 (4)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -2209,26 +2216,27 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   88             # [6]. subject=array[8], 4 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     78 18          # value=char[24]
+ 18:     01             # [0]. type=1: commonName
+ 19:     78 18          # [1]. value=char[24]
  21:       73656C667369676E2D627261696E706F # "selfsign-brainpo"
  37:       6F6C703531327231                 # "olp512r1"
                         #---attribute[1]---
- 45:     13             # type=19: jurisdictionLocalityName
- 46:     77             # value=char[23]
+ 45:     13             # [2]. type=19: jurisdictionLocalityName
+ 46:     77             # [3]. value=char[23]
  47:       6D79206A7572697364696374696F6E4C # "my jurisdictionL"
  63:       6F63616C697479                   # "ocality"
                         #---attribute[2]---
- 70:     14             # type=20: jurisdictionStateOrProvinceName
- 71:     74             # value=char[20]
+ 70:     14             # [4]. type=20:
+                        #      jurisdictionStateOrProvinceName
+ 71:     74             # [5]. value=char[20]
  72:       6D79206A7572697364696374696F6E53 # "my jurisdictionS"
  88:       74617465                         # "tate"
                         #---attribute[3]---
- 92:     15             # type=21: jurisdictionCountryName
- 93:     62             # value=char[2]
+ 92:     15             # [6]. type=21: jurisdictionCountryName
+ 93:     62             # [7]. value=char[2]
  94:       5345            # "SE"
- 96:   18 1A          # [7]. subjectPublicKeyAlg=26: EC public key
-                      #      on curve brainpoolp512r1
+ 96:   18 1A          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve brainpoolp512r1 (26)
  98:   58 81          # [8]. subject public key=EC point=byte[129]
 100:     046D327067D334CE53FA29317AA207B85CA237623F19A10C594BF024FC
 129:     3FFEB64FAB5884D0D448A271552E02E7CF44D8BF104DA182CEC1DE895C
@@ -2237,36 +2245,37 @@ Annotated hex:
 216:     FF077C402368C49BB715B53458
 229:   88             # [9]. extensions=array[8]
                         #---extension[0]---
-230:     02             # type=2: KeyUsage
-231:     01             # value=1: [digitalSignature]
+230:     02             # [0]. type=KeyUsage (2)
+231:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-232:     18 18          # type=24: SubjectDirectoryAttributes
-234:     82             # value=array[2], 1 attribute
+232:     18 18          # [2]. type=SubjectDirectoryAttributes (24)
+234:     82             # [3]. value=array[2], 1 attribute
                           #---attribute[0]---
-235:       04             # attributeType=4: country
-236:       82             # attributeValue=array[2]
+235:       04             # [0]. attributeType=country (4)
+236:       82             # [1]. attributeValue=array[2]
 237:         62             # [0]=char[2]
 238:           4445           # "DE"
 240:         62             # [1]=char[2]
 241:           5345           # "SE"
                         #---extension[2]---
-243:     18 1B          # type=27: PolicyMappings
-245:     84             # value=array[4]
+243:     18 1B          # [4]. type=PolicyMappings (27)
+245:     84             # [5]. value=array[4]
                           #---policyMapping[0]---
-246:       02             # issuerDomainPolicy=2:
-                          # organization-validated
-247:       01             # subjectDomainPolicy=1: domain-validated
+246:       02             # [0]. issuerDomainPolicy=organization-val
+                          #      idated (2)
+247:       01             # [1]. subjectDomainPolicy=domain-validate
+                          #      d (1)
                           #---policyMapping[1]---
-248:       49             #  issuerDomainPolicy=byte[9]: 
+248:       49             # [2].  issuerDomainPolicy=byte[9]: 
 249:         2B0601040181FD5906 # oid: 1.3.6.1.4.1.32473.6
-258:       49             # subjectDomainPolicy=byte[9]: 
+258:       49             # [3]. subjectDomainPolicy=byte[9]: 
 259:         2B0601040181FD5907 # oid: 1.3.6.1.4.1.32473.7
                         #---extension[3]---
-268:     18 1F          # type=31: SubjectInfoAccess
-270:     82             # value=array[2]
+268:     18 1F          # [6]. type=SubjectInfoAccess (31)
+270:     82             # [7]. value=array[2]
                           #---AccessDescription[0]---
-271:       02             # accessMethod=2: caIssuers
-272:       78 1C          # uri=char[28]
+271:       02             # [0]. accessMethod=caIssuers (2)
+272:       78 1C          # [1]. uri=char[28]
 274:         687474703A2F2F636169737375657273 # "http://caissuers"
 290:         2E6578616D706C652E636F6D         # ".example.com"
 302:   58 80          # [10]. signature value=byte[128]
@@ -2414,7 +2423,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   38 FE          # [2]. signature alg=-255: ecdsa-with-sha1
+  5:   38 FE          # [2]. signature alg=ecdsa-with-sha1 (-255)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -2422,54 +2431,54 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  18:   88             # [6]. subject=array[8], 4 attributes
                         #---attribute[0]---
- 19:     00             # type=0: emailAddress
- 20:     6F             # value=char[15]
+ 19:     00             # [0]. type=0: emailAddress
+ 20:     6F             # [1]. value=char[15]
  21:       616263406578616D706C652E6F7267 # "abc@example.org"
                         #---attribute[1]---
- 36:     01             # type=1: commonName
- 37:     71             # value=char[17]
+ 36:     01             # [2]. type=1: commonName
+ 37:     71             # [3]. value=char[17]
  38:       73656C667369676E2D66727032353676 # "selfsign-frp256v"
  54:       31                               # "1"
                         #---attribute[2]---
- 55:     0B             # type=11: businessCategory
- 56:     73             # value=char[19]
+ 55:     0B             # [4]. type=11: businessCategory
+ 56:     73             # [5]. value=char[19]
  57:       6D7920627573696E6573734361746567 # "my businessCateg"
  73:       6F7279                           # "ory"
                         #---attribute[3]---
- 76:     18 1A          # type=26: telephoneNumber
- 78:     72             # value=char[18]
+ 76:     18 1A          # [6]. type=26: telephoneNumber
+ 78:     72             # [7]. value=char[18]
  79:       6D792074656C6570686F6E654E756D62 # "my telephoneNumb"
  95:       6572                             # "er"
- 97:   18 1B          # [7]. subjectPublicKeyAlg=27: EC public key
-                      #      on curve frp256v1
+ 97:   18 1B          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve frp256v1 (27)
  99:   58 41          # [8]. subject public key=EC point=byte[65]
 101:     04378D2D28A1F6547124F2DB6A42F63915BFA2F6537AE20CF0417D675F
 130:     BE6603DA80A4CF3F1E43633343AB3BE80150EC04E9649DD62705BC055B
 159:     DCDA791EB25062
 166:   86             # [9]. extensions=array[6]
                         #---extension[0]---
-167:     02             # type=2: KeyUsage
-168:     01             # value=1: [digitalSignature]
+167:     02             # [0]. type=KeyUsage (2)
+168:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-169:     18 1A          # type=26: NameConstraints
-171:     82             # value=array[2]
-172:       84             # permittedSubtrees=array[4]
+169:     18 1A          # [2]. type=NameConstraints (26)
+171:     82             # [3]. value=array[2]
+172:       84             # [0]. permittedSubtrees=array[4]
                             #---GeneralName[0]---
-173:         02             # GeneralNameType=2: dNSName
-174:         78 1A          # GeneralNameValue=char[26]
+173:         02             # [0]. GeneralNameType=2: dNSName
+174:         78 1A          # [1]. GeneralNameValue=char[26]
 176:           7065726D69747465642E646E73312E # "permitted.dns1."
 191:           6578616D706C652E636F6D         # "example.com"
                             #---GeneralName[1]---
-202:         02             # GeneralNameType=2: dNSName
-203:         78 1A          # GeneralNameValue=char[26]
+202:         02             # [2]. GeneralNameType=2: dNSName
+203:         78 1A          # [3]. GeneralNameValue=char[26]
 205:           7065726D69747465642E646E73322E # "permitted.dns2."
 220:           6578616D706C652E636F6D         # "example.com"
-231:       F6             # excludedSubtrees=<null>
+231:       F6             # [1]. excludedSubtrees=<null>
                         #---extension[2]---
-232:     18 1C          # type=28: PolicyConstraints
-234:     82             # value=array[2]
-235:       01             # requireExplicitPolicy=1
-236:       F6             # inhibitPolicyMapping=<null>
+232:     18 1C          # [4]. type=PolicyConstraints (28)
+234:     82             # [5]. value=array[2]
+235:       01             # [0]. requireExplicitPolicy=1
+236:       F6             # [1]. inhibitPolicyMapping=<null>
 237:   58 40          # [10]. signature value=byte[64]
 239:     378D2D28A1F6547124F2DB6A42F63915BFA2F6537AE20CF0417D675FBE
 268:     6603DA6F2D4CE3787CBACE549599BC5F3BAACCA2B7E67352E4A6BA1F44
@@ -2628,7 +2637,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   0C             # [2]. signature alg=12: Ed25519
+  5:   0C             # [2]. signature alg=Ed25519 (12)
   6:   67             # [3]. issuer=char[7]
   7:     74657374206361  # "test ca"
  14:   1A 6775D700    # [4]. notBefore=1735776000:
@@ -2636,70 +2645,71 @@ Annotated hex:
  19:   1A 69570A80    # [5]. notAfter=1767312000:
                       #      2026-01-02T00:00:00Z
  24:   80             # [6]. subject=array[0], 0 attribute
- 25:   08             # [7]. subjectPublicKeyAlg=8: X25519
+ 25:   08             # [7]. subjectPublicKeyAlg=X25519 (8)
  26:   58 20          # [8]. subject public key=EC point=byte[32]
  28:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
  57:     1B7F08
  60:   88             # [9]. extensions=array[8]
                         #---extension[0]---
- 61:     02             # type=2: KeyUsage
- 62:     14             # value=20: [keyEncipherment, keyAgreement]
+ 61:     02             # [0]. type=KeyUsage (2)
+ 62:     14             # [1]. value=20: [keyEncipherment,
+                        #      keyAgreement]
                         #---extension[1]---
- 63:     07             # type=7: AuthorityKeyIdentifier
- 64:     54             # value: keyIdentifier=byte[20]
+ 63:     07             # [2]. type=AuthorityKeyIdentifier (7)
+ 64:     54             # [3]. value: keyIdentifier=byte[20]
  65:       0369D71F96FE1258A746AC2B208E756E6D1D3ED9
                         #---extension[2]---
- 85:     09             # type=9: AuthorityInfoAccess
- 86:     92             # value=array[18]
+ 85:     09             # [4]. type=AuthorityInfoAccess (9)
+ 86:     92             # [5]. value=array[18]
                           #---AccessDescription[0]---
- 87:       01             # accessMethod=1: ocsp
- 88:       77             # uri=char[23]
+ 87:       01             # [0]. accessMethod=ocsp (1)
+ 88:       77             # [1]. uri=char[23]
  89:         687474703A2F2F6F6373702E6578616D # "http://ocsp.exam"
 105:         706C652E636F6D                   # "ple.com"
                           #---AccessDescription[1]---
-112:       02             # accessMethod=2: caIssuers
-113:       78 1C          # uri=char[28]
+112:       02             # [2]. accessMethod=caIssuers (2)
+113:       78 1C          # [3]. uri=char[28]
 115:         687474703A2F2F636169737375657273 # "http://caissuers"
 131:         2E6578616D706C652E636F6D         # ".example.com"
                           #---AccessDescription[2]---
-143:       05             # accessMethod=5: caRepository
-144:       78 1F          # uri=char[31]
+143:       05             # [4]. accessMethod=caRepository (5)
+144:       78 1F          # [5]. uri=char[31]
 146:         687474703A2F2F63617265706F736974 # "http://careposit"
 162:         6F72792E6578616D706C652E636F6D   # "ory.example.com"
                           #---AccessDescription[3]---
-177:       03             # accessMethod=3: timeStamping
-178:       78 1F          # uri=char[31]
+177:       03             # [6]. accessMethod=timeStamping (3)
+178:       78 1F          # [7]. uri=char[31]
 180:         687474703A2F2F74696D657374616D70 # "http://timestamp"
 196:         696E672E6578616D706C652E636F6D   # "ing.example.com"
                           #---AccessDescription[4]---
-211:       05             # accessMethod=5: caRepository
-212:       78 1F          # uri=char[31]
+211:       05             # [8]. accessMethod=caRepository (5)
+212:       78 1F          # [9]. uri=char[31]
 214:         687474703A2F2F63617265706F736974 # "http://careposit"
 230:         6F72792E6578616D706C652E636F6D   # "ory.example.com"
                           #---AccessDescription[5]---
-245:       0A             # accessMethod=10: rpkiManifest
-246:       78 1F          # uri=char[31]
+245:       0A             # [10]. accessMethod=rpkiManifest (10)
+246:       78 1F          # [11]. uri=char[31]
 248:         687474703A2F2F72706B696D616E6966 # "http://rpkimanif"
 264:         6573742E6578616D706C652E636F6D   # "est.example.com"
                           #---AccessDescription[6]---
-279:       0B             # accessMethod=11: signedObject
-280:       78 1F          # uri=char[31]
+279:       0B             # [12]. accessMethod=signedObject (11)
+280:       78 1F          # [13]. uri=char[31]
 282:         687474703A2F2F7369676E65646F626A # "http://signedobj"
 298:         6563742E6578616D706C652E636F6D   # "ect.example.com"
                           #---AccessDescription[7]---
-313:       0D             # accessMethod=13: rpkiNotify
-314:       78 1D          # uri=char[29]
+313:       0D             # [14]. accessMethod=rpkiNotify (13)
+314:       78 1D          # [15]. uri=char[29]
 316:         687474703A2F2F72706B696E6F746966 # "http://rpkinotif"
 332:         792E6578616D706C652E636F6D       # "y.example.com"
                           #---AccessDescription[8]---
-345:       49             # accessMethod=byte[9]: 
+345:       49             # [16]. accessMethod=byte[9]: 
 346:         2B0601040181FD5903 # oid: 1.3.6.1.4.1.32473.3
-355:       77             # uri=char[23]
+355:       77             # [17]. uri=char[23]
 356:         687474703A2F2F313233342E6578616D # "http://1234.exam"
 372:         706C652E636F6D                   # "ple.com"
                         #---extension[3]---
-379:     18 19          # type=25: IssuerAlternativeName
-381:     6B             # value: DNS, value=char[11]
+379:     18 19          # [6]. type=IssuerAlternativeName (25)
+381:     6B             # [7]. value: DNS, value=char[11]
 382:       6578616D706C652E636F6D # "example.com"
 393:   58 40          # [10]. signature value=byte[64]
 395:     C85D9310C572C7BC037B217C06022234D9866069B1881D203EB3B6A0A4
@@ -2859,7 +2869,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   0C             # [2]. signature alg=12: Ed25519
+  5:   0C             # [2]. signature alg=Ed25519 (12)
   6:   67             # [3]. issuer=char[7]
   7:     74657374206361  # "test ca"
  14:   1A 6775D700    # [4]. notBefore=1735776000:
@@ -2868,34 +2878,35 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  24:   67             # [6]. subject=char[7]
  25:     65652D78343438  # "ee-x448"
- 32:   09             # [7]. subjectPublicKeyAlg=9: X448
+ 32:   09             # [7]. subjectPublicKeyAlg=X448 (9)
  33:   58 38          # [8]. subject public key=EC point=byte[56]
  35:     1C37EFABEA92847B36F264890AEFDBC964039C5C61A3111C090BE4D0A4
  64:     2979A6667E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B
  91:   88             # [9]. extensions=array[8]
                         #---extension[0]---
- 92:     02             # type=2: KeyUsage
- 93:     14             # value=20: [keyEncipherment, keyAgreement]
+ 92:     02             # [0]. type=KeyUsage (2)
+ 93:     14             # [1]. value=20: [keyEncipherment,
+                        #      keyAgreement]
                         #---extension[1]---
- 94:     05             # type=5: CRLDistributionPoints
- 95:     76             # value=fullName=char[22]
+ 94:     05             # [2]. type=CRLDistributionPoints (5)
+ 95:     76             # [3]. value=fullName=char[22]
  96:       687474703A2F2F63726C2E6578616D70 # "http://crl.examp"
 112:       6C652E636F6D                     # "le.com"
                         #---extension[2]---
-118:     07             # type=7: AuthorityKeyIdentifier
-119:     83             # value=array[3]
-120:       54             # keyIdentifier=byte[20]
+118:     07             # [4]. type=AuthorityKeyIdentifier (7)
+119:     83             # [5]. value=array[3]
+120:       54             # [0]. keyIdentifier=byte[20]
 121:         0369D71F96FE1258A746AC2B208E756E6D1D3ED9
-141:       82             # authorityCertIssuer=array[2]
+141:       82             # [1]. authorityCertIssuer=array[2]
                             #---GeneralName[0]---
-142:         04             # GeneralNameType=4: directoryName
-143:         67             # GeneralNameValue=char[7]
+142:         04             # [0]. GeneralNameType=4: directoryName
+143:         67             # [1]. GeneralNameValue=char[7]
 144:           74657374206361 # "test ca"
-151:       41             # authorityCertSerialNumber=byte[1]
+151:       41             # [2]. authorityCertSerialNumber=byte[1]
 152:         01
                         #---extension[3]---
-153:     18 1D          # type=29: FreshestCRL
-155:     82             # value=array[2]
+153:     18 1D          # [6]. type=FreshestCRL (29)
+155:     82             # [7]. value=array[2]
 156:       83             # DistributionPoint[0]=array[3]
 157:         78 1F          # [0]. fullName=char[31]
 159:           687474703A2F2F6672657368657374 # "http://freshest"
@@ -2905,12 +2916,12 @@ Annotated hex:
                             #      keyCompromise]
 191:         84             # [2]. cRLIssuer=array[4], 2 attributes
                               #---attribute[0]---
-192:           04             # type=4: country
-193:           62             # value=char[2]
+192:           04             # [0]. type=4: country
+193:           62             # [1]. value=char[2]
 194:             4445           # "DE"
                               #---attribute[1]---
-196:           01             # type=1: commonName
-197:           6F             # value=char[15]
+196:           01             # [2]. type=1: commonName
+197:           6F             # [3]. value=char[15]
 198:             4D792043524C206973737565722031 # "My CRL issuer 1"
 213:       83             # DistributionPoint[1]=array[3]
 214:         82             # [0]. fullName=array[2]
@@ -3086,7 +3097,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   0C             # [2]. signature alg=12: Ed25519
+  5:   0C             # [2]. signature alg=Ed25519 (12)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -3094,75 +3105,75 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   8E             # [6]. subject=array[14], 7 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     70             # value=char[16]
+ 18:     01             # [0]. type=1: commonName
+ 19:     70             # [1]. value=char[16]
  20:       73656C667369676E2D65643235353139 # "selfsign-ed25519"
                         #---attribute[1]---
- 36:     0F             # type=15: generationQualifier
- 37:     76             # value=char[22]
+ 36:     0F             # [2]. type=15: generationQualifier
+ 37:     76             # [3]. value=char[22]
  38:       6D792067656E65726174696F6E517561 # "my generationQua"
  54:       6C6966696572                     # "lifier"
                         #---attribute[2]---
- 60:     10             # type=16: DNQualifier
- 61:     6E             # value=char[14]
+ 60:     10             # [4]. type=16: DNQualifier
+ 61:     6E             # [5]. value=char[14]
  62:       6D7920646E5175616C6966696572 # "my dnQualifier"
                         #---attribute[3]---
- 76:     16             # type=22: domainComponent
- 77:     72             # value=char[18]
+ 76:     16             # [6]. type=22: domainComponent
+ 77:     72             # [7]. value=char[18]
  78:       6D7920646F6D61696E436F6D706F6E65 # "my domainCompone"
  94:       6E74                             # "nt"
                         #---attribute[4]---
- 96:     18 1B          # type=27: DMDName
- 98:     6A             # value=char[10]
+ 96:     18 1B          # [8]. type=27: DMDName
+ 98:     6A             # [9]. value=char[10]
  99:       6D7920646D644E616D65 # "my dmdName"
                         #---attribute[5]---
-109:     18 1D          # type=29: unstructuredName
-111:     73             # value=char[19]
+109:     18 1D          # [10]. type=29: unstructuredName
+111:     73             # [11]. value=char[19]
 112:       6D7920756E737472756374757265644E # "my unstructuredN"
 128:       616D65                           # "ame"
                         #---attribute[6]---
-131:     18 1E          # type=30: unstructuredAddress
-133:     76             # value=char[22]
+131:     18 1E          # [12]. type=30: unstructuredAddress
+133:     76             # [13]. value=char[22]
 134:       6D7920756E7374727563747572656441 # "my unstructuredA"
 150:       646472657373                     # "ddress"
-156:   0C             # [7]. subjectPublicKeyAlg=12: Ed25519
+156:   0C             # [7]. subjectPublicKeyAlg=Ed25519 (12)
 157:   58 20          # [8]. subject public key=EC point=byte[32]
 159:     46270AEC0F32837E128779D30B249C531D6D42C1AC29E402328EDC79FA
 188:     C2BE95
 191:   86             # [9]. extensions=array[6]
                         #---extension[0]---
-192:     02             # type=2: KeyUsage
-193:     01             # value=1: [digitalSignature]
+192:     02             # [0]. type=KeyUsage (2)
+193:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-194:     18 1A          # type=26: NameConstraints
-196:     82             # value=array[2]
-197:       84             # permittedSubtrees=array[4]
+194:     18 1A          # [2]. type=NameConstraints (26)
+196:     82             # [3]. value=array[2]
+197:       84             # [0]. permittedSubtrees=array[4]
                             #---GeneralName[0]---
-198:         02             # GeneralNameType=2: dNSName
-199:         78 1A          # GeneralNameValue=char[26]
+198:         02             # [0]. GeneralNameType=2: dNSName
+199:         78 1A          # [1]. GeneralNameValue=char[26]
 201:           7065726D69747465642E646E73312E # "permitted.dns1."
 216:           6578616D706C652E636F6D         # "example.com"
                             #---GeneralName[1]---
-227:         02             # GeneralNameType=2: dNSName
-228:         78 1A          # GeneralNameValue=char[26]
+227:         02             # [2]. GeneralNameType=2: dNSName
+228:         78 1A          # [3]. GeneralNameValue=char[26]
 230:           7065726D69747465642E646E73322E # "permitted.dns2."
 245:           6578616D706C652E636F6D         # "example.com"
-256:       84             # excludedSubtrees=array[4]
+256:       84             # [1]. excludedSubtrees=array[4]
                             #---GeneralName[0]---
-257:         02             # GeneralNameType=2: dNSName
-258:         78 19          # GeneralNameValue=char[25]
+257:         02             # [0]. GeneralNameType=2: dNSName
+258:         78 19          # [1]. GeneralNameValue=char[25]
 260:           6578636C756465642E646E73312E65 # "excluded.dns1.e"
 275:           78616D706C652E636F6D           # "xample.com"
                             #---GeneralName[1]---
-285:         02             # GeneralNameType=2: dNSName
-286:         78 19          # GeneralNameValue=char[25]
+285:         02             # [2]. GeneralNameType=2: dNSName
+286:         78 19          # [3]. GeneralNameValue=char[25]
 288:           6578636C756465642E646E73322E65 # "excluded.dns2.e"
 303:           78616D706C652E636F6D           # "xample.com"
                         #---extension[2]---
-313:     18 1C          # type=28: PolicyConstraints
-315:     82             # value=array[2]
-316:       01             # requireExplicitPolicy=1
-317:       02             # inhibitPolicyMapping=2
+313:     18 1C          # [4]. type=PolicyConstraints (28)
+315:     82             # [5]. value=array[2]
+316:       01             # [0]. requireExplicitPolicy=1
+317:       02             # [1]. inhibitPolicyMapping=2
 318:   58 40          # [10]. signature value=byte[64]
 320:     213CF14F253BCECA58A1CDF0AAD3565E01D6612461F86DBACC6E014099
 349:     5AC3EEF507AF1341D604243751562CCB363B0C72C989E9D2F260C59422
@@ -3305,7 +3316,7 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   0D             # [2]. signature alg=13: Ed448
+  5:   0D             # [2]. signature alg=Ed448 (13)
   6:   F6             # [3]. issuer=<null>
   7:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -3313,38 +3324,38 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  17:   88             # [6]. subject=array[8], 4 attributes
                         #---attribute[0]---
- 18:     01             # type=1: commonName
- 19:     6E             # value=char[14]
+ 18:     01             # [0]. type=1: commonName
+ 19:     6E             # [1]. value=char[14]
  20:       73656C667369676E2D6564343438 # "selfsign-ed448"
                         #---attribute[1]---
- 34:     0E             # type=14: initials
- 35:     6B             # value=char[11]
+ 34:     0E             # [2]. type=14: initials
+ 35:     6B             # [3]. value=char[11]
  36:       6D7920696E697469616C73 # "my initials"
                         #---attribute[2]---
- 47:     11             # type=17: pseudonym
- 48:     6C             # value=char[12]
+ 47:     11             # [4]. type=17: pseudonym
+ 48:     6C             # [5]. value=char[12]
  49:       6D792070736575646F6E796D # "my pseudonym"
                         #---attribute[3]---
- 61:     18 1C          # type=28: userID
- 63:     69             # value=char[9]
+ 61:     18 1C          # [6]. type=28: userID
+ 63:     69             # [7]. value=char[9]
  64:       6D7920757365726964 # "my userid"
- 73:   0D             # [7]. subjectPublicKeyAlg=13: Ed448
+ 73:   0D             # [7]. subjectPublicKeyAlg=Ed448 (13)
  74:   58 39          # [8]. subject public key=EC point=byte[57]
  76:     8C35E491DB58702D7B99167C19F86B2681EA25D21F83AC6EC78040A904
 105:     114FCB1DCF239F6C4D845147F7E22793A891A9F9CA5D1E20A7398C80
 133:   86             # [9]. extensions=array[6]
                         #---extension[0]---
-134:     02             # type=2: KeyUsage
-135:     01             # value=1: [digitalSignature]
+134:     02             # [0]. type=KeyUsage (2)
+135:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-136:     18 24          # type=36: OCSPNoCheck
-138:     F6             # value=<null>
+136:     18 24          # [2]. type=OCSPNoCheck (36)
+138:     F6             # [3]. value=<null>
                         #---extension[2]---
-139:     18 26          # type=38: TLSFeatures
-141:     82             # value=array[2]
-142:       18 2C          # cookie (44)
-144:       10             # application layer protocol negotiation
-                          # (16)
+139:     18 26          # [4]. type=TLSFeatures (38)
+141:     82             # [5]. value=array[2]
+142:       18 2C          # [0]. cookie (44)
+144:       10             # [1]. application layer protocol
+                          #      negotiation (16)
 145:   58 72          # [10]. signature value=byte[114]
 147:     5E12D7D2F577CBDB36BA15DD9EA97B9BB9B49284210308CCFB2B1C2F9E
 176:     2FF80398CC5D4F50293AFD24C5BCE3569379D344BCC4D31C6062A400EC
@@ -3475,8 +3486,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   38 FF          # [2]. signature alg=-256:
-                      #      sha1WithRSAEncryption
+  5:   38 FF          # [2]. signature alg=sha1WithRSAEncryption
+                      #      (-256)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -3485,7 +3496,7 @@ Annotated hex:
  18:   76             # [6]. subject=char[22]
  19:     73656C667369676E2D7273612D776974 # "selfsign-rsa-wit"
  35:     682D73686131                     # "h-sha1"
- 41:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 41:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  42:   58 80          # [8]. subject public key=modulus=byte[128]
  44:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  73:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -3713,8 +3724,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 19          # [2]. signature alg=25:
-                      #      sha512WithRSAEncryption
+  5:   18 19          # [2]. signature alg=sha512WithRSAEncryption
+                      #      (25)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -3723,7 +3734,7 @@ Annotated hex:
  18:   78 18          # [6]. subject=char[24]
  20:     73656C667369676E2D7273612D776974 # "selfsign-rsa-wit"
  36:     682D736861353132                 # "h-sha512"
- 44:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 44:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  45:   58 80          # [8]. subject public key=modulus=byte[128]
  47:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  76:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -3865,8 +3876,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 1A          # [2]. signature alg=26:
-                      #      rsassa-pss-with-sha256
+  5:   18 1A          # [2]. signature alg=rsassa-pss-with-sha256
+                      #      (26)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -3875,7 +3886,7 @@ Annotated hex:
  18:   78 1A          # [6]. subject=char[26]
  20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
  36:     7073732D736861323536             # "pss-sha256"
- 46:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 46:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  47:   58 80          # [8]. subject public key=modulus=byte[128]
  49:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  78:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -4017,8 +4028,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 1B          # [2]. signature alg=27:
-                      #      rsassa-pss-with-sha384
+  5:   18 1B          # [2]. signature alg=rsassa-pss-with-sha384
+                      #      (27)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -4027,7 +4038,7 @@ Annotated hex:
  18:   78 1A          # [6]. subject=char[26]
  20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
  36:     7073732D736861333834             # "pss-sha384"
- 46:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 46:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  47:   58 80          # [8]. subject public key=modulus=byte[128]
  49:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  78:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -4210,8 +4221,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 1C          # [2]. signature alg=28:
-                      #      rsassa-pss-with-sha512
+  5:   18 1C          # [2]. signature alg=rsassa-pss-with-sha512
+                      #      (28)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -4220,7 +4231,7 @@ Annotated hex:
  18:   78 1A          # [6]. subject=char[26]
  20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
  36:     7073732D736861353132             # "pss-sha512"
- 46:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 46:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  47:   58 C0          # [8]. subject public key=modulus=byte[192]
  49:     B511729186EDC01B2335EC7E46AB1CF3B31FB8D46133CE350588EFD85E
  78:     D0876568B7BE006CE3527ABA643A1B0F8FA5EC5402229630442CFCE305
@@ -4364,8 +4375,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 1D          # [2]. signature alg=29:
-                      #      rsassa-pss-with-shake128
+  5:   18 1D          # [2]. signature alg=rsassa-pss-with-shake128
+                      #      (29)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -4374,7 +4385,7 @@ Annotated hex:
  18:   78 1C          # [6]. subject=char[28]
  20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
  36:     7073732D7368616B65313238         # "pss-shake128"
- 48:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 48:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  49:   58 80          # [8]. subject public key=modulus=byte[128]
  51:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
  80:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
@@ -4530,8 +4541,8 @@ Annotated hex:
   1:   02             # [0]. certificate type=2
   2:   42             # [1]. certificateSerialNumber=byte[2]
   3:     1234
-  5:   18 1E          # [2]. signature alg=30:
-                      #      rsassa-pss-with-shake256
+  5:   18 1E          # [2]. signature alg=rsassa-pss-with-shake256
+                      #      (30)
   7:   F6             # [3]. issuer=<null>
   8:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -4540,7 +4551,7 @@ Annotated hex:
  18:   78 1C          # [6]. subject=char[28]
  20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
  36:     7073732D7368616B65323536         # "pss-shake256"
- 48:   00             # [7]. subjectPublicKeyAlg=0: RSA
+ 48:   00             # [7]. subjectPublicKeyAlg=RSA (0)
  49:   58 C0          # [8]. subject public key=modulus=byte[192]
  51:     B511729186EDC01B2335EC7E46AB1CF3B31FB8D46133CE350588EFD85E
  80:     D0876568B7BE006CE3527ABA643A1B0F8FA5EC5402229630442CFCE305
@@ -5041,7 +5052,7 @@ Annotated hex:
   1:   03             # [0]. certificate type=3
   2:   41             # [1]. certificateSerialNumber=byte[1]
   3:     01
-  4:   00             # [2]. signature alg=0: ecdsa-with-sha256
+  4:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
   5:   F6             # [3]. issuer=<null>
   6:   1A 6775D700    # [4]. notBefore=1735776000:
                       #      2025-01-02T00:00:00Z
@@ -5049,14 +5060,14 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  16:   82             # [6]. subject=array[2], 1 attribute
                         #---attribute[0]---
- 17:     43             # type=byte[3]: 
+ 17:     43             # [0]. type=byte[3]: 
  18:       550403         # oid: 2.5.4.3 (commonName)
- 21:     58 19          # value=byte[25]
+ 21:     58 19          # [1]. value=byte[25]
  23:       1617416E20494135537472696E6720436F6D6D6F6E4E616D65
  48:   82             # [7]. subjectPublicKeyAlg=array[2]
- 49:     47             # algorithm=byte[7]: 
+ 49:     47             # [0]. algorithm=byte[7]: 
  50:       2A8648CE3D0201 # oid: 1.2.840.10045.2.1
- 57:     4B             # parameters=byte[11]
+ 57:     4B             # [1]. parameters=byte[11]
  58:       06092B0601040181FD5905
  69:   58 41          # [8]. subject public key=byte[65]
  71:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
@@ -5064,23 +5075,24 @@ Annotated hex:
 129:     78D3930436C857
 136:   84             # [9]. extensions=array[4]
                         #---extension[0]---
-137:     48             # type=byte[8]: 
+137:     48             # [0]. type=byte[8]: 
 138:       2B06010505070108 # oid: 1.3.6.1.5.5.7.1.8 (ASIdentifiers)
-146:     46             # value=byte[6]
+146:     46             # [1]. value=byte[6]
 147:       3004A1020500
                         #---extension[1]---
-153:     18 1A          # type=26: NameConstraints
-155:     82             # value=array[2]
-156:       82             # permittedSubtrees=array[2]
+153:     18 1A          # [2]. type=NameConstraints (26)
+155:     82             # [3]. value=array[2]
+156:       82             # [0]. permittedSubtrees=array[2]
                             #---GeneralName[0]---
-157:         04             # GeneralNameType=4: directoryName
-158:         82             # GeneralNameValue=array[2], 1 attribute
+157:         04             # [0]. GeneralNameType=4: directoryName
+158:         82             # [1]. GeneralNameValue=array[2], 1
+                            #      attribute
                               #---attribute[0]---
-159:           43             # type=byte[3]: 
+159:           43             # [0]. type=byte[3]: 
 160:             550403         # oid: 2.5.4.3 (commonName)
-163:           58 19          # value=byte[25]
+163:           58 19          # [1]. value=byte[25]
 165:             1617416E20494135537472696E6720436F6D6D6F6E4E616D65
-190:       F6             # excludedSubtrees=<null>
+190:       F6             # [1]. excludedSubtrees=<null>
 191:   58 40          # [10]. signature value=byte[64]
 193:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
 222:     22E6E74F787D4E04FE4B62DEDDA880077DC9CB2A5D7A1D8ED62309CD46
@@ -5184,23 +5196,23 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   00             # [1]. subjectSignatureAlgorithm=0:
-                      #      ecdsa-with-sha256
+  2:   00             # [1]. subjectSignatureAlgorithm=ecdsa-with-sh
+                      #      a256 (0)
   3:   6A             # [2]. subject=char[10]
   4:     65636473612D70323536 # "ecdsa-p256"
- 14:   01             # [3]. subjectPublicKeyAlg=1: EC public key on
-                      #      curve secp256r1
+ 14:   01             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
  15:   58 41          # [4]. subject public key=EC point=byte[65]
  17:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
  46:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
  75:     78D3930436C857
  82:   82             # [5]. attributes=array[2]
-                        #---attribute[0]---
- 83:     00             # type=0: ExtensionRequest
- 84:     82             # value: extensions=array[2]
+                        #---CRAttributes[0]---
+ 83:     00             # [0]. type=ExtensionRequest (0)
+ 84:     82             # [1]. value: extensions=array[2]
                           #---extension[0]---
- 85:       03             # type=3: SubjectAlternativeName
- 86:       6B             # value: DNS, value=char[11]
+ 85:       03             # [0]. type=SubjectAlternativeName (3)
+ 86:       6B             # [1]. value: DNS, value=char[11]
  87:         6578616D706C652E636F6D # "example.com"
  98:   58 40          # [6]. signature value=byte[64]
 100:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
@@ -5289,22 +5301,22 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   01             # [1]. subjectSignatureAlgorithm=1:
-                      #      ecdsa-with-sha384
+  2:   01             # [1]. subjectSignatureAlgorithm=ecdsa-with-sh
+                      #      a384 (1)
   3:   6A             # [2]. subject=char[10]
   4:     65636473612D70333834 # "ecdsa-p384"
- 14:   02             # [3]. subjectPublicKeyAlg=2: EC public key on
-                      #      curve secp384r1
+ 14:   02             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp384r1 (2)
  15:   58 61          # [4]. subject public key=EC point=byte[97]
  17:     04DD6762F035899451372B2FE9B52A8314AD10E2C4363C5A5849E296FE
  46:     51AAB9BFD03AB038D33418A0BCD83280ABA0BD9104017165C048B5346B
  75:     54109E449FCC889E4EE870B5F8A2C63DAE414DE19755BE278A175E040D
 104:     4A4C1A0EE46E924A5C29
 114:   82             # [5]. attributes=array[2]
-                        #---attribute[0]---
-115:     01             # type=1: ChallengePassword
-116:     D8 79          # value: tag=121: alternative 0, PRINTABLE
-                        # STRING
+                        #---CRAttributes[0]---
+115:     01             # [0]. type=ChallengePassword (1)
+116:     D8 79          # [1]. value: tag=121: alternative 0,
+                        #      PRINTABLE STRING
 118:       6B             # char[11]
 119:         6D792070617373776F7264 # "my password"
 130:   58 60          # [6]. signature value=byte[96]
@@ -5418,20 +5430,20 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   0E             # [1]. subjectSignatureAlgorithm=14:
-                      #      sa-ecdhPop-sha256-hmac-sha256
+  2:   0E             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a256-hmac-sha256 (14)
   3:   6C             # [2]. subject=char[12]
   4:     64687369672D736861323536 # "dhsig-sha256"
- 16:   01             # [3]. subjectPublicKeyAlg=1: EC public key on
-                      #      curve secp256r1
+ 16:   01             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
  17:   58 41          # [4]. subject public key=EC point=byte[65]
  19:     04C4D4A3378FEC90005CBB0D3EAF1309B482929AF56614AF26A9F22DB8
  48:     3C4F3477B0BA9712DF8213749F918D7DEFDFB32A6C43DF09715D00E47B
  77:     E0519D20E4B314
  84:   82             # [5]. attributes=array[2]
-                        #---attribute[0]---
- 85:     01             # type=1: ChallengePassword
- 86:     6B             # value=char[11]
+                        #---CRAttributes[0]---
+ 85:     01             # [0]. type=ChallengePassword (1)
+ 86:     6B             # [1]. value=char[11]
  87:       6D792070617373776F7264 # "my password"
  98:   58 20          # [6]. signature
                       #      value=DhSigStatic.hashValue=byte[32]
@@ -5549,12 +5561,12 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   0F             # [1]. subjectSignatureAlgorithm=15:
-                      #      sa-ecdhPop-sha384-hmac-sha384
+  2:   0F             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a384-hmac-sha384 (15)
   3:   6C             # [2]. subject=char[12]
   4:     64687369672D736861333834 # "dhsig-sha384"
- 16:   02             # [3]. subjectPublicKeyAlg=2: EC public key on
-                      #      curve secp384r1
+ 16:   02             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp384r1 (2)
  17:   58 61          # [4]. subject public key=EC point=byte[97]
  19:     040AC5E36CE7A667529BD1A7A0599AF2842F1BE493D3FED200295574A0
  48:     D8BBF1A107C1488ACF099A32469EBB1C5A732D69C2F9356722868729CE
@@ -5562,12 +5574,12 @@ Annotated hex:
 106:     FB7D24B9629B99743775
 116:   80             # [5]. attributes=array[0]
 117:   83             # [6]. signature value=DhSigStatic=array[3]
-118:     72             # issuer=char[18]
+118:     72             # [0]. issuer=char[18]
 119:       73656C667369676E2D73656370333834 # "selfsign-secp384"
 135:       7231                             # "r1"
-137:     42             # certificateSerialNumber=byte[2]
+137:     42             # [1]. certificateSerialNumber=byte[2]
 138:       1234
-140:     58 30          # hashValue=byte[48]
+140:     58 30          # [2]. hashValue=byte[48]
 142:       0C5E7EADF9C902D6ED67ACBEF42EFD563A0D6478182726571B3D9F04
 170:       DEFD2693ED3CDF0AEEF102AF104F1871BC9DEB75
 ~~~~~
@@ -5685,12 +5697,12 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   10             # [1]. subjectSignatureAlgorithm=16:
-                      #      sa-ecdhPop-sha512-hmac-sha512
+  2:   10             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a512-hmac-sha512 (16)
   3:   6C             # [2]. subject=char[12]
   4:     64687369672D736861353132 # "dhsig-sha512"
- 16:   03             # [3]. subjectPublicKeyAlg=3: EC public key on
-                      #      curve secp521r1
+ 16:   03             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp521r1 (3)
  17:   58 85          # [4]. subject public key=EC point=byte[133]
  19:     040168AD312E3601639A61E219C3C38FBEBCB2A0AB54E698616F3C80FA
  48:     8FF5EB7C5829FC4CF20BA2DCD8FC8415D2E7FE6B92A844740D7CEA4B9E
@@ -5792,22 +5804,22 @@ Annotated hex:
 ~~~~~
  0: 87             # C509CertificationRequest=array[7]
  1:   02             # [0]. c509CertificationRequestType=2
- 2:   05             # [1]. subjectSignatureAlgorithm=5: unsigned
+ 2:   05             # [1]. subjectSignatureAlgorithm=unsigned (5)
  3:   66             # [2]. subject=char[6]
  4:     783235353139    # "x25519"
-10:   08             # [3]. subjectPublicKeyAlg=8: X25519
+10:   08             # [3]. subjectPublicKeyAlg=X25519 (8)
 11:   58 20          # [4]. subject public key=EC point=byte[32]
 13:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
 42:     1B7F08
 45:   82             # [5]. attributes=array[2]
-                       #---attribute[0]---
-46:     02             # type=2: PrivateKeyPossessionStatement
-47:     83             # value=array[3]
-48:       6B             # issuer=char[11]
+                       #---CRAttributes[0]---
+46:     02             # [0]. type=PrivateKeyPossessionStatement (2)
+47:     83             # [1]. value=array[3]
+48:       6B             # [0]. issuer=char[11]
 49:         64656D6F20697373756572 # "demo issuer"
-60:       41             # certificateSerialNumber=byte[1]
+60:       41             # [1]. certificateSerialNumber=byte[1]
 61:         02
-62:       F6             # cert=<null>
+62:       F6             # [2]. cert=<null>
 63:   40             # [6]. signature value=byte[0]
 ~~~~~
 
@@ -5939,23 +5951,24 @@ Annotated hex:
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   05             # [1]. subjectSignatureAlgorithm=5: unsigned
+  2:   05             # [1]. subjectSignatureAlgorithm=unsigned (5)
   3:   6F             # [2]. subject=char[15]
   4:     7832353531392D7769746863657274 # "x25519-withcert"
- 19:   08             # [3]. subjectPublicKeyAlg=8: X25519
+ 19:   08             # [3]. subjectPublicKeyAlg=X25519 (8)
  20:   58 20          # [4]. subject public key=EC point=byte[32]
  22:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
  51:     1B7F08
  54:   82             # [5]. attributes=array[2]
-                        #---attribute[0]---
- 55:     02             # type=2: PrivateKeyPossessionStatement
- 56:     83             # value=array[3]
- 57:       77             # issuer=char[23]
+                        #---CRAttributes[0]---
+ 55:     02             # [0]. type=PrivateKeyPossessionStatement
+                        #      (2)
+ 56:     83             # [1]. value=array[3]
+ 57:       77             # [0]. issuer=char[23]
  58:         73696D706C652D73656C667369676E2D # "simple-selfsign-"
  74:         65643235353139                   # "ed25519"
- 81:       42             # certificateSerialNumber=byte[2]
+ 81:       42             # [1]. certificateSerialNumber=byte[2]
  82:         1234
- 84:       58 8F          # cert=byte[143]
+ 84:       58 8F          # [2]. cert=byte[143]
  86:         8B024212340CF61A6775D7001A69570A807773696D706C652D7365
 113:         6C667369676E2D656432353531390C582046270AEC0F32837E1287
 140:         79D30B249C531D6D42C1AC29E402328EDC79FAC2BE952058402562
@@ -6057,23 +6070,23 @@ Annotated hex:
  0: 87             # C509CertificationRequestTemplate=array[7]
  1:   00             # [0]. c509CertificationRequestTemplateType=0
  2:   81             # [1]. c509CertificationRequestType=array[1]
- 3:     02             # 2
- 4:   81             # [2]. subjectSignatureAlgorithm=array[1]
- 5:     00             # [0]=0: ecdsa-with-sha256
+ 3:     02             # [0]. C509SimpleOCSPRequest (2)
+ 4:   81             # [2]. subjectSignatureAlgorithm: array[1]
+ 5:     00             # [0]. ecdsa-with-sha256 (0)
  6:   84             # [3]. subject=array[4], 1 attribute
                        #---attribute[0]---
- 7:     01             # type=1: commonName
- 8:     01             # minOccurs=1
- 9:     01             # maxOccurs=1
-10:     F7             # value=<undefined>
-11:   81             # [4]. subjectPublicKeyAlgorithm=array[1]
-12:     01             # [0]=1: EC public key on curve secp256r1
+ 7:     01             # [0]. type=1: commonName
+ 8:     01             # [1]. minOccurs=1
+ 9:     01             # [2]. maxOccurs=1
+10:     F7             # [3]. value=<undefined>
+11:   81             # [4]. subjectPublicKeyAlgorithm: array[1]
+12:     01             # [0]. EC public key on curve secp256r1 (1)
 13:   F7             # [5]. subjectPublicKey=<undefined>
 14:   83             # [6]. extensions=array[3]
                        #---extension[0]---
-15:     03             # type=3: SubjectAlternativeName
-16:     F4             # required
-17:     F7             # value=<undefined>
+15:     03             # [0]. type=SubjectAlternativeName (3)
+16:     F4             # [1]. required
+17:     F7             # [2]. value=<undefined>
 ~~~~
 
 ## Complex Template {#complex-csrt}
@@ -6112,71 +6125,71 @@ Annotated hex:
   0: 87             # C509CertificationRequestTemplate=array[7]
   1:   00             # [0]. c509CertificationRequestTemplateType=0
   2:   82             # [1]. c509CertificationRequestType=array[2]
-  3:     02             # 2
-  4:     03             # 3
-  5:   83             # [2]. subjectSignatureAlgorithm=array[3]
-  6:     01             # [0]=1: ecdsa-with-sha384
-  7:     49             # [1]=byte[9]: 
+  3:     02             # [0]. C509SimpleOCSPRequest (2)
+  4:     03             # [1]. unknown (3)
+  5:   83             # [2]. subjectSignatureAlgorithm: array[3]
+  6:     01             # [0]. ecdsa-with-sha384 (1)
+  7:     49             # [1]. byte[9]: 
   8:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
- 17:     82             # [2]=array[2]
- 18:       49             # algorithm=byte[9]: 
+ 17:     82             # [2]. array[2]
+ 18:       49             # [0]. algorithm=byte[9]: 
  19:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
- 28:       42             # parameters=byte[2]
+ 28:       42             # [1]. parameters=byte[2]
  29:         0500
  31:   90             # [3]. subject=array[16], 4 attributes
                         #---attribute[0]---
- 32:     01             # type=1: commonName
- 33:     01             # minOccurs=1
- 34:     01             # maxOccurs=1
- 35:     F7             # value=<undefined>
+ 32:     01             # [0]. type=1: commonName
+ 33:     01             # [1]. minOccurs=1
+ 34:     01             # [2]. maxOccurs=1
+ 35:     F7             # [3]. value=<undefined>
                         #---attribute[1]---
- 36:     04             # type=4: country
- 37:     01             # minOccurs=1
- 38:     01             # maxOccurs=1
- 39:     62             # value=char[2]
+ 36:     04             # [0]. type=4: country
+ 37:     01             # [1]. minOccurs=1
+ 38:     01             # [2]. maxOccurs=1
+ 39:     62             # [3]. value=char[2]
  40:       4445            # "DE"
                         #---attribute[2]---
  42:     49             # type=byte[9]: 
  43:       2B0601040181FD590B # oid: 1.3.6.1.4.1.32473.11
- 52:     01             # minOccurs=1
- 53:     01             # maxOccurs=1
- 54:     F7             # value=<undefined>
+ 52:     01             # [1]. minOccurs=1
+ 53:     01             # [2]. maxOccurs=1
+ 54:     F7             # [3]. value=<undefined>
                         #---attribute[3]---
  55:     49             # type=byte[9]: 
  56:       2B0601040181FD590C # oid: 1.3.6.1.4.1.32473.12
- 65:     01             # minOccurs=1
- 66:     01             # maxOccurs=1
- 67:     4D             # value=byte[13]
+ 65:     01             # [1]. minOccurs=1
+ 66:     01             # [2]. maxOccurs=1
+ 67:     4D             # [3]. value=byte[13]
  68:       0C0B636F6E73742D76616C7565
- 81:   83             # [4]. subjectPublicKeyAlgorithm=array[3]
- 82:     01             # [0]=1: EC public key on curve secp256r1
- 83:     49             # [1]=byte[9]: 
+ 81:   83             # [4]. subjectPublicKeyAlgorithm: array[3]
+ 82:     01             # [0]. EC public key on curve secp256r1 (1)
+ 83:     49             # [1]. byte[9]: 
  84:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
- 93:     82             # [2]=array[2]
- 94:       49             # algorithm=byte[9]: 
+ 93:     82             # [2]. array[2]
+ 94:       49             # [0]. algorithm=byte[9]: 
  95:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
-104:       42             # parameters=byte[2]
+104:       42             # [1]. parameters=byte[2]
 105:         0500
 107:   F7             # [5]. subjectPublicKey=<undefined>
 108:   8C             # [6]. extensions=array[12]
                         #---extension[0]---
-109:     08             # type=8: ExtendedKeyUsage
-110:     F4             # required
-111:     F7             # value=<undefined>
+109:     08             # [0]. type=ExtendedKeyUsage (8)
+110:     F4             # [1]. required
+111:     F7             # [2]. value=<undefined>
                         #---extension[1]---
-112:     02             # type=2: KeyUsage
-113:     F5             # optional
-114:     18 60          # value=96: [keyCertSign, cRLSign]
+112:     02             # [3]. type=KeyUsage (2)
+113:     F5             # [4]. optional
+114:     18 60          # [5]. value=96: [keyCertSign, cRLSign]
                         #---extension[2]---
-116:     49             # type=byte[9]: 
+116:     49             # [6]. type=byte[9]: 
 117:       2B0601040181FD590D # oid: 1.3.6.1.4.1.32473.13
-126:     F4             # required
-127:     F7             # value=<undefined>
+126:     F4             # [7]. required
+127:     F7             # [8]. value=<undefined>
                         #---extension[3]---
-128:     49             # type=byte[9]: 
+128:     49             # [9]. type=byte[9]: 
 129:       2B0601040181FD590E # oid: 1.3.6.1.4.1.32473.14
-138:     F4             # required
-139:     4D             # value=byte[13]
+138:     F4             # [10]. required
+139:     4D             # [11]. value=byte[13]
 140:       0C0B636F6E73742D76616C7565
 ~~~~~
 
@@ -6211,6 +6224,7 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 
 - Replace abc.com with abc.example.com
 - Add Section Overview
+- Better annotated Hex
 
 ## Since draft-ietf-cose-c509-test-vectors-01
 {:numbered="false"}
