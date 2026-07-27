@@ -99,6 +99,51 @@ Readers are expected to be familiar with C509 certificates {{I-D.ietf-cose-cbor-
 
 The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-20.
 
+# Overview
+
+{{tab-cert-examples-overview}} shows the size in byte and the size reduction of C509 certificates compared to X.509 certificates.
+
+| Section       | Description           | size(X.509) | size(C509) | Size Reduction |
+|:--------------|:----------------------|:-----------|:-----------|:----------------------|
+| {{sec-ca}} | CA Certificate | 249 | 101 | 59% |
+| {{selfsign-rsa}} | RSA Public Key With Public Exponent 65537 | 464 | 284 | 39% |
+| {{selfsign-rsa-f5}} | RSA Public Key With Public Exponent 4294967297 | 467 | 298 | 36% |
+| {{selfsign-secp256r1}} | Weierstrass EC Public Key On Curve secp256r1 | 383 | 190 | 50% |
+| {{selfsign-compress-secp256r1}} | Compressed Weierstrass EC Public Key On Curve secp256r1 | 383 | 158 | 59% |
+| {{selfsign-secp384r1}} | Weierstrass EC Public Key On Curve secp384r1 | 539 | 309 | 43% |
+| {{selfsign-secp521r1}} | Weierstrass EC Public Key On Curve secp521r1 | 811 | 531 | 35% |
+| {{selfsign-sm2p256v1}} | Weierstrass EC Public Key On Curve sm2p256v1 | 644 | 326 | 49% |
+| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 646 | 264 | 63% |
+| {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 717 | 406 | 43% |
+| {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 809 | 432 | 47% |
+| {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
+| {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 681 | 459 | 33% |
+| {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 572 | 367 | 36% |
+| {{selfsign-ed25519}} | Edwards EC Public Key On Curve ED25519 | 784 | 384 | 51% |
+| {{selfsign-ed448}} | Edwards EC Public Key On Curve ED448 | 503 | 261 | 48% |
+| {{selfsign-rsa-with-sha1}} | Signatur Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
+| {{selfsign-rsa-with-sha512}} | Signatur Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
+| {{selfsign-rsassa-pss-sha256}} | Signatur Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
+| {{selfsign-rsassa-pss-sha384}} | Signatur Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
+| {{selfsign-rsassa-pss-sha512}} | Signatur Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 18% |
+| {{selfsign-rsassa-pss-shake128}} | Signatur Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 38% |
+| {{selfsign-rsassa-pss-shake256}} | Signatur Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
+| {{sec-cert-unconvertible}} | X.509 Certificate With Unconvertible RDN Attributes And Extensions | 387 | 257 | 34% |
+{: #tab-cert-examples-overview title="Size comparison of certificates in examples (TODO: update the percent data)"}
+
+{{tab-csr-examples-overview}} shows the size in byte and the size reduction of C509 certification requests compared to X.509 certification requests.
+
+| Section       | Description           | size(X.509) | size(C509) | Size Reduction |
+|:--------------|:----------------------|:-----------|:-----------|:----------------------|
+| {{csr-ecdsa-p256}} | Signatur Algorithm ECDSA With SHA256 | 253 | 164 | 35% |
+| {{csr-ecdsa-p384}} | Signatur Algorithm ECDSA With SHA384 | 300 | 228 | 24% |
+| {{csr-dhsig-sha256}} | Signatur Algorithm ECDH PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
+| {{csr-dhsig-sha384}} | Signatur Algorithm ECDH PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
+| {{csr-dhsig-sha512}} | Signatur Algorithm ECDH PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
+| {{csr-x25519}} | Signatur Algorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
+| {{csr-x25519-withcert}} | Signatur Algorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
+{: #tab-csr-examples-overview title="Size comparison of certification requests in examples (TODO: update the percent data)"}
+
 # CA Certificate {#sec-ca}
 
 - The CA uses an Ed25519 public key because the resulting signature is compact and deterministic.
@@ -3547,7 +3592,7 @@ See {{selfsign-rsa}}.
 
 See {{selfsign-rsa-f5}}.
 
-## RSASSA-PKCS1-v1_5 With SHA-512
+## RSASSA-PKCS1-v1_5 With SHA-512 {#selfsign-rsa-with-sha512}
 
 - Self-signed certificate
 - Signature algorithm: sha512WithRSAEncryption
@@ -3695,7 +3740,7 @@ Annotated hex:
 294:     BE1EA3103B12DD5B6221DB21
 ~~~~~
 
-## RSASSA-PSS With SHA-256
+## RSASSA-PSS With SHA-256 {#selfsign-rsassa-pss-sha256}
 
 - Self-signed certificate
 - Signature algorithm: rsassa-pss-with-sha256
@@ -3847,7 +3892,7 @@ Annotated hex:
 296:     318415E9F20FFE5EA50C9D39
 ~~~~~
 
-## RSASSA-PSS With SHA-384
+## RSASSA-PSS With SHA-384 {#selfsign-rsassa-pss-sha384}
 
 - Self-signed certificate
 - Signature algorithm: rsassa-pss-with-sha384
@@ -3999,7 +4044,7 @@ Annotated hex:
 296:     0A342CC25CFFF87A820CE9DC
 ~~~~~
 
-## RSASSA-PSS With SHA-512
+## RSASSA-PSS With SHA-512 {#selfsign-rsassa-pss-sha512}
 
 - Self-signed certificate
 - RSA public key with 1536-bit modulus
@@ -4196,7 +4241,7 @@ Annotated hex:
 418:     1BDDA10132BC8642EBBF6FF5D9AB1A11D272
 ~~~~~
 
-## RSASSA-PSS With SHAKE128
+## RSASSA-PSS With SHAKE128 {#selfsign-rsassa-pss-shake128}
 
 - Self-signed certificate
 - Signature algorithm: rsassa-pss-with-shake128
@@ -4346,7 +4391,7 @@ Annotated hex:
 298:     C9104DD16F653B47C9EB6B31
 ~~~~~
 
-## RSASSA-PSS With SHAKE256
+## RSASSA-PSS With SHAKE256 {#selfsign-rsassa-pss-shake256}
 
 - Self-signed certificate
 - Signature algorithm: rsassa-pss-with-shake256
@@ -6160,6 +6205,12 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 {:unnumbered}
 
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
+
+## Since draft-ietf-cose-c509-test-vectors-02
+{:numbered="false"}
+
+- Replace abc.com with abc.example.com
+- Add Section Overview
 
 ## Since draft-ietf-cose-c509-test-vectors-01
 {:numbered="false"}
