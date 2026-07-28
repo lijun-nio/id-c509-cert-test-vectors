@@ -125,7 +125,7 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{selfsign-rsa-with-sha512}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
 | {{selfsign-rsassa-pss-sha256}} | Signature Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
 | {{selfsign-rsassa-pss-sha384}} | Signature Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
-| {{selfsign-rsassa-pss-sha512}} | Signature Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 18% |
+| {{selfsign-rsassa-pss-sha512}} | Signature Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 38% |
 | {{selfsign-rsassa-pss-shake128}} | Signature Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 38% |
 | {{selfsign-rsassa-pss-shake256}} | Signature Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
 | {{sec-cert-unconvertible}} | X.509 Certificate With Unconvertible RDN Attributes And Extensions | 387 | 257 | 34% |
