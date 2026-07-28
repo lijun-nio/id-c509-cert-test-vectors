@@ -121,13 +121,13 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 572 | 367 | 36% |
 | {{selfsign-ed25519}} | Edwards EC Public Key On Curve ED25519 | 784 | 384 | 51% |
 | {{selfsign-ed448}} | Edwards EC Public Key On Curve ED448 | 503 | 261 | 48% |
-| {{selfsign-rsa-with-sha1}} | Signatur Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
-| {{selfsign-rsa-with-sha512}} | Signatur Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
-| {{selfsign-rsassa-pss-sha256}} | Signatur Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
-| {{selfsign-rsassa-pss-sha384}} | Signatur Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
-| {{selfsign-rsassa-pss-sha512}} | Signatur Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 18% |
-| {{selfsign-rsassa-pss-shake128}} | Signatur Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 38% |
-| {{selfsign-rsassa-pss-shake256}} | Signatur Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
+| {{selfsign-rsa-with-sha1}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
+| {{selfsign-rsa-with-sha512}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
+| {{selfsign-rsassa-pss-sha256}} | Signature Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
+| {{selfsign-rsassa-pss-sha384}} | Signature Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
+| {{selfsign-rsassa-pss-sha512}} | Signature Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 18% |
+| {{selfsign-rsassa-pss-shake128}} | Signature Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 38% |
+| {{selfsign-rsassa-pss-shake256}} | Signature Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
 | {{sec-cert-unconvertible}} | X.509 Certificate With Unconvertible RDN Attributes And Extensions | 387 | 257 | 34% |
 {: #tab-cert-examples-overview title="Size comparison of certificates in examples (TODO: update the percent data)"}
 
@@ -135,13 +135,13 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 
 | Section       | Description           | size(X.509) | size(C509) | Size Reduction |
 |:--------------|:----------------------|:-----------|:-----------|:----------------------|
-| {{csr-ecdsa-p256}} | Signatur Algorithm ECDSA With SHA256 | 253 | 164 | 35% |
-| {{csr-ecdsa-p384}} | Signatur Algorithm ECDSA With SHA384 | 300 | 228 | 24% |
-| {{csr-dhsig-sha256}} | Signatur Algorithm ECDH PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
-| {{csr-dhsig-sha384}} | Signatur Algorithm ECDH PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
-| {{csr-dhsig-sha512}} | Signatur Algorithm ECDH PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
-| {{csr-x25519}} | Signatur Algorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
-| {{csr-x25519-withcert}} | Signatur Algorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
+| {{csr-ecdsa-p256}} | SignatureAlgorithm ECDSA With SHA256 | 253 | 164 | 35% |
+| {{csr-ecdsa-p384}} | SignatureAlgorithm ECDSA With SHA384 | 300 | 228 | 24% |
+| {{csr-dhsig-sha256}} | SignatureAlgorithm ECDH PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
+| {{csr-dhsig-sha384}} | SignatureAlgorithm ECDH PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
+| {{csr-dhsig-sha512}} | SignatureAlgorithm ECDH PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
+| {{csr-x25519}} | SignatureAlgorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
+| {{csr-x25519-withcert}} | SignatureAlgorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
 {: #tab-csr-examples-overview title="Size comparison of certification requests in examples (TODO: update the percent data)"}
 
 # CA Certificate {#sec-ca}
