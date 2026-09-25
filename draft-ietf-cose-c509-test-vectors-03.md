@@ -115,7 +115,7 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{selfsign-sm2p256v1}} | Weierstrass EC Public Key On Curve sm2p256v1 | 644 | 326 | 49% |
 | {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 646 | 264 | 63% |
 | {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 717 | 406 | 43% |
-| {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 809 | 432 | 47% |
+| {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 779 | 421 | 46% |
 | {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
 | {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 681 | 459 | 33% |
 | {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 572 | 367 | 36% |
@@ -2033,7 +2033,6 @@ Annotated hex:
   - jurisdictionStateOrProvinceName
   - jurisdictionLocalityName
 - Extensions:
-  - Subject Directory Attributes
   - Subject Information Access
   - Policy Mappings
 
@@ -2051,12 +2050,12 @@ tb9ctxRELipEw4kH0boqayh3PA02UW4leQ6yGuqx7iyWQKOzZYT5tnXlUqGh7jh/
 ### X.509 Certificate {#x509-selfsign-brainpoolp512r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp512r1/x509cert.pem)
-PEM content (809 bytes):
+PEM content (779 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp512r1/x509cert.pem)
 ~~~~~
 -----BEGIN CERTIFICATE-----
-MIIDJTCCAomgAwIBAgICEjQwCgYIKwYBBQUHBiEwgYkxITAfBgNVBAMMGHNlbGZz
+MIIDBzCCAmugAwIBAgICEjQwCgYIKwYBBQUHBiEwgYkxITAfBgNVBAMMGHNlbGZz
 aWduLWJyYWlucG9vbHA1MTJyMTEoMCYGCysGAQQBgjc8AgEBDBdteSBqdXJpc2Rp
 Y3Rpb25Mb2NhbGl0eTElMCMGCysGAQQBgjc8AgECDBRteSBqdXJpc2RpY3Rpb25T
 dGF0ZTETMBEGCysGAQQBgjc8AgEDDAJTRTAeFw0yNTAxMDIwMDAwMDBaFw0yNjAx
@@ -2066,13 +2065,13 @@ BgEEAYI3PAIBAgwUbXkganVyaXNkaWN0aW9uU3RhdGUxEzARBgsrBgEEAYI3PAIB
 AwwCU0UwgZswFAYHKoZIzj0CAQYJKyQDAwIIAQENA4GCAARtMnBn0zTOU/opMXqi
 B7hcojdiPxmhDFlL8CT8P/62T6tYhNDUSKJxVS4C589E2L8QTaGCzsHeiVyEGLhS
 nZuLLEuApzbdxWRx1qUsbOQU5p1XNWsV/Aika2H6W3Ifq8dpMvODba3k9w9vDKy4
-0zUafrVO/wd8QCNoxJu3FbU0WKOBmzCBmDALBgNVHQ8EBAMCB4AwGgYDVR0JBBMw
-ETAPBgNVBAYxCAwCREUMAlNFMDMGA1UdIQQsMCowEAYGZ4EMAQICBgZngQwBAgEw
-FgYJKwYBBAGB/VkGBgkrBgEEAYH9WQcwOAYIKwYBBQUHAQsELDAqMCgGCCsGAQUF
-BzAChhxodHRwOi8vY2Fpc3N1ZXJzLmV4YW1wbGUuY29tMAoGCCsGAQUFBwYhA4GJ
-ADCBhQJBAKjwK7PveSjw+rp+JZFbF+xJviSYgDW/nZyWlMzp5exXNGrRInHSDwy0
-CKQVXpuac9bZv627p4Z+DOUxx6/4Cv4CQBt+5b77HaFS0XasMdcu+WbiwPD/tNsZ
-Fx6YPBtAcnGbXbrq1LaRuOGjIKX0nvkiqhhVEaPv25rABP8o5V+l3Ls=
+0zUafrVO/wd8QCNoxJu3FbU0WKN+MHwwCwYDVR0PBAQDAgeAMDMGA1UdIQQsMCow
+EAYGZ4EMAQICBgZngQwBAgEwFgYJKwYBBAGB/VkGBgkrBgEEAYH9WQcwOAYIKwYB
+BQUHAQsELDAqMCgGCCsGAQUFBzAChhxodHRwOi8vY2Fpc3N1ZXJzLmV4YW1wbGUu
+Y29tMAoGCCsGAQUFBwYhA4GJADCBhQJBAKFfiFhgmVVfakcBxBzfYlOK2LlshEQE
+TZIRy9vxGE3rnNyiEZyI7yKC4mIOEyaieJhOrxJ/HcoAB3Qz/yDfq1gCQDU+Q5Pg
+3P/MB5YY+pHIRd+eKfY4xK3+66ar6E7e4pkYm/Zg1FG8otl9Il5xvOcMY/cVqZFN
+H5XTfTX01J9lPKs=
 -----END CERTIFICATE-----
 ~~~~~
 
@@ -2107,10 +2106,6 @@ Certificate:
   X509v3 extensions:
     X509v3 keyUsage:
       digitalSignature
-    X509v3 subjectDirectoryAttributes:
-      at-country
-        DE
-        SE
     X509v3 policyMappings:
       2.23.140.1.2.2 : 2.23.140.1.2.1
       1.3.6.1.4.1.32473.6 : 1.3.6.1.4.1.32473.7
@@ -2118,14 +2113,14 @@ Certificate:
       CA Issuers: URI: http://caissuers.example.com
   Signature Algorithm: SHAKE256WITHECDSA
   Signature Value:
-    30:81:85:02:41:00:a8:f0:2b:b3:ef:79:28:f0:fa:ba:7e:25:
-    91:5b:17:ec:49:be:24:98:80:35:bf:9d:9c:96:94:cc:e9:e5:
-    ec:57:34:6a:d1:22:71:d2:0f:0c:b4:08:a4:15:5e:9b:9a:73:
-    d6:d9:bf:ad:bb:a7:86:7e:0c:e5:31:c7:af:f8:0a:fe:02:40:
-    1b:7e:e5:be:fb:1d:a1:52:d1:76:ac:31:d7:2e:f9:66:e2:c0:
-    f0:ff:b4:db:19:17:1e:98:3c:1b:40:72:71:9b:5d:ba:ea:d4:
-    b6:91:b8:e1:a3:20:a5:f4:9e:f9:22:aa:18:55:11:a3:ef:db:
-    9a:c0:04:ff:28:e5:5f:a5:dc:bb
+    30:81:85:02:41:00:a1:5f:88:58:60:99:55:5f:6a:47:01:c4:
+    1c:df:62:53:8a:d8:b9:6c:84:44:04:4d:92:11:cb:db:f1:18:
+    4d:eb:9c:dc:a2:11:9c:88:ef:22:82:e2:62:0e:13:26:a2:78:
+    98:4e:af:12:7f:1d:ca:00:07:74:33:ff:20:df:ab:58:02:40:
+    35:3e:43:93:e0:dc:ff:cc:07:96:18:fa:91:c8:45:df:9e:29:
+    f6:38:c4:ad:fe:eb:a6:ab:e8:4e:de:e2:99:18:9b:f6:60:d4:
+    51:bc:a2:d9:7d:22:5e:71:bc:e7:0c:63:f7:15:a9:91:4d:1f:
+    95:d3:7d:35:f4:d4:9f:65:3c:ab
 ~~~~~
 
 ### C509 Type 3 Certificate
@@ -2133,7 +2128,7 @@ Certificate:
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-selfsign-brainpoolp512r1}}.
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp512r1/c509cert-t3.hex)
-Plain hex (432 bytes):
+Plain hex (421 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp512r1/c509cert-t3.hex)
 ~~~~~
@@ -2143,13 +2138,13 @@ Plain hex (432 bytes):
 327067D334CE53FA29317AA207B85CA237623F19A10C594BF024FC3FFEB64FAB5884
 D0D448A271552E02E7CF44D8BF104DA182CEC1DE895C8418B8529D9B8B2C4B80A736
 DDC56471D6A52C6CE414E69D57356B15FC08A46B61FA5B721FABC76932F3836DADE4
-F70F6F0CACB8D3351A7EB54EFF077C402368C49BB715B53458880201181882048262
-4445625345181B840201492B0601040181FD5906492B0601040181FD5907181F8202
-781C687474703A2F2F6361697373756572732E6578616D706C652E636F6D5880A8F0
-2BB3EF7928F0FABA7E25915B17EC49BE24988035BF9D9C9694CCE9E5EC57346AD122
-71D20F0CB408A4155E9B9A73D6D9BFADBBA7867E0CE531C7AFF80AFE1B7EE5BEFB1D
-A152D176AC31D72EF966E2C0F0FFB4DB19171E983C1B4072719B5DBAEAD4B691B8E1
-A320A5F49EF922AA185511A3EFDB9AC004FF28E55FA5DCBB
+F70F6F0CACB8D3351A7EB54EFF077C402368C49BB715B53458860201181B84020149
+2B0601040181FD5906492B0601040181FD5907181F8202781C687474703A2F2F6361
+697373756572732E6578616D706C652E636F6D5880A15F88586099555F6A4701C41C
+DF62538AD8B96C8444044D9211CBDBF1184DEB9CDCA2119C88EF2282E2620E1326A2
+78984EAF127F1DCA00077433FF20DFAB58353E4393E0DCFFCC079618FA91C845DF9E
+29F638C4ADFEEBA6ABE84EDEE299189BF660D451BCA2D97D225E71BCE70C63F715A9
+914D1F95D37D35F4D49F653CAB
 ~~~~~
 
 Annotated hex:
@@ -2159,7 +2154,7 @@ Annotated hex:
 ### C509 Type 2 Certificate {#c509-selfsign-brainpoolp512r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp512r1/c509cert-t2.hex)
-Plain hex (432 bytes):
+Plain hex (421 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp512r1/c509cert-t2.hex)
 ~~~~~
@@ -2169,13 +2164,13 @@ Plain hex (432 bytes):
 327067D334CE53FA29317AA207B85CA237623F19A10C594BF024FC3FFEB64FAB5884
 D0D448A271552E02E7CF44D8BF104DA182CEC1DE895C8418B8529D9B8B2C4B80A736
 DDC56471D6A52C6CE414E69D57356B15FC08A46B61FA5B721FABC76932F3836DADE4
-F70F6F0CACB8D3351A7EB54EFF077C402368C49BB715B53458880201181882048262
-4445625345181B840201492B0601040181FD5906492B0601040181FD5907181F8202
-781C687474703A2F2F6361697373756572732E6578616D706C652E636F6D5880A0B9
-ED538672D0B80E48F3D7C4E902503BAC0BDC88B45DAC784DDCFA551AF188B6E2E51F
-6E695D7CFC91396BEB17FD91CF9C82D1FB819FEA09C9C4AC9BDCEF1B9AE37BD98556
-C3917E9D2FA7327C4FDE6A6CFC99320B3CA097766A9C1A41227A5227CE4F29079B59
-D533DEAFDE51B599B052C91178BE8FA29F86F0FADBC412F9
+F70F6F0CACB8D3351A7EB54EFF077C402368C49BB715B53458860201181B84020149
+2B0601040181FD5906492B0601040181FD5907181F8202781C687474703A2F2F6361
+697373756572732E6578616D706C652E636F6D58804AC21BF982E447734E6157731B
+4CC730F800BFBF2AB1543DB4E2C4788AB71AE7D22CA93DEDBF4B4010C8F01A41A4BA
+D7FE91BE915AD3176F973347D7496DF467273D13DCA4CCF3BA9E4AD5C5EF33BC4F59
+E053E955E040A35EE73EAA48C70C7494AE539E418F1155B45B9B521A62014E0A1345
+624C3FA57C363C9FDF25FFB727
 ~~~~~
 
 Annotated hex:
@@ -2221,47 +2216,37 @@ Annotated hex:
 158:     8418B8529D9B8B2C4B80A736DDC56471D6A52C6CE414E69D57356B15FC
 187:     08A46B61FA5B721FABC76932F3836DADE4F70F6F0CACB8D3351A7EB54E
 216:     FF077C402368C49BB715B53458
-229:   88             # [9]. extensions=array[8]
+229:   86             # [9]. extensions=array[6]
                         #---extension[0]---
 230:     02             # [0]. type=KeyUsage (2)
 231:     01             # [1]. value=1: [digitalSignature]
                         #---extension[1]---
-232:     18 18          # [2]. type=SubjectDirectoryAttributes (24)
-234:     82             # [3]. value=array[2], 1 attribute
-                          #---attribute[0]---
-235:       04             # [0]. attributeType=country (4)
-236:       82             # [1]. attributeValue=array[2]
-237:         62             # [0]=char[2]
-238:           4445           # "DE"
-240:         62             # [1]=char[2]
-241:           5345           # "SE"
-                        #---extension[2]---
-243:     18 1B          # [4]. type=PolicyMappings (27)
-245:     84             # [5]. value=array[4]
+232:     18 1B          # [2]. type=PolicyMappings (27)
+234:     84             # [3]. value=array[4]
                           #---policyMapping[0]---
-246:       02             # [0]. issuerDomainPolicy=organization-val
+235:       02             # [0]. issuerDomainPolicy=organization-val
                           #      idated (2)
-247:       01             # [1]. subjectDomainPolicy=domain-validate
+236:       01             # [1]. subjectDomainPolicy=domain-validate
                           #      d (1)
                           #---policyMapping[1]---
-248:       49             # [2].  issuerDomainPolicy=byte[9]: 
-249:         2B0601040181FD5906 # oid: 1.3.6.1.4.1.32473.6
-258:       49             # [3]. subjectDomainPolicy=byte[9]: 
-259:         2B0601040181FD5907 # oid: 1.3.6.1.4.1.32473.7
-                        #---extension[3]---
-268:     18 1F          # [6]. type=SubjectInfoAccess (31)
-270:     82             # [7]. value=array[2]
+237:       49             # [2].  issuerDomainPolicy=byte[9]: 
+238:         2B0601040181FD5906 # oid: 1.3.6.1.4.1.32473.6
+247:       49             # [3]. subjectDomainPolicy=byte[9]: 
+248:         2B0601040181FD5907 # oid: 1.3.6.1.4.1.32473.7
+                        #---extension[2]---
+257:     18 1F          # [4]. type=SubjectInfoAccess (31)
+259:     82             # [5]. value=array[2]
                           #---AccessDescription[0]---
-271:       02             # [0]. accessMethod=caIssuers (2)
-272:       78 1C          # [1]. uri=char[28]
-274:         687474703A2F2F636169737375657273 # "http://caissuers"
-290:         2E6578616D706C652E636F6D         # ".example.com"
-302:   58 80          # [10]. signature value=byte[128]
-304:     A0B9ED538672D0B80E48F3D7C4E902503BAC0BDC88B45DAC784DDCFA55
-333:     1AF188B6E2E51F6E695D7CFC91396BEB17FD91CF9C82D1FB819FEA09C9
-362:     C4AC9BDCEF1B9AE37BD98556C3917E9D2FA7327C4FDE6A6CFC99320B3C
-391:     A097766A9C1A41227A5227CE4F29079B59D533DEAFDE51B599B052C911
-420:     78BE8FA29F86F0FADBC412F9
+260:       02             # [0]. accessMethod=caIssuers (2)
+261:       78 1C          # [1]. uri=char[28]
+263:         687474703A2F2F636169737375657273 # "http://caissuers"
+279:         2E6578616D706C652E636F6D         # ".example.com"
+291:   58 80          # [10]. signature value=byte[128]
+293:     4AC21BF982E447734E6157731B4CC730F800BFBF2AB1543DB4E2C4788A
+322:     B71AE7D22CA93DEDBF4B4010C8F01A41A4BAD7FE91BE915AD3176F9733
+351:     47D7496DF467273D13DCA4CCF3BA9E4AD5C5EF33BC4F59E053E955E040
+380:     A35EE73EAA48C70C7494AE539E418F1155B45B9B521A62014E0A134562
+409:     4C3FA57C363C9FDF25FFB727
 ~~~~~
 
 ## Weierstrass EC Public Key On Curve frp256v1 {#selfsign-frp256v1}
@@ -4863,10 +4848,6 @@ See {{selfsign-brainpoolp512r1}}.
 
 See {{selfsign-secp521r1}}.
 
-## Subject Directory Attributes
-
-See {{selfsign-brainpoolp512r1}}.
-
 ## Subject Information Access
 
 See {{selfsign-brainpoolp512r1}}.
@@ -4878,6 +4859,113 @@ See {{selfsign-secp256r1}}.
 ## TLS Features
 
 See {{selfsign-ed448}}.
+
+# Certificate With 8-Byte Integer Values
+
+8-Byte Integer Values in
+- RDN Attribute Type
+- Extension ID
+- Extended Key Usage
+- Certificate Policy Identifier
+
+### Private Key
+
+See {{key-selfsign-secp256r1}}
+
+### X.509 Certificate
+
+N/A
+
+### C509 Type 3 Certificate
+
+N/A
+
+### C509 Type 2 Certificate
+
+[comment]: <> (replace-size:cert/8byte-id/c509cert-t2.hex)
+Plain hex (298 bytes):
+
+[comment]: <> (replace-data:cert/8byte-id/c509cert-t2.hex)
+~~~~~
+8B0242123400F61A6775D7001A69570A8084016838627974652D69641B70FFFFFFFF
+FFFFFF736D7920382D627974652061747472696275746501584104F413596A871259
+95B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9F9078DDBAB3635AFD496D5656A
+22EFDC3D59C4482A99836BB358FBF4CA78D3930436C8578A020106841B70FFFFFFFF
+FFFFF0803B70FFFFFFFFFFFFF08008821B70FFFFFFFFFFFFF23B70FFFFFFFFFFFFF2
+3B70FFFFFFFFFFFFFD736D7920637269746963616C206578616D706C651B70FFFFFF
+FFFFFFFF776D79206E6F6E2D637269746963616C206578616D706C6558408A25E8AA
+BBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A22E6E7E819761044D5
+62F4491A8E3DEB5FD227E32E0FDA02467E39F4A84C694F079A4F
+~~~~~
+
+Annotated hex:
+
+[comment]: <> (replace-data:cert/8byte-id/c509cert-t2.diag)
+~~~~~
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   84             # [6]. subject=array[4], 2 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     68             # [1]. value=char[8]
+ 20:       38627974652D6964 # "8byte-id"
+                        #---attribute[1]---
+ 28:     1B 70FFFFFFFFFFFFFF # [2]. type=8142508126285856767:
+                             #      unknown
+ 37:     73             # [3]. value=char[19]
+ 38:       6D7920382D6279746520617474726962 # "my 8-byte attrib"
+ 54:       757465                           # "ute"
+ 57:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 58:   58 41          # [8]. subject public key=EC point=byte[65]
+ 60:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
+ 89:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
+118:     78D3930436C857
+125:   8A             # [9]. extensions=array[10]
+                        #---extension[0]---
+126:     02             # [0]. type=KeyUsage (2)
+127:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+128:     06             # [2]. type=CertificatePolicies (6)
+129:     84             # [3]. value=array[4]
+                          #---CertificatePolicy[0]---
+130:       1B 70FFFFFFFFFFFFF0 # [0]. PolicyIdentifier=unknown
+                               #      (8142508126285856752)
+139:       80             # [1]. PolicyQualifierInfos=array[0]
+                          #---CertificatePolicy[1]---
+140:       3B 70FFFFFFFFFFFFF0 # [2]. PolicyIdentifier=unknown
+                               #      (-8142508126285856753)
+149:       80             # [3]. PolicyQualifierInfos=array[0]
+                        #---extension[2]---
+150:     08             # [4]. type=ExtendedKeyUsage (8)
+151:     82             # [5]. value=array[2]
+152:       1B 70FFFFFFFFFFFFF2 # unknown (8142508126285856754)
+161:       3B 70FFFFFFFFFFFFF2 # unknown (-8142508126285856755)
+                        #---extension[3]---
+170:     3B 70FFFFFFFFFFFFFD # [6]. type=unknown, critical
+                             #      (-8142508126285856766)
+179:     73             # [7]. value=char[19]
+180:       6D7920637269746963616C206578616D # "my critical exam"
+196:       706C65                           # "ple"
+                        #---extension[4]---
+199:     1B 70FFFFFFFFFFFFFF # [8]. type=unknown
+                             #      (8142508126285856767)
+208:     77             # [9]. value=char[23]
+209:       6D79206E6F6E2D637269746963616C20 # "my non-critical "
+225:       6578616D706C65                   # "example"
+232:   58 40          # [10]. signature value=byte[64]
+234:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
+263:     22E6E7E819761044D562F4491A8E3DEB5FD227E32E0FDA02467E39F4A8
+292:     4C694F079A4F
+~~~~~
 
 # X.509 Certificate With Unconvertible RDN Attributes And Extensions {#sec-cert-unconvertible}
 
@@ -5952,6 +6040,72 @@ See {{csr-x25519}}.
 
 See {{csr-x25519-withcert}}.
 
+# Certification Request With 8-Byte Identifiers
+
+8-Byte Integer Values in
+- CR Attribute Type
+
+### Private Key
+
+See {{key-selfsign-secp256r1}}.
+
+### X.509 Certification Request {#x509csr-x25519-withcert}
+
+N/A
+
+### C509 Type 3 Certification Request
+
+N/A
+
+### C509 Type 2 Certification Request
+
+[comment]: <> (replace-size:csr/8byte-id/c509csr-t2.hex)
+Plain hex (174 bytes):
+
+[comment]: <> (replace-data:csr/8byte-id/c509csr-t2.hex)
+~~~~~
+8702006838627974652D696401584104F413596A87125995B4E0D8B7BEFBC4D6EDB1
+1F61AF08AB32408D4FF9F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836B
+B358FBF4CA78D3930436C857821B0070FFFFFFFFFFFF716D7920382D627974652065
+78616D706C6558408A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E
+2F284A22E6E72E1F98945612C886BEB2113C4521BC365BDE33FD228B2123E0822C96
+F3C7C94B
+~~~~~
+
+Annotated hex:
+
+[comment]: <> (replace-data:csr/x25519-withcert/c509csr-t2.diag)
+~~~~~
+  0: 87             # C509CertificationRequest=array[7]
+  1:   02             # [0]. c509CertificationRequestType=2
+  2:   05             # [1]. subjectSignatureAlgorithm=unsigned (5)
+  3:   6F             # [2]. subject=char[15]
+  4:     7832353531392D7769746863657274 # "x25519-withcert"
+ 19:   08             # [3]. subjectPublicKeyAlg=X25519 (8)
+ 20:   58 20          # [4]. subject public key=EC point=byte[32]
+ 22:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
+ 51:     1B7F08
+ 54:   82             # [5]. attributes=array[2]
+                        #---CRAttributes[0]---
+ 55:     02             # [0]. type=PrivateKeyPossessionStatement
+                        #      (2)
+ 56:     83             # [1]. value=array[3]
+ 57:       77             # [0]. issuer=char[23]
+ 58:         73696D706C652D73656C667369676E2D # "simple-selfsign-"
+ 74:         65643235353139                   # "ed25519"
+ 81:       42             # [1]. certificateSerialNumber=byte[2]
+ 82:         1234
+ 84:       58 8F          # [2]. cert=byte[143]
+ 86:         8B024212340CF61A6775D7001A69570A807773696D706C652D7365
+113:         6C667369676E2D656432353531390C582046270AEC0F32837E1287
+140:         79D30B249C531D6D42C1AC29E402328EDC79FAC2BE952058402562
+167:         3EF44534BC07269D6071FB3BBBA8F22FF3ED3B65B5C85456151C0F
+194:         5F9FC259C2932C1F3184D5088823EBB0B85AE5B7FE9578D2778F10
+221:         E088944ACB28CC07
+229:   40             # [6]. signature value=byte[0]
+~~~~~
+
+
 # Certification Request Templates {#sec-csrt}
 
 ## All Fields Set to "undefined" Where Possible {#undefined-csrt}
@@ -6130,6 +6284,57 @@ Annotated hex:
 140:       0C0B636F6E73742D76616C7565
 ~~~~~
 
+# With 8-Byte Integer Values
+
+8-Byte Integer Values in
+- RDN Attribute Type
+- Extension ID
+
+[comment]: <> (replace-size:csrt/8byte-id-csrt/c509csrt.hex)
+Plain hex (41 bytes):
+
+[comment]: <> (replace-data:csrt/8byte-id-csrt/c509csrt.hex)
+~~~~~
+87008102810088010101F71B70FFFFFFFFFFFFFF0101F78101F78603F4F71B70FFFF
+FFFFFFFFFFF4F7
+~~~~~
+
+Annotated hex:
+
+[comment]: <> (replace-data:csrt/8byte-id-csrt/c509csrt.diag)
+~~~~
+ 0: 87             # C509CertificationRequestTemplate=array[7]
+ 1:   00             # [0]. c509CertificationRequestTemplateType=0
+ 2:   81             # [1]. c509CertificationRequestType=array[1]
+ 3:     02             # [0]. C509SimpleOCSPRequest (2)
+ 4:   81             # [2]. subjectSignatureAlgorithm: array[1]
+ 5:     00             # [0]. ecdsa-with-sha256 (0)
+ 6:   88             # [3]. subject=array[8], 2 attributes
+                       #---attribute[0]---
+ 7:     01             # [0]. type=1: commonName
+ 8:     01             # [1]. minOccurs=1
+ 9:     01             # [2]. maxOccurs=1
+10:     F7             # [3]. value=<undefined>
+                       #---attribute[1]---
+11:     1B 70FFFFFFFFFFFFFF # [0]. type=8142508126285856767: unknown
+20:     01             # [1]. minOccurs=1
+21:     01             # [2]. maxOccurs=1
+22:     F7             # [3]. value=<undefined>
+23:   81             # [4]. subjectPublicKeyAlgorithm: array[1]
+24:     01             # [0]. EC public key on curve secp256r1 (1)
+25:   F7             # [5]. subjectPublicKey=<undefined>
+26:   86             # [6]. extensions=array[6]
+                       #---extension[0]---
+27:     03             # [0]. type=SubjectAlternativeName (3)
+28:     F4             # [1]. required
+29:     F7             # [2]. value=<undefined>
+                       #---extension[1]---
+30:     1B 70FFFFFFFFFFFFFF # [3]. type=unknown
+                            #      (8142508126285856767)
+39:     F4             # [4]. required
+40:     F7             # [5]. value=<undefined>
+~~~~
+
 # Security Considerations
 
 The private keys shown in this document are for example purposes only. They are not secret and MUST NOT be used in deployments.
@@ -6159,6 +6364,9 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 ## Since draft-ietf-cose-c509-test-vectors-02
 {:numbered="false"}
 
+- Align with draft-ietf-cose-cbor-encoded-cert-21
+  - Remove extension Subject Directory Attributes
+- Add examples with values in the range [2^32, 2^63 - 1] and [-2^32, -2^63]
 - Replace abc.com with abc.example.com
 - Add Section Overview
 - Better annotated Hex
