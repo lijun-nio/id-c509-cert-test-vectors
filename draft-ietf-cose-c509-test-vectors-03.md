@@ -4863,24 +4863,25 @@ See {{selfsign-ed448}}.
 # Certificate With 8-Byte Integer Values
 
 8-Byte Integer Values in
+
 - RDN Attribute Type
 - Extension ID
 - Extended Key Usage
 - Certificate Policy Identifier
 
-### Private Key
+## Private Key
 
 See {{key-selfsign-secp256r1}}
 
-### X.509 Certificate
+## X.509 Certificate
 
 N/A
 
-### C509 Type 3 Certificate
+## C509 Type 3 Certificate
 
 N/A
 
-### C509 Type 2 Certificate
+## C509 Type 2 Certificate
 
 [comment]: <> (replace-size:cert/8byte-id/c509cert-t2.hex)
 Plain hex (298 bytes):
@@ -6043,21 +6044,22 @@ See {{csr-x25519-withcert}}.
 # Certification Request With 8-Byte Identifiers
 
 8-Byte Integer Values in
+
 - CR Attribute Type
 
-### Private Key
+## Private Key
 
 See {{key-selfsign-secp256r1}}.
 
-### X.509 Certification Request {#x509csr-x25519-withcert}
+## X.509 Certification Request
 
 N/A
 
-### C509 Type 3 Certification Request
+## C509 Type 3 Certification Request
 
 N/A
 
-### C509 Type 2 Certification Request
+## C509 Type 2 Certification Request
 
 [comment]: <> (replace-size:csr/8byte-id/c509csr-t2.hex)
 Plain hex (174 bytes):
@@ -6074,35 +6076,30 @@ F3C7C94B
 
 Annotated hex:
 
-[comment]: <> (replace-data:csr/x25519-withcert/c509csr-t2.diag)
+[comment]: <> (replace-data:csr/8byte-id/c509csr-t2.diag)
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
-  2:   05             # [1]. subjectSignatureAlgorithm=unsigned (5)
-  3:   6F             # [2]. subject=char[15]
-  4:     7832353531392D7769746863657274 # "x25519-withcert"
- 19:   08             # [3]. subjectPublicKeyAlg=X25519 (8)
- 20:   58 20          # [4]. subject public key=EC point=byte[32]
- 22:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
- 51:     1B7F08
- 54:   82             # [5]. attributes=array[2]
+  2:   00             # [1]. subjectSignatureAlgorithm=ecdsa-with-sh
+                      #      a256 (0)
+  3:   68             # [2]. subject=char[8]
+  4:     38627974652D6964 # "8byte-id"
+ 12:   01             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 13:   58 41          # [4]. subject public key=EC point=byte[65]
+ 15:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
+ 44:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
+ 73:     78D3930436C857
+ 80:   82             # [5]. attributes=array[2]
                         #---CRAttributes[0]---
- 55:     02             # [0]. type=PrivateKeyPossessionStatement
-                        #      (2)
- 56:     83             # [1]. value=array[3]
- 57:       77             # [0]. issuer=char[23]
- 58:         73696D706C652D73656C667369676E2D # "simple-selfsign-"
- 74:         65643235353139                   # "ed25519"
- 81:       42             # [1]. certificateSerialNumber=byte[2]
- 82:         1234
- 84:       58 8F          # [2]. cert=byte[143]
- 86:         8B024212340CF61A6775D7001A69570A807773696D706C652D7365
-113:         6C667369676E2D656432353531390C582046270AEC0F32837E1287
-140:         79D30B249C531D6D42C1AC29E402328EDC79FAC2BE952058402562
-167:         3EF44534BC07269D6071FB3BBBA8F22FF3ED3B65B5C85456151C0F
-194:         5F9FC259C2932C1F3184D5088823EBB0B85AE5B7FE9578D2778F10
-221:         E088944ACB28CC07
-229:   40             # [6]. signature value=byte[0]
+ 81:     1B 0070FFFFFFFFFFFF # [0]. type=unknown (31806672368304127)
+ 90:     71             # [1]. value=char[17]
+ 91:       6D7920382D62797465206578616D706C # "my 8-byte exampl"
+107:       65                               # "e"
+108:   58 40          # [6]. signature value=byte[64]
+110:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
+139:     22E6E72E1F98945612C886BEB2113C4521BC365BDE33FD228B2123E082
+168:     2C96F3C7C94B
 ~~~~~
 
 
@@ -6284,9 +6281,10 @@ Annotated hex:
 140:       0C0B636F6E73742D76616C7565
 ~~~~~
 
-# With 8-Byte Integer Values
+## With 8-Byte Integer Values
 
 8-Byte Integer Values in
+
 - RDN Attribute Type
 - Extension ID
 
