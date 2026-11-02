@@ -6126,7 +6126,7 @@ Annotated hex:
 4:   F7             # [3]. subject=<undefined>
 5:   F7             # [4]. subjectPublicKeyAlgorithm=<undefined>
 6:   F7             # [5]. subjectPublicKey=<undefined>
-7:   F7             # [6]. extensions=<undefined>
+7:   F7             # [6]. extensionsRequest=<undefined>
 ~~~~~
 
 ## With One Element in Each Field {#oneelement-csrt}
@@ -6164,7 +6164,7 @@ Annotated hex:
 11:   81             # [4]. subjectPublicKeyAlgorithm: array[1]
 12:     01             # [0]. EC public key on curve secp256r1 (1)
 13:   F7             # [5]. subjectPublicKey=<undefined>
-14:   83             # [6]. extensions=array[3]
+14:   83             # [6]. extensionsRequest=array[3]
                        #---extension[0]---
 15:     03             # [0]. type=SubjectAlternativeName (3)
 16:     F4             # [1]. required
@@ -6252,7 +6252,7 @@ Annotated hex:
 104:       42             # [1]. parameters=byte[2]
 105:         0500
 107:   F7             # [5]. subjectPublicKey=<undefined>
-108:   8C             # [6]. extensions=array[12]
+108:   8C             # [6]. extensionsRequest=array[12]
                         #---extension[0]---
 109:     08             # [0]. type=ExtendedKeyUsage (8)
 110:     F4             # [1]. required
@@ -6314,7 +6314,7 @@ Annotated hex:
 23:   81             # [4]. subjectPublicKeyAlgorithm: array[1]
 24:     01             # [0]. EC public key on curve secp256r1 (1)
 25:   F7             # [5]. subjectPublicKey=<undefined>
-26:   86             # [6]. extensions=array[6]
+26:   86             # [6]. extensionsRequest=array[6]
                        #---extension[0]---
 27:     03             # [0]. type=SubjectAlternativeName (3)
 28:     F4             # [1]. required
