@@ -6305,9 +6305,9 @@ Annotated hex:
 
 ## With 8-Byte Integer Values
 
-8-Byte Integer Values in
+This template uses 8-byte integer values in the following fields:
 
-- RDN Attribute Type
+- RDN attribute type
 - Extension ID
 
 [comment]: <> (replace-size:csrt/8byte-id-csrt/c509csrt.hex)
