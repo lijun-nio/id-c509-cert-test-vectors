@@ -44,6 +44,7 @@ normative:
   I-D.ietf-cose-cbor-encoded-cert:
 
 informative:
+  RFC3779:
 
 --- abstract
 
@@ -83,7 +84,7 @@ The examples are structured as follows:
 
 * {{sec-cert-8byte}} contains a certificate with 8-byte integer values for identifiers such as RDN attribute types and extension IDs.
 
-* {{sec-cert-unconvertible}} provides examples of certificates with RDN attributes or extensions for which no dedicated CBOR encoding has been defined and for which generic constructs such as CBOR OID {{RFC9090}} are used.
+* {{sec-cert-unconvertible}} provides an example of a certificate with RDN attributes or extensions for which no dedicated CBOR encoding has been defined and for which generic constructs such as CBOR OID {{RFC9090}} are used.
 
 * {{sec-csr-different-sigs}} provides examples of certification requests with different signature or proof-of-possession algorithms.
 
@@ -131,8 +132,8 @@ The test vectors in this document can also be found at <https://github.com/lijun
 | {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
 | {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 798 | 487 | 39% |
 | {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 732 | 480 | 34% |
-| {{selfsign-ed25519}} | Edwards EC Public Key On Curve ED25519 | 784 | 384 | 51% |
-| {{selfsign-ed448}} | Edwards EC Public Key On Curve ED448 | 503 | 261 | 48% |
+| {{selfsign-ed25519}} | Ed25519 Public Key | 784 | 384 | 51% |
+| {{selfsign-ed448}} | Ed448 Public Key | 503 | 261 | 48% |
 | {{selfsign-rsa-with-sha1}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
 | {{selfsign-rsa-with-sha512}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
 | {{selfsign-rsassa-pss-sha256}} | Signature Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
@@ -151,13 +152,13 @@ The sections {{sec-cert-different-attrs}} and {{sec-cert-different-extns}} are n
 
 | Section       | Description           | Size (X.509) | Size (C509) | Size Reduction |
 |:--------------|:----------------------|:-----------|:-----------|:----------------------|
-| {{csr-ecdsa-p256}} | SignatureAlgorithm ECDSA With SHA256 | 253 | 164 | 35% |
-| {{csr-ecdsa-p384}} | SignatureAlgorithm ECDSA With SHA384 | 300 | 228 | 24% |
-| {{csr-dhsig-sha256}} | SignatureAlgorithm ECDH PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
-| {{csr-dhsig-sha384}} | SignatureAlgorithm ECDH PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
-| {{csr-dhsig-sha512}} | SignatureAlgorithm ECDH PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
-| {{csr-x25519}} | SignatureAlgorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
-| {{csr-x25519-withcert}} | SignatureAlgorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
+| {{csr-ecdsa-p256}} | Signature Algorithm ECDSA With SHA-256 | 253 | 164 | 35% |
+| {{csr-ecdsa-p384}} | Signature Algorithm ECDSA With SHA-384 | 300 | 228 | 24% |
+| {{csr-dhsig-sha256}} | Signature Algorithm PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
+| {{csr-dhsig-sha384}} | Signature Algorithm PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
+| {{csr-dhsig-sha512}} | Signature Algorithm PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
+| {{csr-x25519}} | Signature Algorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
+| {{csr-x25519-withcert}} | Signature Algorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
 {: #tab-csr-examples-overview title="Size comparison of certification requests in examples"}
 
 As for certificates, the size reductions are not comparable across rows.
@@ -167,7 +168,7 @@ As for certificates, the size reductions are not comparable across rows.
 # CA Certificate {#sec-ca}
 
 - The CA uses an Ed25519 key pair because the signatures it produces on the certificates it issues are compact and deterministic. The CA certificate itself is unsigned.
-- Signature algorithm: unsigned
+- Signature algorithm: Unsigned
 - Key: Ed25519
 
 ## Private Key
@@ -303,7 +304,7 @@ Annotated hex:
 
 - Self-signed certificate
 - RSA public key with public exponent 65537 (= 2^16 + 1) and a 1024-bit modulus.
-- Signature algorithm: sha256WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-256
 - NotAfter: null
 - Subject: a `commonName` containing an EUI-48 value
 - Extensions: a single non-critical `keyUsage` extension
@@ -471,7 +472,7 @@ Annotated hex:
 
 - Self-signed certificate
 - RSA public key with public exponent 4294967297 (= 2^32 + 1) and a 1024-bit modulus
-- Signature algorithm: sha384WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-384
 - Subject: a `commonName` containing an EUI-64 value
 - Extensions: a single critical `keyUsage` extension
 
@@ -641,7 +642,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve secp256r1
-- Signature algorithm: ecdsa-with-sha256
+- Signature algorithm: ECDSA with SHA-256
 - Subject: a `commonName` containing an even number of lowercase hexadecimal characters
 - Extensions
   - Basic Constraints: CA, without pathLenConstraint
@@ -797,7 +798,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve secp256r1, compressed only in the C509 certificates
-- Signature algorithm: ecdsa-with-sha256
+- Signature algorithm: ECDSA with SHA-256
 - Subject: a `commonName` containing an even number of lowercase hexadecimal characters
 - Extensions
   - Basic Constraints: CA, without pathLenConstraint
@@ -806,11 +807,11 @@ Annotated hex:
 
 ### Private Key
 
-See {{key-selfsign-secp256r1}}
+See {{key-selfsign-secp256r1}}.
 
 ### X.509 Certificate {#x509-selfsign-compress-secp256r1}
 
-See {{x509-selfsign-secp256r1}}
+See {{x509-selfsign-secp256r1}}.
 
 ### C509 Type 3 Certificate
 
@@ -892,6 +893,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve secp384r1
+- Signature algorithm: ECDSA with SHA-384
 - Subject: a `commonName` containing free-form text
 - Extensions
   - Basic Constraints: CA, with pathLenConstraint
@@ -1094,7 +1096,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve secp521r1
-- Signature algorithm: ecdsa-with-sha512
+- Signature algorithm: ECDSA with SHA-512
 - Subject: empty
 - Extensions
   - Basic Constraints: non-CA
@@ -1369,7 +1371,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve sm2p256v1
-- Signature algorithm: sm2-with-sm3
+- Signature algorithm: SM2 with SM3
 - Subject:
   - serialNumber
   - organization
@@ -1577,7 +1579,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve brainpoolP256r1
-- Signature algorithm: ecdsa-with-shake128
+- Signature algorithm: ECDSA with SHAKE128
 - Subject:
   - country
   - state
@@ -1747,14 +1749,13 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve brainpoolP384r1
-- Signature algorithm: ecdsa-with-sha384
+- Signature algorithm: ECDSA with SHA-384
 - Subject:
   - surname
   - givenName
   - title
   - name
-- Extensions:
-  - Extensions: a single critical `keyUsage` extension
+- Extensions: a single critical `keyUsage` extension
 
 ### Private Key
 
@@ -1924,7 +1925,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve brainpoolP512r1
-- Signature algorithm: ecdsa-with-shake256
+- Signature algorithm: ECDSA with SHAKE256
 - Subject:
   - jurisdictionCountryName
   - jurisdictionStateOrProvinceName
@@ -2150,7 +2151,7 @@ Annotated hex:
 
 - Self-signed certificate
 - EC public key on the curve frp256v1
-- Signature algorithm: ecdsa-with-sha1
+- Signature algorithm: ECDSA with SHA-1
 - Subject:
   - emailAddress
   - telephoneNumber
@@ -2354,6 +2355,8 @@ Annotated hex:
   - authorityKeyIdentifier containing only the `keyIdentifier` component
   - authorityInfoAccess
   - issuerAltName
+
+This certificate only demonstrates the encoding of the extensions listed above. The CA certificate in {{x509-ca}} contains neither the ASIdentifiers nor the IPAddrBlocks extension, so the AS and IP resources of this certificate are not a subset of the resources of its issuer, and validation of this certificate according to {{RFC3779}} fails.
 
 ### Private Key
 
@@ -2634,6 +2637,8 @@ Annotated hex:
   - freshestCRL
   - IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
   - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
+
+This certificate only demonstrates the encoding of the extensions listed above. The CA certificate in {{x509-ca}} does not contain the IPAddrBlocks extension, so the IP resources of this certificate are not a subset of the resources of its issuer, and validation of this certificate according to {{RFC3779}} fails.
 
 ### Private Key
 
@@ -2918,11 +2923,11 @@ Annotated hex:
 474:     99C9A1E7E500
 ~~~~~
 
-## Edwards EC Public Key On Curve ED25519 {#selfsign-ed25519}
+## Ed25519 Public Key {#selfsign-ed25519}
 
 - Self-signed certificate
 - Edwards public key Ed25519
-- Signature algorithm: ed25519
+- Signature algorithm: Ed25519
 - Subject:
   - domainComponent
   - dnQualifier
@@ -3154,11 +3159,11 @@ Annotated hex:
 378:     8342AFAC7B00
 ~~~~~
 
-## Edwards EC Public Key On Curve ED448 {#selfsign-ed448}
+## Ed448 Public Key {#selfsign-ed448}
 
 - Self-signed certificate
 - Edwards public key Ed448
-- Signature algorithm: ed448
+- Signature algorithm: Ed448
 - Subject:
   - initials
   - pseudonym
@@ -3340,7 +3345,7 @@ Annotated hex:
 ## RSASSA-PKCS1-v1_5 With SHA-1 {#selfsign-rsa-with-sha1}
 
 - Self-signed certificate
-- Signature algorithm: sha1WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-1
 
 ### Private Key
 
@@ -3483,100 +3488,100 @@ Annotated hex:
 291:     CA0C9AF257FCE66CD963F891
 ~~~~~
 
-## ECDSA With SHA1 {#selfsign-ecdsa-with-sha1}
+## ECDSA With SHA-1 {#selfsign-ecdsa-with-sha1}
 
-- Signature algorithm: ecdsa-with-sha1
+- Signature algorithm: ECDSA with SHA-1
 
 See {{selfsign-frp256v1}}.
 
-## ECDSA With SHA256
+## ECDSA With SHA-256
 
-- Signature algorithm: ecdsa-with-sha256
+- Signature algorithm: ECDSA with SHA-256
 
 See {{selfsign-secp256r1}}.
 
-## ECDSA With SHA384
+## ECDSA With SHA-384
 
-- Signature algorithm: ecdsa-with-sha384
+- Signature algorithm: ECDSA with SHA-384
 
 See {{selfsign-secp384r1}}.
 
-## ECDSA With SHA512
+## ECDSA With SHA-512
 
-- Signature algorithm: ecdsa-with-sha512
+- Signature algorithm: ECDSA with SHA-512
 
 See {{selfsign-secp521r1}}.
 
 ## ECDSA With SHAKE128
 
-- Signature algorithm: ecdsa-with-shake128
+- Signature algorithm: ECDSA with SHAKE128
 
 See {{selfsign-brainpoolp256r1}}.
 
 ## ECDSA With SHAKE256
 
-- Signature algorithm: ecdsa-with-shake256
+- Signature algorithm: ECDSA with SHAKE256
 
 See {{selfsign-brainpoolp512r1}}.
 
 ## Unsigned
 
-- Signature algorithm: unsigned
+- Signature algorithm: Unsigned
 
 See {{sec-ca}}.
 
 ## SM2 With SM3
 
-- Signature algorithm: sm2-with-sm3
+- Signature algorithm: SM2 with SM3
 
 See {{selfsign-sm2p256v1}}.
 
 ## Ed25519
 
-- Signature algorithm: ed25519
+- Signature algorithm: Ed25519
 
 See {{selfsign-ed25519}}.
 
 ## Ed448
 
-- Signature algorithm: ed448
+- Signature algorithm: Ed448
 
 See {{selfsign-ed448}}.
 
-## ECDH PoP With SHA-256 And HMAC-SHA256
+## PoP With SHA-256 And HMAC-SHA256
 
-- Signature algorithm: sa-ecdhPop-sha256-hmac-sha256
+- Signature algorithm: PoP with SHA-256 and HMAC-SHA256
 
 See {{csr-dhsig-sha256}}.
 
-## ECDH PoP With SHA-384 And HMAC-SHA384
+## PoP With SHA-384 And HMAC-SHA384
 
-- Signature algorithm: sa-ecdhPop-sha384-hmac-sha384
+- Signature algorithm: PoP with SHA-384 and HMAC-SHA384
 
 See {{csr-dhsig-sha384}}.
 
-## ECDH PoP With SHA-512 And HMAC-SHA512
+## PoP With SHA-512 And HMAC-SHA512
 
-- Signature algorithm: sa-ecdhPop-sha512-hmac-sha512
+- Signature algorithm: PoP with SHA-512 and HMAC-SHA512
 
 See {{csr-dhsig-sha512}}.
 
 ## RSASSA-PKCS1-v1_5 With SHA-256
 
-- Signature algorithm: sha256WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-256
 
 See {{selfsign-rsa}}.
 
 ## RSASSA-PKCS1-v1_5 With SHA-384
 
-- Signature algorithm: sha384WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-384
 
 See {{selfsign-rsa-f5}}.
 
 ## RSASSA-PKCS1-v1_5 With SHA-512 {#selfsign-rsa-with-sha512}
 
 - Self-signed certificate
-- Signature algorithm: sha512WithRSAEncryption
+- Signature algorithm: RSASSA-PKCS1-v1_5 with SHA-512
 
 ### Private Key
 
@@ -3722,7 +3727,7 @@ Annotated hex:
 ## RSASSA-PSS With SHA-256 {#selfsign-rsassa-pss-sha256}
 
 - Self-signed certificate
-- Signature algorithm: rsassa-pss-with-sha256
+- Signature algorithm: RSASSA-PSS with SHA-256
 
 ### Private Key
 
@@ -3872,7 +3877,7 @@ Annotated hex:
 ## RSASSA-PSS With SHA-384 {#selfsign-rsassa-pss-sha384}
 
 - Self-signed certificate
-- Signature algorithm: rsassa-pss-with-sha384
+- Signature algorithm: RSASSA-PSS with SHA-384
 
 ### Private Key
 
@@ -4023,7 +4028,7 @@ Annotated hex:
 
 - Self-signed certificate
 - RSA public key with 1536-bit modulus
-- Signature algorithm: rsassa-pss-with-sha512
+- Signature algorithm: RSASSA-PSS with SHA-512
 
 ### Private Key {#key-selfsign-rsassa-pss-sha512}
 
@@ -4217,7 +4222,7 @@ Annotated hex:
 ## RSASSA-PSS With SHAKE128 {#selfsign-rsassa-pss-shake128}
 
 - Self-signed certificate
-- Signature algorithm: rsassa-pss-with-shake128
+- Signature algorithm: RSASSA-PSS with SHAKE128
 
 ### Private Key
 
@@ -4365,7 +4370,7 @@ Annotated hex:
 ## RSASSA-PSS With SHAKE256 {#selfsign-rsassa-pss-shake256}
 
 - Self-signed certificate
-- Signature algorithm: rsassa-pss-with-shake256
+- Signature algorithm: RSASSA-PSS with SHAKE256
 
 ### Private Key
 
@@ -4766,30 +4771,30 @@ See {{ee-x25519}}.
 
 ## ASIdentifiers And ASIdentifiers V2
 
-- `ASIdentifiers` set to `null`
-- A non-empty array of `ASIdOrRange`
+- ASIdentifiers with a non-empty array of `ASIdOrRange`
+- ASIdentifiers V2 set to `null` (inherit)
 
 See {{ee-x25519}}.
 
 ## Basic Constraints
 
-  - `CA = true` and `pathLenConstraint` absent
+- `CA = true` and `pathLenConstraint` absent
 
-    See {{selfsign-secp256r1}}.
+  See {{selfsign-secp256r1}}.
 
-  - `CA = true` and `pathLenConstraint` present
+- `CA = true` and `pathLenConstraint` present
 
-    See {{selfsign-secp384r1}}.
+  See {{selfsign-secp384r1}}.
 
-  - `CA = false`
+- `CA = false`
 
-    See {{selfsign-secp521r1}}.
+  See {{selfsign-secp521r1}}.
 
 ## Certificate Policies
 
 See {{selfsign-secp384r1}}.
 
-## CRL Distribution Points and Freshest CRL
+## CRL Distribution Points And Freshest CRL
 
 See {{ee-x448}}.
 
@@ -4815,10 +4820,10 @@ See {{selfsign-secp384r1}}.
 
 See {{ee-x25519}}.
 
-## IPAddrBlocks and IPAddrBlocks V2
+## IPAddrBlocks And IPAddrBlocks V2
 
-- With `SAFI` = `null` and IP Address Choice = `null`
-- With `SAFI` = `null` and IP Address Choice = `null`
+- IPAddrBlocks with `SAFI` = `null` and IP Address Choice = `null`
+- IPAddrBlocks V2 with `SAFI` = `null` and IP Address Choice = `null`
 
   See {{ee-x25519}}.
 
@@ -4996,6 +5001,8 @@ Annotated hex:
 - ASIdentifiers: includes the `rdi` field.
 - Name Constraints: includes a DirectoryName option encoded as IA5String.
 
+This certificate only demonstrates the encoding of the features listed above. It is self-signed, but the `rdi` field of its ASIdentifiers extension is set to `inherit`. A self-signed certificate has no issuer from which resources can be inherited, so validation of this certificate according to {{RFC3779}} fails.
+
 ## Private Key
 
 See {{key-selfsign-secp256r1}}.
@@ -5021,40 +5028,6 @@ TcMK
 ~~~~~
 
 Textual Representation:
-
-[comment]: <> (replace-data:cert/unconvertible-secp256r1/x509cert.txt)
-~~~~~
-Certificate:
-  Version: v3 (2)
-  Serial Number:
-    01
-  Issuer: CN=An IA5String CommonName
-  Validity:
-    Not Before: 2025-01-02T00:00:00Z
-    Not After : 2026-01-02T00:00:00Z
-  Subject: CN=An IA5String CommonName
-  Subject Public Key Info:
-    Public Key Algorithm: 1.2.840.10045.2.1
-    Pub:
-      04:f4:13:59:6a:87:12:59:95:b4:e0:d8:b7:be:fb:c4:d6:ed:
-      b1:1f:61:af:08:ab:32:40:8d:4f:f9:f9:07:8d:db:ab:36:35:
-      af:d4:96:d5:65:6a:22:ef:dc:3d:59:c4:48:2a:99:83:6b:b3:
-      58:fb:f4:ca:78:d3:93:04:36:c8:57
-  X509v3 extensions:
-    X509v3 sbgp-autonomousSysNum:
-      Routing Domain Identifier (RDI): inherit
-    X509v3 nameConstraints:
-      Permitted
-        Directory Name: CN=An IA5String CommonName
-  Signature Algorithm: SHA256WITHECDSA
-  Signature Value:
-    30:45:02:21:00:8a:25:e8:aa:bb:a4:b1:9b:8e:0d:15:96:a4:
-    76:c2:c4:2f:50:68:f5:f3:45:76:06:80:6e:2f:28:4a:22:e6:
-    e7:02:20:4f:78:7d:4e:04:fe:4b:62:de:dd:a8:80:07:7d:c9:
-    cb:2a:5d:7a:1d:8e:d6:23:09:cd:46:7e:61:85:4d:c3:0a
-~~~~~
-
-Text representation:
 
 [comment]: <> (replace-data:cert/unconvertible-secp256r1/x509cert.txt)
 ~~~~~
@@ -5164,9 +5137,9 @@ Annotated hex:
 
 # Certification Requests With Different Signature Algorithms {#sec-csr-different-sigs}
 
-## ECDSA With SHA256 {#csr-ecdsa-p256}
+## ECDSA With SHA-256 {#csr-ecdsa-p256}
 
-- Signature algorithm: ecdsa-with-sha256
+- Signature algorithm: ECDSA with SHA-256
 - CR attributes: one `extensionRequest` attribute.
 
 ### Private Key
@@ -5190,7 +5163,7 @@ sZuODRWWpHbCxC9QaPXzRXYGgG4vKEoi5ucCIQDV7zUSEnMONXpslIgD2G+1pK+m
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/ecdsa-p256/x509csr.txt)
 ~~~~~
@@ -5281,9 +5254,9 @@ Annotated hex:
 158:     78536B23FC8C
 ~~~~~
 
-## ECDSA With SHA384 {#csr-ecdsa-p384}
+## ECDSA With SHA-384 {#csr-ecdsa-p384}
 
-- Signature algorithm: ecdsa-with-sha384
+- Signature algorithm: ECDSA with SHA-384
 - CR attributes: one `challengePassword` attribute with a PrintableString value.
 
 ### Private Key
@@ -5308,7 +5281,7 @@ buBrmI16HsX89Kam
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/ecdsa-p384/x509csr.txt)
 ~~~~~
@@ -5390,9 +5363,9 @@ Annotated hex:
 
 A PrintableString `challengePassword` value is not supported in a type 2 certification request.
 
-## ECDH PoP With SHA-256 And HMAC-SHA256 {#csr-dhsig-sha256}
+## PoP With SHA-256 And HMAC-SHA256 {#csr-dhsig-sha256}
 
-- Signature algorithm: sa-ecdhPop-sha256-hmac-sha256
+- Signature algorithm: PoP with SHA-256 and HMAC-SHA256
 - Signature value: only the `hashValue` field is present.
 - CR attributes: one `challengePassword` attribute with a UTF8String value.
 
@@ -5424,7 +5397,7 @@ bXkgcGFzc3dvcmQwCgYIKwYBBQUHBhoDJQAwIgQgCKW6hVQ4LZIOFihpg9OcVWST
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/dhsig-sha256/x509csr.txt)
 ~~~~~
@@ -5509,9 +5482,9 @@ Annotated hex:
 129:     E4637C
 ~~~~~
 
-## ECDH PoP With SHA-384 And HMAC-SHA384 {#csr-dhsig-sha384}
+## PoP With SHA-384 And HMAC-SHA384 {#csr-dhsig-sha384}
 
-- Signature algorithm: sa-ecdhPop-sha384-hmac-sha384
+- Signature algorithm: PoP with SHA-384 and HMAC-SHA384
 - Signature value: all fields are present.
 - CR attributes: none.
 
@@ -5544,7 +5517,7 @@ EKaPr3weGTBEiMk+FCxXLRBT0O1G
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/dhsig-sha384/x509csr.txt)
 ~~~~~
@@ -5640,9 +5613,9 @@ Annotated hex:
 170:       DEFD2693ED3CDF0AEEF102AF104F1871BC9DEB75
 ~~~~~
 
-## ECDH PoP With SHA-512 And HMAC-SHA512 {#csr-dhsig-sha512}
+## PoP With SHA-512 And HMAC-SHA512 {#csr-dhsig-sha512}
 
-- Signature algorithm: sa-ecdhPop-sha512-hmac-sha512
+- Signature algorithm: PoP with SHA-512 and HMAC-SHA512
 - Signature value: only the `hashValue` field is present.
 - CR attributes: none.
 
@@ -5676,7 +5649,7 @@ MGyKRSHcaWXfJKfjQADdc8I4GcxHXfy/XSpiroUT60ENw+vrAkc=
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/dhsig-sha512/x509csr.txt)
 ~~~~~
@@ -5773,7 +5746,7 @@ Annotated hex:
 
 ## Unsigned PoP With X25519 Key {#csr-x25519}
 
-- Signature algorithm: unsigned
+- Signature algorithm: Unsigned
 - CR attributes: a `privateKeyPossessionStatement` attribute without the `cert` field.
 
 ### Private Key
@@ -5799,7 +5772,7 @@ FDASBgNVBAMMC2RlbW8gaXNzdWVyAgECMAoGCCsGAQUFBwYkAwEA
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/x25519/x509csr.txt)
 ~~~~~
@@ -5877,7 +5850,7 @@ Annotated hex:
 
 ## Unsigned PoP With X25519 Key And Cert {#csr-x25519-withcert}
 
-- Signature algorithm: unsigned
+- Signature algorithm: Unsigned
 - CR attributes: a `privateKeyPossessionStatement` attribute with the `cert` field.
 
 ### Private Key
@@ -5910,7 +5883,7 @@ AA==
 -----END CERTIFICATE REQUEST-----
 ~~~~~
 
-Text representation:
+Textual Representation:
 
 [comment]: <> (replace-data:csr/x25519-withcert/x509csr.txt)
 ~~~~~
@@ -6123,7 +6096,6 @@ Annotated hex:
 168:     2C96F3C7C94B
 ~~~~~
 
-
 # Certification Request Templates {#sec-csrt}
 
 ## All Fields Set to "undefined" Where Possible {#undefined-csrt}
@@ -6209,7 +6181,7 @@ Annotated hex:
   - choice (int, undefined)
   - choice (~oid, Defined)
   - choice (~oid, undefined)
-- extensions
+- extensionsRequest
   - choice (int, Defined)
   - choice (int, undefined)
   - choice (~oid, Defined)
@@ -6358,7 +6330,7 @@ Annotated hex:
 
 The private keys shown in this document are for example purposes only. They are not secret and MUST NOT be used in deployments.
 
-The examples use 1024-bit or 1536-bit RSA keys and reuse key pairs to keep the examples compact. In deployments, key pairs are expected to be generated uniquely and not reused. The examples also use RSA PKCS#1 v1.5 signatures and SHA-1 to cover all signature algorithms defined in {{I-D.ietf-cose-cbor-encoded-cert}}. These choices do not reflect current state-of-the-art security recommendations; at the time of writing, RSA keys of at least 3072 bits, stronger hash functions, and RSA-PSS are required for adequate security.
+The examples use 1024-bit or 1536-bit RSA keys and reuse key pairs to keep the examples compact. In deployments, key pairs are expected to be generated uniquely and not reused. The examples also use RSA PKCS#1 v1.5 signatures, and SHA-1 with RSA and ECDSA, to cover all signature algorithms defined in {{I-D.ietf-cose-cbor-encoded-cert}}. These choices do not reflect current state-of-the-art security recommendations; at the time of writing, RSA keys of at least 3072 bits, stronger hash functions, and RSA-PSS are required for adequate security.
 
 # Privacy Considerations
 
@@ -6391,6 +6363,12 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 - Add section "Location of Test Vectors"
 - Improve annotated hex
 - Merge separate leading line with only "8B" / "87" with other lines in the hex block
+- Show times in the textual representations in UTC
+- Improve annotation of times and OIDs in annotated hex
+- Change AS identifiers from 2, 3-6 to 2, 5-8 to use the canonical form required by RFC 3779
+- Move IPAddrBlocks (V2) and ASIdentifiers (V2) extensions from self-signed certificates to certificates issued by the CA
+- Add notes on certificates that fail RFC 3779 validation
+- Add a certification request and a certification request template with 8-byte integer values
 
 ## Since draft-ietf-cose-c509-test-vectors-01
 {:numbered="false"}
