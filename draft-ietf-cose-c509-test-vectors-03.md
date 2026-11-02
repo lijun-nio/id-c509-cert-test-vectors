@@ -206,8 +206,8 @@ Certificate:
     01
   Issuer: CN=test ca
   Validity:
-    Not Before: Wed Jan 01 01:00:00 CET 2025
-    Not After : Fri Jan 01 00:59:59 CET 2027
+    Not Before: 2025-01-01T00:00:00Z
+    Not After : 2026-12-31T23:59:59Z
   Subject: CN=test ca
   Subject Public Key Info:
     Public Key Algorithm: ED25519
@@ -361,8 +361,8 @@ Certificate:
     12:34
   Issuer: CN=12-34-56-FF-FE-78-90-AB
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Sat Jan 01 00:59:59 CET 10000
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 9999-12-31T23:59:59Z
   Subject: CN=12-34-56-FF-FE-78-90-AB
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -528,8 +528,8 @@ Certificate:
     12:34
   Issuer: CN=12-34-56-78-90-AB-CD-EF
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=12-34-56-78-90-AB-CD-EF
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -687,8 +687,8 @@ Certificate:
     12:34
   Issuer: CN=1234567890abcdef
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=1234567890abcdef
   Subject Public Key Info:
     Public Key Algorithm: EC/P256
@@ -942,8 +942,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-secp384r1
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-secp384r1
   Subject Public Key Info:
     Public Key Algorithm: EC/P384
@@ -1078,7 +1078,7 @@ Annotated hex:
 189:           72206E6F74696365               # "r notice"
                         #---extension[3]---
 197:     08             # [6]. type=ExtendedKeyUsage (8)
-198:     49             # [7]. value=byte[9]: 
+198:     49             # [7]. value=byte[9]:
 199:       2B0601040181FD5904 # oid: 1.3.6.1.4.1.32473.4
                         #---extension[4]---
 208:     18 1E          # [8]. type=InhibitAnyPolicy (30)
@@ -1150,8 +1150,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-secp521r1
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-secp521r1
   Subject Public Key Info:
     Public Key Algorithm: EC/P521
@@ -1318,7 +1318,7 @@ Annotated hex:
 267:         6D706C652E636F6D2F616263         # "mple.com/abc"
                           #---GeneralName[5]---
 279:       08             # [10]. GeneralNameType=8: registeredID
-280:       49             # [11]. GeneralNameValue=byte[9]: 
+280:       49             # [11]. GeneralNameValue=byte[9]:
 281:         2B0601040181FD5908 # oid: 1.3.6.1.4.1.32473.8
                           #---GeneralName[6]---
 290:       07             # [12]. GeneralNameType=7: iPAddress
@@ -1327,7 +1327,7 @@ Annotated hex:
                           #---GeneralName[7]---
 296:       00             # [14]. GeneralNameType=0: otherName
 297:       82             # [15]. GeneralNameValue=array[2]
-298:         49             # [0]. id=byte[9]: 
+298:         49             # [0]. id=byte[9]:
 299:           2B0601040181FD5901 # oid: 1.3.6.1.4.1.32473.1
 308:         4C             # [1]. value=byte[12]
 309:           040A22222222222222222222
@@ -1345,7 +1345,7 @@ Annotated hex:
 360:       20             # [20]. GeneralNameType=-1:
                           #       on-hardwareModuleName
 361:       82             # [21]. GeneralNameValue=array[2]
-362:         49             # [0]. id=byte[9]: 
+362:         49             # [0]. id=byte[9]:
 363:           2B0601040181FD5902 # oid: 1.3.6.1.4.1.32473.2
 372:         52             # [1]. value=byte[18]
 373:           041033333333333333333333333333333333
@@ -1426,8 +1426,8 @@ Certificate:
           anization,OU=my organizationalUnit,organizationIdentifier=m
           y organizationIdentifier
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-sm2p256v1,SERIALNUMBER=my serialNumber,O=my or
            ganization,OU=my organizationalUnit,organizationIdentifier
            =my organizationIdentifier
@@ -1636,8 +1636,8 @@ Certificate:
   Issuer: CN=selfsign-brainpoolp256r1,C=DE,L=my locality,ST=my state,
           STREET=my street,PostalCode=my postalCode
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-brainpoolp256r1,C=DE,L=my locality,ST=my state
            ,STREET=my street,PostalCode=my postalCode
   Subject Public Key Info:
@@ -1859,8 +1859,8 @@ Certificate:
   Issuer: CN=selfsign-brainpoolp384r1,SURNAME=my surname,T=my title,G
           IVENNAME=my givenName,Name=my name
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-brainpoolp384r1,SURNAME=my surname,T=my title,
            GIVENNAME=my givenName,Name=my name
   Subject Public Key Info:
@@ -2107,8 +2107,8 @@ Certificate:
           ctionLocality,jurisdictionState=my jurisdictionState,jurisd
           ictionCountry=SE
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-brainpoolp512r1,jurisdictionLocality=my jurisd
            ictionLocality,jurisdictionState=my jurisdictionState,juri
            sdictionCountry=SE
@@ -2249,9 +2249,9 @@ Annotated hex:
 236:       01             # [1]. subjectDomainPolicy=domain-validate
                           #      d (1)
                           #---policyMapping[1]---
-237:       49             # [2].  issuerDomainPolicy=byte[9]: 
+237:       49             # [2].  issuerDomainPolicy=byte[9]:
 238:         2B0601040181FD5906 # oid: 1.3.6.1.4.1.32473.6
-247:       49             # [3]. subjectDomainPolicy=byte[9]: 
+247:       49             # [3]. subjectDomainPolicy=byte[9]:
 248:         2B0601040181FD5907 # oid: 1.3.6.1.4.1.32473.7
                         #---extension[2]---
 257:     18 1F          # [4]. type=SubjectInfoAccess (31)
@@ -2327,8 +2327,8 @@ Certificate:
   Issuer: E=abc@example.org,CN=selfsign-frp256v1,BusinessCategory=my 
           businessCategory,TelephoneNumber=my telephoneNumber
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: E=abc@example.org,CN=selfsign-frp256v1,BusinessCategory=my
             businessCategory,TelephoneNumber=my telephoneNumber
   Subject Public Key Info:
@@ -2521,8 +2521,8 @@ Certificate:
     12:34
   Issuer: CN=test ca
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: <empty>
   Subject Public Key Info:
     Public Key Algorithm: X25519
@@ -2681,7 +2681,7 @@ Annotated hex:
 316:         687474703A2F2F72706B696E6F746966 # "http://rpkinotif"
 332:         792E6578616D706C652E636F6D       # "y.example.com"
                           #---AccessDescription[8]---
-345:       49             # [16]. accessMethod=byte[9]: 
+345:       49             # [16]. accessMethod=byte[9]:
 346:         2B0601040181FD5903 # oid: 1.3.6.1.4.1.32473.3
 355:       77             # [17]. uri=char[23]
 356:         687474703A2F2F313233342E6578616D # "http://1234.exam"
@@ -2749,8 +2749,8 @@ Certificate:
     12:34
   Issuer: CN=test ca
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=ee-x448
   Subject Public Key Info:
     Public Key Algorithm: X448
@@ -2985,8 +2985,8 @@ Certificate:
           ructuredName=my unstructuredName,unstructuredAddress=my uns
           tructuredAddress
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-ed25519,GENERATION=my generationQualifier,DN=m
            y dnQualifier,DC=my domainComponent,2.5.4.54=my dmdName,un
            structuredName=my unstructuredName,unstructuredAddress=my 
@@ -3211,8 +3211,8 @@ Certificate:
   Issuer: CN=selfsign-ed448,INITIALS=my initials,Pseudonym=my pseudon
           ym,UID=my userid
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-ed448,INITIALS=my initials,Pseudonym=my pseudo
            nym,UID=my userid
   Subject Public Key Info:
@@ -3378,8 +3378,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsa-with-sha1
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsa-with-sha1
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -3614,8 +3614,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsa-with-sha512
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsa-with-sha512
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -3762,8 +3762,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsassa-pss-sha256
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsassa-pss-sha256
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -3912,8 +3912,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsassa-pss-sha384
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsassa-pss-sha384
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -4090,8 +4090,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsassa-pss-sha512
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsassa-pss-sha512
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -4255,8 +4255,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsassa-pss-shake128
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsassa-pss-shake128
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -4406,8 +4406,8 @@ Certificate:
     12:34
   Issuer: CN=selfsign-rsassa-pss-shake256
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=selfsign-rsassa-pss-shake256
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.113549.1.1.1
@@ -5031,8 +5031,8 @@ Certificate:
     01
   Issuer: CN=An IA5String CommonName
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=An IA5String CommonName
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.10045.2.1
@@ -5065,8 +5065,8 @@ Certificate:
     01
   Issuer: CN=An IA5String CommonName
   Validity:
-    Not Before: Thu Jan 02 01:00:00 CET 2025
-    Not After : Fri Jan 02 01:00:00 CET 2026
+    Not Before: 2025-01-02T00:00:00Z
+    Not After : 2026-01-02T00:00:00Z
   Subject: CN=An IA5String CommonName
   Subject Public Key Info:
     Public Key Algorithm: 1.2.840.10045.2.1
@@ -5124,12 +5124,12 @@ Annotated hex:
                       #      2026-01-02T00:00:00Z
  16:   82             # [6]. subject=array[2], 1 attribute
                         #---attribute[0]---
- 17:     43             # [0]. type=byte[3]: 
+ 17:     43             # [0]. type=byte[3]:
  18:       550403         # oid: 2.5.4.3 (commonName)
  21:     58 19          # [1]. value=byte[25]
  23:       1617416E20494135537472696E6720436F6D6D6F6E4E616D65
  48:   82             # [7]. subjectPublicKeyAlg=array[2]
- 49:     47             # [0]. algorithm=byte[7]: 
+ 49:     47             # [0]. algorithm=byte[7]:
  50:       2A8648CE3D0201 # oid: 1.2.840.10045.2.1
  57:     4B             # [1]. parameters=byte[11]
  58:       06092B0601040181FD5905
@@ -5139,7 +5139,7 @@ Annotated hex:
 129:     78D3930436C857
 136:   84             # [9]. extensions=array[4]
                         #---extension[0]---
-137:     48             # [0]. type=byte[8]: 
+137:     48             # [0]. type=byte[8]:
 138:       2B06010505070108 # oid: 1.3.6.1.5.5.7.1.8 (ASIdentifiers)
 146:     46             # [1]. value=byte[6]
 147:       3004A1020500
@@ -5152,7 +5152,7 @@ Annotated hex:
 158:         82             # [1]. GeneralNameValue=array[2], 1
                             #      attribute
                               #---attribute[0]---
-159:           43             # [0]. type=byte[3]: 
+159:           43             # [0]. type=byte[3]:
 160:             550403         # oid: 2.5.4.3 (commonName)
 163:           58 19          # [1]. value=byte[25]
 165:             1617416E20494135537472696E6720436F6D6D6F6E4E616D65
@@ -5361,7 +5361,7 @@ Annotated hex:
 [comment]: <> (replace-data:csr/ecdsa-p384/c509csr-t3.diag)
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
-  1:   02             # [0]. c509CertificationRequestType=2
+  1:   03             # [0]. c509CertificationRequestType=3
   2:   01             # [1]. subjectSignatureAlgorithm=ecdsa-with-sh
                       #      a384 (1)
   3:   6A             # [2]. subject=char[10]
@@ -5382,9 +5382,9 @@ Annotated hex:
 119:         6D792070617373776F7264 # "my password"
 130:   58 60          # [6]. signature value=byte[96]
 132:     347EB5ED49E1F6536E2A3F3B5DF1C12D9BAEF440DFBC42BD45D31F4B3F
-161:     DABDFA9D685A84582D98B1B2474210F1C785DA27C5D36FFA887A38BACB
-190:     D8D7D241E770B513B034E32ACB43D5AF979E122E2FAB403D4D30DF44D0
-219:     77C5A05E1E07981567
+161:     DABDFA9D685A84582D98B1B2474210F1C785DA63C91D01077AC832F46C
+190:     A52CACCB3A6C1D60BDDA813058FB6B865AD2B885492B697D450F6EE06B
+219:     988D7A1EC5FCF4A6A6
 ~~~~~
 
 ### C509 Type 2 Certification Request
@@ -5937,8 +5937,8 @@ Certificate Request:
               12:34
             Issuer: CN=simple-selfsign-ed25519
             Validity:
-              Not Before: Thu Jan 02 01:00:00 CET 2025
-              Not After : Fri Jan 02 01:00:00 CET 2026
+              Not Before: 2025-01-02T00:00:00Z
+              Not After : 2026-01-02T00:00:00Z
             Subject: CN=simple-selfsign-ed25519
             Subject Public Key Info:
               Public Key Algorithm: ED25519
@@ -6181,7 +6181,7 @@ Annotated hex:
  0: 87             # C509CertificationRequestTemplate=array[7]
  1:   00             # [0]. c509CertificationRequestTemplateType=0
  2:   81             # [1]. c509CertificationRequestType=array[1]
- 3:     02             # [0]. C509SimpleOCSPRequest (2)
+ 3:     02             # [0]. Type 2
  4:   81             # [2]. subjectSignatureAlgorithm: array[1]
  5:     00             # [0]. ecdsa-with-sha256 (0)
  6:   84             # [3]. subject=array[4], 1 attribute
@@ -6235,14 +6235,14 @@ Annotated hex:
   0: 87             # C509CertificationRequestTemplate=array[7]
   1:   00             # [0]. c509CertificationRequestTemplateType=0
   2:   82             # [1]. c509CertificationRequestType=array[2]
-  3:     02             # [0]. C509SimpleOCSPRequest (2)
-  4:     03             # [1]. unknown (3)
+  3:     02             # [0]. Type 2
+  4:     03             # [1]. Type 3
   5:   83             # [2]. subjectSignatureAlgorithm: array[3]
   6:     01             # [0]. ecdsa-with-sha384 (1)
-  7:     49             # [1]. byte[9]: 
+  7:     49             # [1]. byte[9]:
   8:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
  17:     82             # [2]. array[2]
- 18:       49             # [0]. algorithm=byte[9]: 
+ 18:       49             # [0]. algorithm=byte[9]:
  19:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
  28:       42             # [1]. parameters=byte[2]
  29:         0500
@@ -6259,13 +6259,13 @@ Annotated hex:
  39:     62             # [3]. value=char[2]
  40:       4445            # "DE"
                         #---attribute[2]---
- 42:     49             # type=byte[9]: 
+ 42:     49             # [0]. type=byte[9]:
  43:       2B0601040181FD590B # oid: 1.3.6.1.4.1.32473.11
  52:     01             # [1]. minOccurs=1
  53:     01             # [2]. maxOccurs=1
  54:     F7             # [3]. value=<undefined>
                         #---attribute[3]---
- 55:     49             # type=byte[9]: 
+ 55:     49             # [0]. type=byte[9]:
  56:       2B0601040181FD590C # oid: 1.3.6.1.4.1.32473.12
  65:     01             # [1]. minOccurs=1
  66:     01             # [2]. maxOccurs=1
@@ -6273,10 +6273,10 @@ Annotated hex:
  68:       0C0B636F6E73742D76616C7565
  81:   83             # [4]. subjectPublicKeyAlgorithm: array[3]
  82:     01             # [0]. EC public key on curve secp256r1 (1)
- 83:     49             # [1]. byte[9]: 
+ 83:     49             # [1]. byte[9]:
  84:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
  93:     82             # [2]. array[2]
- 94:       49             # [0]. algorithm=byte[9]: 
+ 94:       49             # [0]. algorithm=byte[9]:
  95:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
 104:       42             # [1]. parameters=byte[2]
 105:         0500
@@ -6291,12 +6291,12 @@ Annotated hex:
 113:     F5             # [4]. optional
 114:     18 60          # [5]. value=96: [keyCertSign, cRLSign]
                         #---extension[2]---
-116:     49             # [6]. type=byte[9]: 
+116:     49             # [6]. type=byte[9]:
 117:       2B0601040181FD590D # oid: 1.3.6.1.4.1.32473.13
 126:     F4             # [7]. required
 127:     F7             # [8]. value=<undefined>
                         #---extension[3]---
-128:     49             # [9]. type=byte[9]: 
+128:     49             # [9]. type=byte[9]:
 129:       2B0601040181FD590E # oid: 1.3.6.1.4.1.32473.14
 138:     F4             # [10]. required
 139:     4D             # [11]. value=byte[13]
@@ -6326,7 +6326,7 @@ Annotated hex:
  0: 87             # C509CertificationRequestTemplate=array[7]
  1:   00             # [0]. c509CertificationRequestTemplateType=0
  2:   81             # [1]. c509CertificationRequestType=array[1]
- 3:     02             # [0]. C509SimpleOCSPRequest (2)
+ 3:     02             # [0]. Type 2
  4:   81             # [2]. subjectSignatureAlgorithm: array[1]
  5:     00             # [0]. ecdsa-with-sha256 (0)
  6:   88             # [3]. subject=array[8], 2 attributes
