@@ -62,7 +62,7 @@ The examples include two types of C509 certificates, distinguished by the value 
 
 * c509CertificateType = 03 (called type 3 in this document) is a reversible CBOR encoding of an X.509 certificate, in which the issuerSignatureValue field of the C509 certificate contains the signatureValue field of the X.509 certificate, that is, the digital signature computed over the ASN.1 DER encoding.
 
-* c509CertificateType = 02 (called type 2 in this document) differs from type 3 only in this value and in that the issuerSignatureValue field of the C509 certificate contains the signature over the TBSCertificate of the C509 certificate, that is, the digital signature computed over the CBOR encoding.
+* c509CertificateType = 02 (called type 2 in this document) differs from type 3 only in this value, in the key identifiers, and in that the issuerSignatureValue field of the C509 certificate contains the signature over the TBSCertificate of the C509 certificate, that is, the digital signature computed over the CBOR encoding. The key identifiers in type 2 certificates are the leftmost 160 bits of the SHA-256 hash of the CBOR encoding of subjectPublicKeyAlgorithm and subjectPublicKey.
 
 The examples also include two analogous types of C509 certification requests, also called type 2 and type 3 in this document, distinguished by the value of the c509CertificationRequestType field.
 
@@ -2347,6 +2347,7 @@ Annotated hex:
 ## Montgomery EC Public Key On Curve X25519 {#ee-x25519}
 
 - X25519 public key
+- Signature algorithm: Ed25519
 - Extensions
   - ASIdentifiers
   - ASIdentifiers V2
@@ -2358,7 +2359,7 @@ Annotated hex:
 
 This certificate only demonstrates the encoding of the extensions listed above. The CA certificate in {{x509-ca}} contains neither the ASIdentifiers nor the IPAddrBlocks extension, so the AS and IP resources of this certificate are not a subset of the resources of its issuer, and validation of this certificate according to {{RFC3779}} fails.
 
-### Private Key
+### Private Key {#key-ee-x25519}
 
 [comment]: <> (replace-data:key/x25519/prikey.pem)
 ~~~~~
@@ -2631,6 +2632,7 @@ Annotated hex:
 ## Montgomery EC Public Key On Curve X448 {#ee-x448}
 
 - X448 public key
+- Signature algorithm: Ed25519
 - Extensions:
   - authorityKeyIdentifier containing all fields
   - crlDistributionPoints
@@ -5751,12 +5753,7 @@ Annotated hex:
 
 ### Private Key
 
-[comment]: <> (replace-data:key/x25519/prikey.pem)
-~~~~~
------BEGIN PRIVATE KEY-----
-MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
------END PRIVATE KEY-----
-~~~~~
+See {{key-ee-x25519}}.
 
 ### X.509 Certification Request {#x509csr-x25519}
 
@@ -5855,12 +5852,7 @@ Annotated hex:
 
 ### Private Key
 
-[comment]: <> (replace-data:key/x25519/prikey.pem)
-~~~~~
------BEGIN PRIVATE KEY-----
-MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
------END PRIVATE KEY-----
-~~~~~
+See {{key-ee-x25519}}.
 
 ### X.509 Certification Request {#x509csr-x25519-withcert}
 
