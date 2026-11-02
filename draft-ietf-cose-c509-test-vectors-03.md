@@ -6253,23 +6253,23 @@ Annotated hex:
  34:     01             # [2]. maxOccurs=1
  35:     F7             # [3]. value=<undefined>
                         #---attribute[1]---
- 36:     04             # [0]. type=4: country
- 37:     01             # [1]. minOccurs=1
- 38:     01             # [2]. maxOccurs=1
- 39:     62             # [3]. value=char[2]
+ 36:     04             # [4]. type=4: country
+ 37:     01             # [5]. minOccurs=1
+ 38:     01             # [6]. maxOccurs=1
+ 39:     62             # [7]. value=char[2]
  40:       4445            # "DE"
                         #---attribute[2]---
- 42:     49             # [0]. type=byte[9]:
+ 42:     49             # [8]. type=byte[9]:
  43:       2B0601040181FD590B # oid: 1.3.6.1.4.1.32473.11
- 52:     01             # [1]. minOccurs=1
- 53:     01             # [2]. maxOccurs=1
- 54:     F7             # [3]. value=<undefined>
+ 52:     01             # [9]. minOccurs=1
+ 53:     01             # [10]. maxOccurs=1
+ 54:     F7             # [11]. value=<undefined>
                         #---attribute[3]---
- 55:     49             # [0]. type=byte[9]:
+ 55:     49             # [12]. type=byte[9]:
  56:       2B0601040181FD590C # oid: 1.3.6.1.4.1.32473.12
- 65:     01             # [1]. minOccurs=1
- 66:     01             # [2]. maxOccurs=1
- 67:     4D             # [3]. value=byte[13]
+ 65:     01             # [13]. minOccurs=1
+ 66:     01             # [14]. maxOccurs=1
+ 67:     4D             # [15]. value=byte[13]
  68:       0C0B636F6E73742D76616C7565
  81:   83             # [4]. subjectPublicKeyAlgorithm: array[3]
  82:     01             # [0]. EC public key on curve secp256r1 (1)
@@ -6336,10 +6336,10 @@ Annotated hex:
  9:     01             # [2]. maxOccurs=1
 10:     F7             # [3]. value=<undefined>
                        #---attribute[1]---
-11:     1B 70FFFFFFFFFFFFFF # [0]. type=8142508126285856767: unknown
-20:     01             # [1]. minOccurs=1
-21:     01             # [2]. maxOccurs=1
-22:     F7             # [3]. value=<undefined>
+11:     1B 70FFFFFFFFFFFFFF # [4]. type=8142508126285856767: unknown
+20:     01             # [5]. minOccurs=1
+21:     01             # [6]. maxOccurs=1
+22:     F7             # [7]. value=<undefined>
 23:   81             # [4]. subjectPublicKeyAlgorithm: array[1]
 24:     01             # [0]. EC public key on curve secp256r1 (1)
 25:   F7             # [5]. subjectPublicKey=<undefined>
