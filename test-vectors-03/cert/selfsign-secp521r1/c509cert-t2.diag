@@ -1,0 +1,106 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   02             # [2]. signature alg=ecdsa-with-sha512 (2)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   72             # [6]. subject=char[18]
+ 18:     73656C667369676E2D73656370353231 # "selfsign-secp521"
+ 34:     7231                             # "r1"
+ 36:   03             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp521r1 (3)
+ 37:   58 85          # [8]. subject public key=EC point=byte[133]
+ 39:     04005538CE8F7CDE229335C85958AACD029DDF65CFC2A72A75055E63B8
+ 68:     FE59D07FB4BDF10DB7B8BA7D57C5C691EB96EAB97411615A6A430E5178
+ 97:     7031719CEBC305E69200705CC828B9755F8FD53452B777A40CB6792554
+126:     E5718BAB91EA3F03086A4072A47047CEEC2493C384045FCC6ED8E4F748
+155:     A5223AF12901EB2E19A6C288951C939B05
+172:   88             # [9]. extensions=array[8]
+                        #---extension[0]---
+173:     02             # [0]. type=KeyUsage (2)
+174:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+175:     03             # [2]. type=SubjectAlternativeName (3)
+176:     96             # [3]. value=array[22]
+                          #---GeneralName[0]---
+177:       04             # [0]. GeneralNameType=4: directoryName
+178:       84             # [1]. GeneralNameValue=array[4], 2
+                          #      attributes
+                            #---attribute[0]---
+179:         04             # [0]. type=4: country
+180:         62             # [1]. value=char[2]
+181:           4445           # "DE"
+                            #---attribute[1]---
+183:         01             # [2]. type=1: commonName
+184:         67             # [3]. value=char[7]
+185:           6578616D706C65 # "example"
+                          #---GeneralName[1]---
+192:       02             # [2]. GeneralNameType=2: dNSName
+193:       6F             # [3]. GeneralNameValue=char[15]
+194:         6162632E6578616D706C652E636F6D # "abc.example.com"
+                          #---GeneralName[2]---
+209:       01             # [4]. GeneralNameType=1: rfc822Name
+210:       6F             # [5]. GeneralNameValue=char[15]
+211:         616263406578616D706C652E636F6D # "abc@example.com"
+                          #---GeneralName[3]---
+226:       21             # [6]. GeneralNameType=-2:
+                          #      on-SmtpUTF8Mailbox
+227:       74             # [7]. GeneralNameValue=char[20]
+228:         736D747075746638406578616D706C65 # "smtputf8@example"
+244:         2E636F6D                         # ".com"
+                          #---GeneralName[4]---
+248:       06             # [8]. GeneralNameType=6: uri
+249:       78 1C          # [9]. GeneralNameValue=char[28]
+251:         687474703A2F2F6D797572692E657861 # "http://myuri.exa"
+267:         6D706C652E636F6D2F616263         # "mple.com/abc"
+                          #---GeneralName[5]---
+279:       08             # [10]. GeneralNameType=8: registeredID
+280:       49             # [11]. GeneralNameValue=byte[9]:
+281:         2B0601040181FD5908 # oid: 1.3.6.1.4.1.32473.8
+                          #---GeneralName[6]---
+290:       07             # [12]. GeneralNameType=7: iPAddress
+291:       44             # [13]. GeneralNameValue=byte[4]
+292:         11111111
+                          #---GeneralName[7]---
+296:       00             # [14]. GeneralNameType=0: otherName
+297:       82             # [15]. GeneralNameValue=array[2]
+298:         49             # [0]. id=byte[9]:
+299:           2B0601040181FD5901 # oid: 1.3.6.1.4.1.32473.1
+308:         4C             # [1]. value=byte[12]
+309:           040A22222222222222222222
+                          #---GeneralName[8]---
+321:       22             # [16]. GeneralNameType=-3: on-MACAddress
+322:       46             # [17]. GeneralNameValue=byte[6]
+323:         222222222222
+                          #---GeneralName[9]---
+329:       21             # [18]. GeneralNameType=-2:
+                          #       on-SmtpUTF8Mailbox
+330:       78 1C          # [19]. GeneralNameValue=char[28]
+332:         736D74702E757466386D61696C626F78 # "smtp.utf8mailbox"
+348:         406578616D706C652E636F6D         # "@example.com"
+                          #---GeneralName[10]---
+360:       20             # [20]. GeneralNameType=-1:
+                          #       on-hardwareModuleName
+361:       82             # [21]. GeneralNameValue=array[2]
+362:         49             # [0]. id=byte[9]:
+363:           2B0601040181FD5902 # oid: 1.3.6.1.4.1.32473.2
+372:         52             # [1]. value=byte[18]
+373:           041033333333333333333333333333333333
+                        #---extension[2]---
+391:     23             # [4]. type=BasicConstraints, critical (-4)
+392:     21             # [5]. value=-2: CA: false
+                        #---extension[3]---
+393:     08             # [6]. type=ExtendedKeyUsage (8)
+394:     82             # [7]. value=array[2]
+395:       02             # clientAuth (2)
+396:       01             # serverAuth (1)
+397:   58 84          # [10]. signature value=byte[132]
+399:     012F8358F64621CA68F7DB644AEFE37958041A686436AFCEDDE70ACEBA
+428:     73744D70147784A41AD67673A1EE5B3B9B1A8351553A29E87815ABFCCA
+457:     5D1DE1099F284B4C013D3594A3444D9D9E9048B5505F17E183FD49EC74
+486:     C0372823602D057B6A9C86C8238C29135D4EC6C10ABCE9CE22144AF857
+515:     0C6D4ED42D4576F2CF6A38C975F5EA48

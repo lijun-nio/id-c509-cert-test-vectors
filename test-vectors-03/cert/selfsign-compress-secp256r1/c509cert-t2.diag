@@ -1,0 +1,36 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   48             # [6]. subject=byte[8]
+ 18:     1234567890ABCDEF
+ 26:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 27:   58 21          # [8]. subject public key=EC point=byte[33]
+ 29:     FDF413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
+ 58:     F9078DDB
+ 62:   88             # [9]. extensions=array[8]
+                        #---extension[0]---
+ 63:     01             # [0]. type=SubjectKeyIdentifier (1)
+ 64:     54             # [1]. value=byte[20]
+ 65:       26CD540B3E3D99A64AAB0B62ECA277B4359EAD04
+                        #---extension[1]---
+ 85:     02             # [2]. type=KeyUsage (2)
+ 86:     18 60          # [3]. value=96: [keyCertSign, cRLSign]
+                        #---extension[2]---
+ 88:     23             # [4]. type=BasicConstraints, critical (-4)
+ 89:     20             # [5]. value=-1: CA: true,
+                        #      pathLenConstraint: unlimited
+                        #---extension[3]---
+ 90:     08             # [6]. type=ExtendedKeyUsage (8)
+ 91:     01             # [7]. value=serverAuth (1)
+ 92:   58 40          # [10]. signature value=byte[64]
+ 94:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
+123:     22E6E7017CEE1E3B865C5EEA2A7946503C5BA1C39424F71ACDC6AFA5FB
+152:     55F7E397B83C

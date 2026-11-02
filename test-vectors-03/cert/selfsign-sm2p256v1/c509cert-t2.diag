@@ -1,0 +1,68 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   08             # [2]. signature alg=sm2-with-sm3 (8)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   8A             # [6]. subject=array[10], 5 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     72             # [1]. value=char[18]
+ 20:       73656C667369676E2D736D3270323536 # "selfsign-sm2p256"
+ 36:       7631                             # "v1"
+                        #---attribute[1]---
+ 38:     03             # [2]. type=3: serialNumber
+ 39:     6F             # [3]. value=char[15]
+ 40:       6D792073657269616C4E756D626572 # "my serialNumber"
+                        #---attribute[2]---
+ 55:     08             # [4]. type=8: organization
+ 56:     6F             # [5]. value=char[15]
+ 57:       6D79206F7267616E697A6174696F6E # "my organization"
+                        #---attribute[3]---
+ 72:     09             # [6]. type=9: organizationalUnit
+ 73:     75             # [7]. value=char[21]
+ 74:       6D79206F7267616E697A6174696F6E61 # "my organizationa"
+ 90:       6C556E6974                       # "lUnit"
+                        #---attribute[4]---
+ 95:     12             # [8]. type=18: organizationIdentifier
+ 96:     78 19          # [9]. value=char[25]
+ 98:       6D79206F7267616E697A6174696F6E49 # "my organizationI"
+114:       64656E746966696572               # "dentifier"
+123:   06             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve sm2p256v1 (6)
+124:   58 41          # [8]. subject public key=EC point=byte[65]
+126:     0495FFF4BE8611C8149C81ADEC14125DACCA746A2F3FE38CD2EAB711E8
+155:     C99F101FBB448423F166F9FFD98F0E321597BB394835A6FB240337A389
+184:     12907A22C3F04A
+191:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+192:     02             # [0]. type=KeyUsage (2)
+193:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+194:     18 1A          # [2]. type=NameConstraints (26)
+196:     82             # [3]. value=array[2]
+197:       F6             # [0]. permittedSubtrees=<null>
+198:       84             # [1]. excludedSubtrees=array[4]
+                            #---GeneralName[0]---
+199:         02             # [0]. GeneralNameType=2: dNSName
+200:         78 19          # [1]. GeneralNameValue=char[25]
+202:           6578636C756465642E646E73312E65 # "excluded.dns1.e"
+217:           78616D706C652E636F6D           # "xample.com"
+                            #---GeneralName[1]---
+227:         02             # [2]. GeneralNameType=2: dNSName
+228:         78 19          # [3]. GeneralNameValue=char[25]
+230:           6578636C756465642E646E73322E65 # "excluded.dns2.e"
+245:           78616D706C652E636F6D           # "xample.com"
+                        #---extension[2]---
+255:     18 1C          # [4]. type=PolicyConstraints (28)
+257:     82             # [5]. value=array[2]
+258:       F6             # [0]. requireExplicitPolicy=<null>
+259:       02             # [1]. inhibitPolicyMapping=2
+260:   58 40          # [10]. signature value=byte[64]
+262:     59F40C77AE8AC0BD0638E0B822001FD47EEF15667C7034436A95C97E94
+291:     CEEE5FEFA1441C1F6537A76692605BED70A1168D2AFE6B03B4E9F92502
+320:     4D1B76729555

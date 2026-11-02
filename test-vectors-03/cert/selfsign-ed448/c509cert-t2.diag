@@ -1,0 +1,49 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0D             # [2]. signature alg=Ed448 (13)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   88             # [6]. subject=array[8], 4 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     6E             # [1]. value=char[14]
+ 20:       73656C667369676E2D6564343438 # "selfsign-ed448"
+                        #---attribute[1]---
+ 34:     0E             # [2]. type=14: initials
+ 35:     6B             # [3]. value=char[11]
+ 36:       6D7920696E697469616C73 # "my initials"
+                        #---attribute[2]---
+ 47:     11             # [4]. type=17: pseudonym
+ 48:     6C             # [5]. value=char[12]
+ 49:       6D792070736575646F6E796D # "my pseudonym"
+                        #---attribute[3]---
+ 61:     18 1C          # [6]. type=28: userID
+ 63:     69             # [7]. value=char[9]
+ 64:       6D7920757365726964 # "my userid"
+ 73:   0D             # [7]. subjectPublicKeyAlg=Ed448 (13)
+ 74:   58 39          # [8]. subject public key=EC point=byte[57]
+ 76:     8C35E491DB58702D7B99167C19F86B2681EA25D21F83AC6EC78040A904
+105:     114FCB1DCF239F6C4D845147F7E22793A891A9F9CA5D1E20A7398C80
+133:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+134:     02             # [0]. type=KeyUsage (2)
+135:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+136:     18 24          # [2]. type=OCSPNoCheck (36)
+138:     F6             # [3]. value=<null>
+                        #---extension[2]---
+139:     18 26          # [4]. type=TLSFeatures (38)
+141:     82             # [5]. value=array[2]
+142:       18 2C          # [0]. cookie (44)
+144:       10             # [1]. application layer protocol
+                          #      negotiation (16)
+145:   58 72          # [10]. signature value=byte[114]
+147:     5E12D7D2F577CBDB36BA15DD9EA97B9BB9B49284210308CCFB2B1C2F9E
+176:     2FF80398CC5D4F50293AFD24C5BCE3569379D344BCC4D31C6062A400EC
+205:     582489B9F8B8CDCF0F4F2C2C38482A6201B78D9B222B8E7CF75431BDBE
+234:     4FA9061B066DA656B5509F36D6005D0C2B602018B79E79C9A20A00

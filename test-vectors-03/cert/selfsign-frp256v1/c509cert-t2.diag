@@ -1,0 +1,64 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   38 FE          # [2]. signature alg=ecdsa-with-sha1 (-255)
+  7:   F6             # [3]. issuer=<null>
+  8:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 13:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 18:   88             # [6]. subject=array[8], 4 attributes
+                        #---attribute[0]---
+ 19:     00             # [0]. type=0: emailAddress
+ 20:     6F             # [1]. value=char[15]
+ 21:       616263406578616D706C652E6F7267 # "abc@example.org"
+                        #---attribute[1]---
+ 36:     01             # [2]. type=1: commonName
+ 37:     71             # [3]. value=char[17]
+ 38:       73656C667369676E2D66727032353676 # "selfsign-frp256v"
+ 54:       31                               # "1"
+                        #---attribute[2]---
+ 55:     0B             # [4]. type=11: businessCategory
+ 56:     73             # [5]. value=char[19]
+ 57:       6D7920627573696E6573734361746567 # "my businessCateg"
+ 73:       6F7279                           # "ory"
+                        #---attribute[3]---
+ 76:     18 1A          # [6]. type=26: telephoneNumber
+ 78:     72             # [7]. value=char[18]
+ 79:       6D792074656C6570686F6E654E756D62 # "my telephoneNumb"
+ 95:       6572                             # "er"
+ 97:   18 1B          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve frp256v1 (27)
+ 99:   58 41          # [8]. subject public key=EC point=byte[65]
+101:     04378D2D28A1F6547124F2DB6A42F63915BFA2F6537AE20CF0417D675F
+130:     BE6603DA80A4CF3F1E43633343AB3BE80150EC04E9649DD62705BC055B
+159:     DCDA791EB25062
+166:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+167:     02             # [0]. type=KeyUsage (2)
+168:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+169:     18 1A          # [2]. type=NameConstraints (26)
+171:     82             # [3]. value=array[2]
+172:       84             # [0]. permittedSubtrees=array[4]
+                            #---GeneralName[0]---
+173:         02             # [0]. GeneralNameType=2: dNSName
+174:         78 1A          # [1]. GeneralNameValue=char[26]
+176:           7065726D69747465642E646E73312E # "permitted.dns1."
+191:           6578616D706C652E636F6D         # "example.com"
+                            #---GeneralName[1]---
+202:         02             # [2]. GeneralNameType=2: dNSName
+203:         78 1A          # [3]. GeneralNameValue=char[26]
+205:           7065726D69747465642E646E73322E # "permitted.dns2."
+220:           6578616D706C652E636F6D         # "example.com"
+231:       F6             # [1]. excludedSubtrees=<null>
+                        #---extension[2]---
+232:     18 1C          # [4]. type=PolicyConstraints (28)
+234:     82             # [5]. value=array[2]
+235:       01             # [0]. requireExplicitPolicy=1
+236:       F6             # [1]. inhibitPolicyMapping=<null>
+237:   58 40          # [10]. signature value=byte[64]
+239:     378D2D28A1F6547124F2DB6A42F63915BFA2F6537AE20CF0417D675FBE
+268:     6603DA6F2D4CE3787CBACE549599BC5F3BAACCA2B7E67352E4A6BA1F44
+297:     96CEAD53D8E6

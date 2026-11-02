@@ -1,0 +1,27 @@
+  0: 87             # C509CertificationRequest=array[7]
+  1:   03             # [0]. c509CertificationRequestType=3
+  2:   05             # [1]. subjectSignatureAlgorithm=unsigned (5)
+  3:   6F             # [2]. subject=char[15]
+  4:     7832353531392D7769746863657274 # "x25519-withcert"
+ 19:   08             # [3]. subjectPublicKeyAlg=X25519 (8)
+ 20:   58 20          # [4]. subject public key=EC point=byte[32]
+ 22:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
+ 51:     1B7F08
+ 54:   82             # [5]. attributes=array[2]
+                        #---CRAttributes[0]---
+ 55:     02             # [0]. type=PrivateKeyPossessionStatement
+                        #      (2)
+ 56:     83             # [1]. value=array[3]
+ 57:       77             # [0]. issuer=char[23]
+ 58:         73696D706C652D73656C667369676E2D # "simple-selfsign-"
+ 74:         65643235353139                   # "ed25519"
+ 81:       42             # [1]. certificateSerialNumber=byte[2]
+ 82:         1234
+ 84:       58 8F          # [2]. cert=byte[143]
+ 86:         8B034212340CF61A6775D7001A69570A807773696D706C652D7365
+113:         6C667369676E2D656432353531390C582046270AEC0F32837E1287
+140:         79D30B249C531D6D42C1AC29E402328EDC79FAC2BE95205840C204
+167:         F07C2658F13B513D4AA9E55C748F33DE59FEBEF61C113FE9D70017
+194:         1613CA0C70464D73525CF1E7C7C844C5DBBBD267405C00F7DD9E6E
+221:         5FED8C1ACAD5B209
+229:   40             # [6]. signature value=byte[0]

@@ -1,0 +1,20 @@
+  0: 87             # C509CertificationRequest=array[7]
+  1:   03             # [0]. c509CertificationRequestType=3
+  2:   10             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a512-hmac-sha512 (16)
+  3:   6C             # [2]. subject=char[12]
+  4:     64687369672D736861353132 # "dhsig-sha512"
+ 16:   03             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp521r1 (3)
+ 17:   58 85          # [4]. subject public key=EC point=byte[133]
+ 19:     040168AD312E3601639A61E219C3C38FBEBCB2A0AB54E698616F3C80FA
+ 48:     8FF5EB7C5829FC4CF20BA2DCD8FC8415D2E7FE6B92A844740D7CEA4B9E
+ 77:     924F010EA5D097FB8D0081396CD0BEC5E1D8015476F587CE7752E4BD56
+106:     2A260ECAA2F70AE4CD2F4D9DBF474A5898C55A3FDB736EF3F1FB6B8CB6
+135:     C6D8E4A3DF72B6AD8BADCD7CA87168E0DF
+152:   80             # [5]. attributes=array[0]
+153:   58 40          # [6]. signature
+                      #      value=DhSigStatic.hashValue=byte[64]
+155:     556142B3B1D4B9F4EFD380BE21935EE62CBFA41F28E749970850306C8A
+184:     4521DC6965DF24A7E34000DD73C23819CC475DFCBF5D2A62AE8513EB41
+213:     0DC3EBEB0247

@@ -1,0 +1,70 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   04             # [2]. signature alg=ecdsa-with-shake256 (4)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   88             # [6]. subject=array[8], 4 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     78 18          # [1]. value=char[24]
+ 21:       73656C667369676E2D627261696E706F # "selfsign-brainpo"
+ 37:       6F6C703531327231                 # "olp512r1"
+                        #---attribute[1]---
+ 45:     13             # [2]. type=19: jurisdictionLocalityName
+ 46:     77             # [3]. value=char[23]
+ 47:       6D79206A7572697364696374696F6E4C # "my jurisdictionL"
+ 63:       6F63616C697479                   # "ocality"
+                        #---attribute[2]---
+ 70:     14             # [4]. type=20:
+                        #      jurisdictionStateOrProvinceName
+ 71:     74             # [5]. value=char[20]
+ 72:       6D79206A7572697364696374696F6E53 # "my jurisdictionS"
+ 88:       74617465                         # "tate"
+                        #---attribute[3]---
+ 92:     15             # [6]. type=21: jurisdictionCountryName
+ 93:     62             # [7]. value=char[2]
+ 94:       5345            # "SE"
+ 96:   18 1A          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve brainpoolp512r1 (26)
+ 98:   58 81          # [8]. subject public key=EC point=byte[129]
+100:     046D327067D334CE53FA29317AA207B85CA237623F19A10C594BF024FC
+129:     3FFEB64FAB5884D0D448A271552E02E7CF44D8BF104DA182CEC1DE895C
+158:     8418B8529D9B8B2C4B80A736DDC56471D6A52C6CE414E69D57356B15FC
+187:     08A46B61FA5B721FABC76932F3836DADE4F70F6F0CACB8D3351A7EB54E
+216:     FF077C402368C49BB715B53458
+229:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+230:     02             # [0]. type=KeyUsage (2)
+231:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+232:     18 1B          # [2]. type=PolicyMappings (27)
+234:     84             # [3]. value=array[4]
+                          #---policyMapping[0]---
+235:       02             # [0]. issuerDomainPolicy=organization-val
+                          #      idated (2)
+236:       01             # [1]. subjectDomainPolicy=domain-validate
+                          #      d (1)
+                          #---policyMapping[1]---
+237:       49             # [2].  issuerDomainPolicy=byte[9]:
+238:         2B0601040181FD5906 # oid: 1.3.6.1.4.1.32473.6
+247:       49             # [3]. subjectDomainPolicy=byte[9]:
+248:         2B0601040181FD5907 # oid: 1.3.6.1.4.1.32473.7
+                        #---extension[2]---
+257:     18 1F          # [4]. type=SubjectInfoAccess (31)
+259:     82             # [5]. value=array[2]
+                          #---AccessDescription[0]---
+260:       02             # [0]. accessMethod=caIssuers (2)
+261:       78 1C          # [1]. uri=char[28]
+263:         687474703A2F2F636169737375657273 # "http://caissuers"
+279:         2E6578616D706C652E636F6D         # ".example.com"
+291:   58 80          # [10]. signature value=byte[128]
+293:     4AC21BF982E447734E6157731B4CC730F800BFBF2AB1543DB4E2C4788A
+322:     B71AE7D22CA93DEDBF4B4010C8F01A41A4BAD7FE91BE915AD3176F9733
+351:     47D7496DF467273D13DCA4CCF3BA9E4AD5C5EF33BC4F59E053E955E040
+380:     A35EE73EAA48C70C7494AE539E418F1155B45B9B521A62014E0A134562
+409:     4C3FA57C363C9FDF25FFB727

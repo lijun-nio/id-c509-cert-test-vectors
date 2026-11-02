@@ -1,0 +1,45 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   F6             # [5]. notAfter=<null>
+ 13:   75             # [6]. subject=char[21]
+ 14:     73656C667369676E2D776973756E2D64 # "selfsign-wisun-d"
+ 30:     6576696365                       # "evice"
+ 35:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 36:   58 41          # [8]. subject public key=EC point=byte[65]
+ 38:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
+ 67:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
+ 96:     78D3930436C857
+103:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+104:     21             # [0]. type=KeyUsage, critical (-2)
+105:     11             # [1]. value=17: [digitalSignature,
+                        #      keyAgreement]
+                        #---extension[1]---
+106:     22             # [2]. type=SubjectAlternativeName, critical
+                        #      (-3)
+107:     82             # [3]. value=array[2]
+                          #---GeneralName[0]---
+108:       20             # [0]. GeneralNameType=-1:
+                          #      on-hardwareModuleName
+109:       82             # [1]. GeneralNameValue=array[2]
+110:         49             # [0]. id=byte[9]:
+111:           2B0601040182B74101 # oid: 1.3.6.1.4.1.39873.1
+120:         4A             # [1]. value=byte[10]
+121:           0408000B57FFFED8F34B
+                        #---extension[2]---
+131:     27             # [4]. type=ExtendedKeyUsage, critical (-8)
+132:     82             # [5]. value=array[2]
+133:       49             # byte[9]:
+134:         2B0601040182E42501 # oid: 1.3.6.1.4.1.45605.1
+143:       02             # clientAuth (2)
+144:   58 40          # [10]. signature value=byte[64]
+146:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
+175:     22E6E738BA31266CF9C4753A8388772067B243E2593C6FD193C0F9F73F
+204:     C5EC9A1F8E28

@@ -1,0 +1,23 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0C             # [2]. signature alg=Ed25519 (12)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   77             # [6]. subject=char[23]
+ 18:     73696D706C652D73656C667369676E2D # "simple-selfsign-"
+ 34:     65643235353139                   # "ed25519"
+ 41:   0C             # [7]. subjectPublicKeyAlg=Ed25519 (12)
+ 42:   58 20          # [8]. subject public key=EC point=byte[32]
+ 44:     46270AEC0F32837E128779D30B249C531D6D42C1AC29E402328EDC79FA
+ 73:     C2BE95
+ 76:   20             # [9]. extensions=-1, KeyUsage, critical:
+                      #      [digitalSignature]
+ 77:   58 40          # [10]. signature value=byte[64]
+ 79:     25623EF44534BC07269D6071FB3BBBA8F22FF3ED3B65B5C85456151C0F
+108:     5F9FC259C2932C1F3184D5088823EBB0B85AE5B7FE9578D2778F10E088
+137:     944ACB28CC07

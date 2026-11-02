@@ -1,0 +1,21 @@
+  0: 87             # C509CertificationRequest=array[7]
+  1:   02             # [0]. c509CertificationRequestType=2
+  2:   0E             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a256-hmac-sha256 (14)
+  3:   6C             # [2]. subject=char[12]
+  4:     64687369672D736861323536 # "dhsig-sha256"
+ 16:   01             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 17:   58 41          # [4]. subject public key=EC point=byte[65]
+ 19:     04C4D4A3378FEC90005CBB0D3EAF1309B482929AF56614AF26A9F22DB8
+ 48:     3C4F3477B0BA9712DF8213749F918D7DEFDFB32A6C43DF09715D00E47B
+ 77:     E0519D20E4B314
+ 84:   82             # [5]. attributes=array[2]
+                        #---CRAttributes[0]---
+ 85:     01             # [0]. type=ChallengePassword (1)
+ 86:     6B             # [1]. value=char[11]
+ 87:       6D792070617373776F7264 # "my password"
+ 98:   58 20          # [6]. signature
+                      #      value=DhSigStatic.hashValue=byte[32]
+100:     2C237A82D11BD92EF29A69EA046128BF2CFF2F07ABF2499E966D81D712
+129:     E4637C

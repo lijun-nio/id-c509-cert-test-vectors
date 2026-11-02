@@ -1,0 +1,29 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   03             # [0]. certificate type=3
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   18 1A          # [2]. signature alg=rsassa-pss-with-sha256
+                      #      (26)
+  7:   F6             # [3]. issuer=<null>
+  8:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 13:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 18:   78 1A          # [6]. subject=char[26]
+ 20:     73656C667369676E2D7273617373612D # "selfsign-rsassa-"
+ 36:     7073732D736861323536             # "pss-sha256"
+ 46:   00             # [7]. subjectPublicKeyAlg=RSA (0)
+ 47:   58 80          # [8]. subject public key=modulus=byte[128]
+ 49:     B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73FA
+ 78:     CE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E0D3F
+107:     727A763E16013F89F8FEAC59D0FBDD5E8B0C52827E5490F13B84C3634E
+136:     89C6D1731AE5F1A60F88ED118D080E1AB2CAA532D06C2F7D2A0874DEE4
+165:     E6B6E57283F6478DAF4253DB
+177:   20             # [9]. extensions=-1, KeyUsage, critical:
+                      #      [digitalSignature]
+178:   58 80          # [10]. signature value=byte[128]
+180:     6B162C7990DC4A718228D22E224DF35AA1E7519230C8EB52AF1EA21B64
+209:     417B16631EBF06A7D0277F3939A7C8B0FFF4DC7C891B275D7D81F52975
+238:     9871BCC423AAAE8D46A0F51E3FE0B5ED27A6C16D4A88C5EF3206A856ED
+267:     BB06E7AF73D42976BC63F62ED10051BF0DDB64254DC5E8B11EBD4EEF5B
+296:     7AA092DF1079BA4125D0BFE7

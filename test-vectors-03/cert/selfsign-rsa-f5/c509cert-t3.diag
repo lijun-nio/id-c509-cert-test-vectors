@@ -1,0 +1,32 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   03             # [0]. certificate type=3
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   18 18          # [2]. signature alg=sha384WithRSAEncryption
+                      #      (24)
+  7:   F6             # [3]. issuer=<null>
+  8:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 13:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 18:   D8 30          # [6]. subject=tag(48)
+ 20:     48             # byte[8]
+ 21:       1234567890ABCDEF
+ 29:   00             # [7]. subjectPublicKeyAlg=RSA (0)
+ 30:   82             # [8]. subject public key=array[2]
+ 31:     58 80          # [0]. modulus=byte[128]
+ 33:       B8092F6F04726A921CFAB2D313AE9D2F01C7CE465FAB7DA62C7A5C73
+ 61:       FACE5FFBA2F1DD80A29ADC43399CFCA22279B89A264810E5B926BB5E
+ 89:       0D3F727A763E16013F89F8FEAC59D0FBDD5E8B0C52827E5490F13B84
+117:       C3634E89C6D1731AE5F1A60F88ED118D080E1AB2CAA532D06C2F7D2A
+145:       0874DEE4E6B6E57283F6478DAF4253DB
+161:     45             # [1]. exponent=byte[5]
+162:       0100000001
+167:   20             # [9]. extensions=-1, KeyUsage, critical:
+                      #      [digitalSignature]
+168:   58 80          # [10]. signature value=byte[128]
+170:     76CEFA5BCC5D76A66043EDAAC2E4BFBA513CE4AE07079564144BF207F4
+199:     6985316167052394A083F7B69FD35BFBED043AD8B2628288DD2F8E19C8
+228:     6C20C7DEE2B69AFA091B82EFABDBC5ABBDF91C8459D14FF8CFBF6D10F6
+257:     8EA5AFAE7474988210D829AF1BC67E01A5DFEA430AAA07242A886D4307
+286:     014EDF6C1A42E02D0B893521

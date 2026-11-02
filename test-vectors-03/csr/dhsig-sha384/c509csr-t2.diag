@@ -1,0 +1,23 @@
+  0: 87             # C509CertificationRequest=array[7]
+  1:   02             # [0]. c509CertificationRequestType=2
+  2:   0F             # [1]. subjectSignatureAlgorithm=sa-ecdhPop-sh
+                      #      a384-hmac-sha384 (15)
+  3:   6C             # [2]. subject=char[12]
+  4:     64687369672D736861333834 # "dhsig-sha384"
+ 16:   02             # [3]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp384r1 (2)
+ 17:   58 61          # [4]. subject public key=EC point=byte[97]
+ 19:     040AC5E36CE7A667529BD1A7A0599AF2842F1BE493D3FED200295574A0
+ 48:     D8BBF1A107C1488ACF099A32469EBB1C5A732D69C2F9356722868729CE
+ 77:     88784C7BD8D057D63E25FDD0F28C359BA6C58C2571D8C683886AA6A389
+106:     FB7D24B9629B99743775
+116:   80             # [5]. attributes=array[0]
+117:   83             # [6]. signature value=DhSigStatic=array[3]
+118:     72             # [0]. issuer=char[18]
+119:       73656C667369676E2D73656370333834 # "selfsign-secp384"
+135:       7231                             # "r1"
+137:     42             # [1]. certificateSerialNumber=byte[2]
+138:       1234
+140:     58 30          # [2]. hashValue=byte[48]
+142:       0C5E7EADF9C902D6ED67ACBEF42EFD563A0D6478182726571B3D9F04
+170:       DEFD2693ED3CDF0AEEF102AF104F1871BC9DEB75

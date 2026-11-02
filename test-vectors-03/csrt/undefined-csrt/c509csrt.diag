@@ -1,0 +1,8 @@
+0: 87             # C509CertificationRequestTemplate=array[7]
+1:   00             # [0]. c509CertificationRequestTemplateType=0
+2:   F7             # [1]. c509CertificationRequestType=<undefined>
+3:   F7             # [2]. subjectSignatureAlgorithm=<undefined>
+4:   F7             # [3]. subject=<undefined>
+5:   F7             # [4]. subjectPublicKeyAlgorithm=<undefined>
+6:   F7             # [5]. subjectPublicKey=<undefined>
+7:   F7             # [6]. extensionsRequest=<undefined>

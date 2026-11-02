@@ -1,0 +1,49 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   03             # [0]. certificate type=3
+  2:   41             # [1]. certificateSerialNumber=byte[1]
+  3:     01
+  4:   00             # [2]. signature alg=ecdsa-with-sha256 (0)
+  5:   F6             # [3]. issuer=<null>
+  6:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 11:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 16:   82             # [6]. subject=array[2], 1 attribute
+                        #---attribute[0]---
+ 17:     43             # [0]. type=byte[3]:
+ 18:       550403         # oid: 2.5.4.3 (commonName)
+ 21:     58 19          # [1]. value=byte[25]
+ 23:       1617416E20494135537472696E6720436F6D6D6F6E4E616D65
+ 48:   82             # [7]. subjectPublicKeyAlg=array[2]
+ 49:     47             # [0]. algorithm=byte[7]:
+ 50:       2A8648CE3D0201 # oid: 1.2.840.10045.2.1
+ 57:     4B             # [1]. parameters=byte[11]
+ 58:       06092B0601040181FD5905
+ 69:   58 41          # [8]. subject public key=byte[65]
+ 71:     04F413596A87125995B4E0D8B7BEFBC4D6EDB11F61AF08AB32408D4FF9
+100:     F9078DDBAB3635AFD496D5656A22EFDC3D59C4482A99836BB358FBF4CA
+129:     78D3930436C857
+136:   84             # [9]. extensions=array[4]
+                        #---extension[0]---
+137:     48             # [0]. type=byte[8]:
+138:       2B06010505070108 # oid: 1.3.6.1.5.5.7.1.8 (ASIdentifiers)
+146:     46             # [1]. value=byte[6]
+147:       3004A1020500
+                        #---extension[1]---
+153:     18 1A          # [2]. type=NameConstraints (26)
+155:     82             # [3]. value=array[2]
+156:       82             # [0]. permittedSubtrees=array[2]
+                            #---GeneralName[0]---
+157:         04             # [0]. GeneralNameType=4: directoryName
+158:         82             # [1]. GeneralNameValue=array[2], 1
+                            #      attribute
+                              #---attribute[0]---
+159:           43             # [0]. type=byte[3]:
+160:             550403         # oid: 2.5.4.3 (commonName)
+163:           58 19          # [1]. value=byte[25]
+165:             1617416E20494135537472696E6720436F6D6D6F6E4E616D65
+190:       F6             # [1]. excludedSubtrees=<null>
+191:   58 40          # [10]. signature value=byte[64]
+193:     8A25E8AABBA4B19B8E0D1596A476C2C42F5068F5F3457606806E2F284A
+222:     22E6E74F787D4E04FE4B62DEDDA880077DC9CB2A5D7A1D8ED62309CD46
+251:     7E61854DC30A
