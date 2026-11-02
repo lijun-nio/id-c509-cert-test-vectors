@@ -47,7 +47,7 @@ informative:
 
 --- abstract
 
-This document contains examples of CBOR-encoded X.509 (C509) certificates, certification requests, and certification request templates. 
+This document contains examples of CBOR-encoded X.509 (C509) certificates, certification requests, and certification request templates.
 
 --- middle
 
@@ -69,6 +69,8 @@ Private keys are also provided to enable the creation of signatures and the veri
 
 The examples are structured as follows:
 
+* {{sec-overview}} compares the sizes of the X.509 and C509 encodings of the examples.
+
 * {{sec-ca}} contains a CA certificate used in later sections.
 
 * {{sec-cert-different-keys}} contains certificates with different subject public key types, including RSA, Weierstrass EC, Edwards EC, and Montgomery EC keys.
@@ -79,31 +81,41 @@ The examples are structured as follows:
 
 * {{sec-cert-different-extns}} contains certificates with different extensions and points to the sections where those extensions are encoded.
 
+* {{sec-cert-8byte}} contains a certificate with 8-byte integer values for identifiers such as RDN attribute types and extension IDs.
+
 * {{sec-cert-unconvertible}} provides examples of certificates with RDN attributes or extensions for which no dedicated CBOR encoding has been defined and for which generic constructs such as CBOR OID {{RFC9090}} are used.
 
 * {{sec-csr-different-sigs}} provides examples of certification requests with different signature or proof-of-possession algorithms.
 
 * {{sec-csr-different-attrs}} provides examples of certification requests with different CR attributes.
 
+* {{sec-csr-8byte}} provides an example of a certification request with an 8-byte integer CR attribute type.
+
 * {{sec-csrt}} provides examples of certification request templates.
 
 ## Terminology {#terminology}
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 {{RFC2119}} {{RFC8174}} when, and only when, they appear in all capitals, as shown here.
-   
+
 Readers are expected to be familiar with C509 certificates {{I-D.ietf-cose-cbor-encoded-cert}}.
 
 ## Target version of draft-ietf-cose-cbor-encoded-cert
 
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
 
-The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-20.
+The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-21.
 
-# Overview
+## Location of Test Vectors
 
-{{tab-cert-examples-overview}} shows the size in byte and the size reduction of C509 certificates compared to X.509 certificates.
+> **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
 
-| Section       | Description           | size(X.509) | size(C509) | Size Reduction |
+The test vectors in this document can also be found at <https://github.com/lijun-nio/id-c509-cert-test-vectors>.
+
+# Overview {#sec-overview}
+
+{{tab-cert-examples-overview}} shows the size in bytes and the size reduction of C509 certificates compared to X.509 certificates.
+
+| Section       | Description           | Size (X.509) | Size (C509) | Size Reduction |
 |:--------------|:----------------------|:-----------|:-----------|:----------------------|
 | {{sec-ca}} | CA Certificate | 249 | 101 | 59% |
 | {{selfsign-rsa}} | RSA Public Key With Public Exponent 65537 | 464 | 284 | 39% |
@@ -113,7 +125,7 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{selfsign-secp384r1}} | Weierstrass EC Public Key On Curve secp384r1 | 539 | 309 | 43% |
 | {{selfsign-secp521r1}} | Weierstrass EC Public Key On Curve secp521r1 | 811 | 531 | 35% |
 | {{selfsign-sm2p256v1}} | Weierstrass EC Public Key On Curve sm2p256v1 | 644 | 326 | 49% |
-| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 646 | 264 | 63% |
+| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 646 | 264 | 59% |
 | {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 717 | 406 | 43% |
 | {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 779 | 421 | 46% |
 | {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
@@ -126,14 +138,18 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{selfsign-rsassa-pss-sha256}} | Signature Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
 | {{selfsign-rsassa-pss-sha384}} | Signature Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
 | {{selfsign-rsassa-pss-sha512}} | Signature Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 38% |
-| {{selfsign-rsassa-pss-shake128}} | Signature Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 38% |
+| {{selfsign-rsassa-pss-shake128}} | Signature Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 34% |
 | {{selfsign-rsassa-pss-shake256}} | Signature Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
 | {{sec-cert-unconvertible}} | X.509 Certificate With Unconvertible RDN Attributes And Extensions | 387 | 257 | 34% |
-{: #tab-cert-examples-overview title="Size comparison of certificates in examples (TODO: update the percent data)"}
+{: #tab-cert-examples-overview title="Size comparison of certificates in examples"}
 
-{{tab-csr-examples-overview}} shows the size in byte and the size reduction of C509 certification requests compared to X.509 certification requests.
+The certificates differ in content, e.g., in the number of RDN attributes and extensions, so the size reductions are not comparable across rows.
 
-| Section       | Description           | size(X.509) | size(C509) | Size Reduction |
+The sections {{sec-cert-different-attrs}} and {{sec-cert-different-extns}} are not listed because they only refer to certificates in other sections. The certificate in {{sec-cert-8byte}} is not listed because it has no X.509 counterpart.
+
+{{tab-csr-examples-overview}} shows the size in bytes and the size reduction of C509 certification requests compared to X.509 certification requests.
+
+| Section       | Description           | Size (X.509) | Size (C509) | Size Reduction |
 |:--------------|:----------------------|:-----------|:-----------|:----------------------|
 | {{csr-ecdsa-p256}} | SignatureAlgorithm ECDSA With SHA256 | 253 | 164 | 35% |
 | {{csr-ecdsa-p384}} | SignatureAlgorithm ECDSA With SHA384 | 300 | 228 | 24% |
@@ -142,11 +158,15 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 | {{csr-dhsig-sha512}} | SignatureAlgorithm ECDH PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
 | {{csr-x25519}} | SignatureAlgorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
 | {{csr-x25519-withcert}} | SignatureAlgorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
-{: #tab-csr-examples-overview title="Size comparison of certification requests in examples (TODO: update the percent data)"}
+{: #tab-csr-examples-overview title="Size comparison of certification requests in examples"}
+
+As for certificates, the size reductions are not comparable across rows.
+
+{{sec-csr-different-attrs}} is not listed because it only refers to certification requests in other sections. The certification request in {{sec-csr-8byte}} is not listed because it has no X.509 counterpart.
 
 # CA Certificate {#sec-ca}
 
-- The CA uses an Ed25519 public key because the resulting signature is compact and deterministic.
+- The CA uses an Ed25519 key pair because the signatures it produces on the certificates it issues are compact and deterministic. The CA certificate itself is unsigned.
 - Signature algorithm: unsigned
 - Key: Ed25519
 
@@ -162,7 +182,7 @@ MC4CAQAwBQYDK2VwBCIEILRAHe59PSDnJqhejd8oytYWP0L6SU8kMSRdxzbDybzG
 ## X.509 Certificate {#x509-ca}
 
 [comment]: <> (replace-size:cert/ca/x509cert.pem)
-PEM content (249 bytes):
+PEM content (DER encoding: 249 bytes):
 
 [comment]: <> (replace-data:cert/ca/x509cert.pem)
 ~~~~~
@@ -210,7 +230,7 @@ Certificate:
 ## C509 Type 3 Certificate
 
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-ca}}.
-- Compared to the C509 type 2 certificate, the only differences are the certificate type, the signature value, and the public key identifier.
+- Compared to the C509 type 2 certificate, the only differences are the certificate type and the subject key identifier. The signature value is empty in both because the CA certificate is unsigned.
 
 [comment]: <> (replace-size:cert/ca/c509cert-t3.hex)
 Plain hex (101 bytes):
@@ -224,7 +244,7 @@ AF0C966FC53B9476B5C95D0EEAAEF764D9EFE86DB7320C36E18801547FCDB82D0495
 
 Annotated hex:
 
-- See the annotated hex for the C509 type 2 certificate in {{c509-ca}}. The only differences are the certificate type, the signature value, and the key identifiers.
+- See the annotated hex for the C509 type 2 certificate in {{c509-ca}}. The only differences are the certificate type and the subject key identifier.
 
 ## C509 Type 2 Certificate {#c509-ca}
 
@@ -313,7 +333,7 @@ bqJRmhxWlrumnw==
 ### X.509 Certificate {#x509-selfsign-rsa}
 
 [comment]: <> (replace-size:cert/selfsign-rsa/x509cert.pem)
-PEM content (464 bytes):
+PEM content (DER encoding: 464 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsa/x509cert.pem)
 ~~~~~
@@ -373,7 +393,7 @@ Certificate:
 ### C509 Type 3 Certificate
 
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-selfsign-rsa}}.
-- Compared to the C509 type 2 certificate, the only differences are the certificate type, the signature value, and the public key identifier.
+- Compared to the C509 type 2 certificate, the only differences are the certificate type, the signature value, and the key identifiers.
 
 [comment]: <> (replace-size:cert/selfsign-rsa/c509cert-t3.hex)
 Plain hex (284 bytes):
@@ -480,7 +500,7 @@ PmmbbqJRmhxWlrumnw==
 ### X.509 Certificate {#x509-selfsign-rsa-f5}
 
 [comment]: <> (replace-size:cert/selfsign-rsa-f5/x509cert.pem)
-PEM content (467 bytes):
+PEM content (DER encoding: 467 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsa-f5/x509cert.pem)
 ~~~~~
@@ -641,7 +661,7 @@ Q3jT81GUERXqvBvkzaxRD1pG7A==
 ### X.509 Certificate {#x509-selfsign-secp256r1}
 
 [comment]: <> (replace-size:cert/selfsign-secp256r1/x509cert.pem)
-PEM content (383 bytes):
+PEM content (DER encoding: 383 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-secp256r1/x509cert.pem)
 ~~~~~
@@ -713,7 +733,7 @@ CC10CE28B5ED9AC5FEE29542483B85E6243BC13F
 
 Annotated hex:
 
-- See the annotated hex for the C509 type 2 certificate in {{c509-selfsign-secp256r1}}. The only differences are the certificate type, the signature value, and the public key identifier.
+- See the annotated hex for the C509 type 2 certificate in {{c509-selfsign-secp256r1}}. The only differences are the certificate type, the signature value, and the key identifiers.
 
 ### C509 Type 2 Certificate {#c509-selfsign-secp256r1}
 
@@ -810,7 +830,7 @@ Plain hex (158 bytes):
 
 Annotated hex:
 
-- See the annotated hex for the C509 type 2 certificate in {{c509-selfsign-compress-secp256r1}}. The only differences are the certificate type, the signature value, and the public key identifier.
+- See the annotated hex for the C509 type 2 certificate in {{c509-selfsign-compress-secp256r1}}. The only differences are the certificate type, the signature value, and the key identifiers.
 
 ### C509 Type 2 Certificate {#c509-selfsign-compress-secp256r1}
 
@@ -892,7 +912,7 @@ MkRC62+05D/N4Hr8iGcZ6gaS2DwnwNLOUYwYlY1pT3I=
 ### X.509 Certificate {#x509-selfsign-secp384r1}
 
 [comment]: <> (replace-size:cert/selfsign-secp384r1/x509cert.pem)
-PEM content (539 bytes):
+PEM content (DER encoding: 539 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-secp384r1/x509cert.pem)
 ~~~~~
@@ -1095,7 +1115,7 @@ a/Y=
 ### X.509 Certificate {#x509-selfsign-secp521r1}
 
 [comment]: <> (replace-size:cert/selfsign-secp521r1/x509cert.pem)
-PEM content (811 bytes):
+PEM content (DER encoding: 811 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-secp521r1/x509cert.pem)
 ~~~~~
@@ -1372,7 +1392,7 @@ MEECAQAwEwYHKoZIzj0CAQYIKoEcz1UBgi0EJzAlAgEBBCDyTXt5dDKnqvBcKeAy
 ### X.509 Certificate {#x509-selfsign-sm2p256v1}
 
 [comment]: <> (replace-size:cert/selfsign-sm2p256v1/x509cert.pem)
-PEM content (644 bytes):
+PEM content (DER encoding: 644 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-sm2p256v1/x509cert.pem)
 ~~~~~
@@ -1583,7 +1603,7 @@ MEICAQAwFAYHKoZIzj0CAQYJKyQDAwIIAQEHBCcwJQIBAQQgiOJE752KYXs1GZ0/
 ### X.509 Certificate {#x509-selfsign-brainpoolp256r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp256r1/x509cert.pem)
-PEM content (646 bytes):
+PEM content (DER encoding: 646 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp256r1/x509cert.pem)
 ~~~~~
@@ -1805,7 +1825,7 @@ MFICAQAwFAYHKoZIzj0CAQYJKyQDAwIIAQELBDcwNQIBAQQwgGfwvtkU72CNx3/G
 ### X.509 Certificate {#x509-selfsign-brainpoolp384r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp384r1/x509cert.pem)
-PEM content (717 bytes):
+PEM content (DER encoding: 717 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp384r1/x509cert.pem)
 ~~~~~
@@ -2050,7 +2070,7 @@ tb9ctxRELipEw4kH0boqayh3PA02UW4leQ6yGuqx7iyWQKOzZYT5tnXlUqGh7jh/
 ### X.509 Certificate {#x509-selfsign-brainpoolp512r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp512r1/x509cert.pem)
-PEM content (779 bytes):
+PEM content (DER encoding: 779 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp512r1/x509cert.pem)
 ~~~~~
@@ -2275,7 +2295,7 @@ P/hE1jaAZ/C+2RTvYI3Hf8bZUf4h
 ### X.509 Certificate {#x509-selfsign-frp256v1}
 
 [comment]: <> (replace-size:cert/selfsign-frp256v1/x509cert.pem)
-PEM content (584 bytes):
+PEM content (DER encoding: 584 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-frp256v1/x509cert.pem)
 ~~~~~
@@ -2468,7 +2488,7 @@ MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
 - Issued by the CA in {{x509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x25519/x509cert.pem)
-PEM content (681 bytes):
+PEM content (DER encoding: 681 bytes):
 
 [comment]: <> (replace-data:cert/ee-x25519/x509cert.pem)
 ~~~~~
@@ -2699,7 +2719,7 @@ iOJE752KYXs1GZ0/+ETWNoBn8L7ZFO9g
 - Issued by the CA in {{x509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x448/x509cert.pem)
-PEM content (572 bytes):
+PEM content (DER encoding: 572 bytes):
 
 [comment]: <> (replace-data:cert/ee-x448/x509cert.pem)
 ~~~~~
@@ -2927,7 +2947,7 @@ MC4CAQAwBQYDK2VwBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
 ### X.509 Certificate {#x509-selfsign-ed25519}
 
 [comment]: <> (replace-size:cert/selfsign-ed25519/x509cert.pem)
-PEM content (784 bytes):
+PEM content (DER encoding: 784 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-ed25519/x509cert.pem)
 ~~~~~
@@ -3161,7 +3181,7 @@ iOJE752KYXs1GZ0/+ETWNoBn8L7ZFO9gjQ==
 ### X.509 Certificate {#x509-selfsign-ed448}
 
 [comment]: <> (replace-size:cert/selfsign-ed448/x509cert.pem)
-PEM content (503 bytes):
+PEM content (DER encoding: 503 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-ed448/x509cert.pem)
 ~~~~~
@@ -3330,7 +3350,7 @@ See {{key-selfsign-rsa}}.
 ### X.509 Certificate {#x509-selfsign-rsa-with-sha1}
 
 [comment]: <> (replace-size:cert/selfsign-rsa-with-sha1/x509cert.pem)
-PEM content (463 bytes):
+PEM content (DER encoding: 463 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsa-with-sha1/x509cert.pem)
 ~~~~~
@@ -3566,7 +3586,7 @@ See {{key-selfsign-rsa}}.
 ### X.509 Certificate {#x509-selfsign-rsa-with-sha512}
 
 [comment]: <> (replace-size:cert/selfsign-rsa-with-sha512/x509cert.pem)
-PEM content (467 bytes):
+PEM content (DER encoding: 467 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsa-with-sha512/x509cert.pem)
 ~~~~~
@@ -3712,7 +3732,7 @@ See {{key-selfsign-rsa}}.
 ### X.509 Certificate {#x509-selfsign-rsassa-pss-sha256}
 
 [comment]: <> (replace-size:cert/selfsign-rsassa-pss-sha256/x509cert.pem)
-PEM content (575 bytes):
+PEM content (DER encoding: 575 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsassa-pss-sha256/x509cert.pem)
 ~~~~~
@@ -3862,7 +3882,7 @@ See {{key-selfsign-rsa}}.
 ### X.509 Certificate {#x509-selfsign-rsassa-pss-sha384}
 
 [comment]: <> (replace-size:cert/selfsign-rsassa-pss-sha384/x509cert.pem)
-PEM content (575 bytes):
+PEM content (DER encoding: 575 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsassa-pss-sha384/x509cert.pem)
 ~~~~~
@@ -4037,7 +4057,7 @@ q1jQfu4/j1hEEg==
 ### X.509 Certificate {#x509-selfsign-rsassa-pss-sha512}
 
 [comment]: <> (replace-size:cert/selfsign-rsassa-pss-sha512/x509cert.pem)
-PEM content (703 bytes):
+PEM content (DER encoding: 703 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsassa-pss-sha512/x509cert.pem)
 ~~~~~
@@ -4207,7 +4227,7 @@ See {{key-selfsign-rsa}}.
 ### X.509 Certificate {#x509-selfsign-rsassa-pss-shake128}
 
 [comment]: <> (replace-size:cert/selfsign-rsassa-pss-shake128/x509cert.pem)
-PEM content (469 bytes):
+PEM content (DER encoding: 469 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsassa-pss-shake128/x509cert.pem)
 ~~~~~
@@ -4355,7 +4375,7 @@ See {{key-selfsign-rsassa-pss-sha512}}.
 ### X.509 Certificate {#x509-selfsign-rsassa-pss-shake256}
 
 [comment]: <> (replace-size:cert/selfsign-rsassa-pss-shake256/x509cert.pem)
-PEM content (597 bytes):
+PEM content (DER encoding: 597 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-rsassa-pss-shake256/x509cert.pem)
 ~~~~~
@@ -4860,26 +4880,28 @@ See {{selfsign-secp256r1}}.
 
 See {{selfsign-ed448}}.
 
-# Certificate With 8-Byte Integer Values
+# Certificate With 8-Byte Integer Values {#sec-cert-8byte}
 
-8-Byte Integer Values in
+This certificate uses 8-byte integer values in the following fields:
 
-- RDN Attribute Type
+- RDN attribute type
 - Extension ID
-- Extended Key Usage
-- Certificate Policy Identifier
+- Extended key usage
+- Certificate policy identifier
+
+No OID is associated with these integer values. The certificate therefore has no X.509 counterpart and cannot be encoded as a C509 type 3 certificate; only the C509 type 2 certificate is given.
 
 ## Private Key
 
-See {{key-selfsign-secp256r1}}
+See {{key-selfsign-secp256r1}}.
 
 ## X.509 Certificate
 
-N/A
+Not applicable.
 
 ## C509 Type 3 Certificate
 
-N/A
+Not applicable.
 
 ## C509 Type 2 Certificate
 
@@ -4982,7 +5004,7 @@ See {{key-selfsign-secp256r1}}.
 ## X.509 Certificate {#x509-unconvertible}
 
 [comment]: <> (replace-size:cert/unconvertible-secp256r1/x509cert.pem)
-PEM content (387 bytes)
+PEM content (DER encoding: 387 bytes):
 
 [comment]: <> (replace-data:cert/unconvertible-secp256r1/x509cert.pem)
 ~~~~~
@@ -5155,7 +5177,7 @@ See {{key-selfsign-secp256r1}}.
 ### X.509 Certification Request {#x509csr-ecdsa-p256}
 
 [comment]: <> (replace-size:csr/ecdsa-p256/x509csr.pem)
-PEM content (253 bytes):
+PEM content (DER encoding: 253 bytes):
 
 [comment]: <> (replace-data:csr/ecdsa-p256/x509csr.pem)
 ~~~~~
@@ -5272,7 +5294,7 @@ See {{key-selfsign-secp384r1}}.
 ### X.509 Certification Request {#x509csr-ecdsa-p384}
 
 [comment]: <> (replace-size:csr/ecdsa-p384/x509csr.pem)
-PEM content (300 bytes):
+PEM content (DER encoding: 300 bytes):
 
 [comment]: <> (replace-data:csr/ecdsa-p384/x509csr.pem)
 ~~~~~
@@ -5336,7 +5358,7 @@ AD10E2C4363C5A5849E296FE51AAB9BFD03AB038D33418A0BCD83280ABA0BD910401
 
 Annotated hex:
 
-[comment]: <> (replace-data:csr/ecdsa-p384/c509csr-t2.diag)
+[comment]: <> (replace-data:csr/ecdsa-p384/c509csr-t3.diag)
 ~~~~~
   0: 87             # C509CertificationRequest=array[7]
   1:   02             # [0]. c509CertificationRequestType=2
@@ -5390,7 +5412,7 @@ Nyvkz9ca/kKUfUPG7W+OGX6ZCQ==
 - The peer private key and certificate are given in {{key-selfsign-secp256r1}} and {{x509-selfsign-secp256r1}}.
 
 [comment]: <> (replace-size:csr/dhsig-sha256/x509csr.pem)
-PEM content (206 bytes):
+PEM content (DER encoding: 206 bytes):
 
 [comment]: <> (replace-data:csr/dhsig-sha256/x509csr.pem)
 ~~~~~
@@ -5509,7 +5531,7 @@ ME4CAQAwEAYHKoZIzj0CAQYFK4EEACIENzA1AgEBBDBUbYpmsdFTjH5242lnccrR
 - The peer private key and certificate are given in {{key-selfsign-secp384r1}} and {{x509-selfsign-secp384r1}}.
 
 [comment]: <> (replace-size:csr/dhsig-sha384/x509csr.pem)
-PEM content (261 bytes):
+PEM content (DER encoding: 261 bytes):
 
 [comment]: <> (replace-data:csr/dhsig-sha384/x509csr.pem)
 ~~~~~
@@ -5641,7 +5663,7 @@ LA==
 - The peer private key and certificate are given in {{key-selfsign-secp521r1}} and {{x509-selfsign-secp521r1}}.
 
 [comment]: <> (replace-size:csr/dhsig-sha512/x509csr.pem)
-PEM content (278 bytes):
+PEM content (DER encoding: 278 bytes):
 
 [comment]: <> (replace-data:csr/dhsig-sha512/x509csr.pem)
 ~~~~~
@@ -5767,7 +5789,7 @@ MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
 ### X.509 Certification Request {#x509csr-x25519}
 
 [comment]: <> (replace-size:csr/x25519/x509csr.pem)
-PEM content (135 bytes):
+PEM content (DER encoding: 135 bytes):
 
 [comment]: <> (replace-data:csr/x25519/x509csr.pem)
 ~~~~~
@@ -5871,7 +5893,7 @@ MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
 ### X.509 Certification Request {#x509csr-x25519-withcert}
 
 [comment]: <> (replace-size:csr/x25519-withcert/x509csr.pem)
-PEM content (433 bytes):
+PEM content (DER encoding: 433 bytes):
 
 [comment]: <> (replace-data:csr/x25519-withcert/x509csr.pem)
 ~~~~~
@@ -6041,11 +6063,11 @@ See {{csr-x25519}}.
 
 See {{csr-x25519-withcert}}.
 
-# Certification Request With 8-Byte Identifiers
+# Certification Request With 8-Byte Identifiers {#sec-csr-8byte}
 
-8-Byte Integer Values in
+This certification request uses an 8-byte integer value as CR attribute type.
 
-- CR Attribute Type
+No OID is associated with this integer value. The certification request therefore has no X.509 counterpart and cannot be encoded as a C509 type 3 certification request; only the C509 type 2 certification request is given.
 
 ## Private Key
 
@@ -6053,11 +6075,11 @@ See {{key-selfsign-secp256r1}}.
 
 ## X.509 Certification Request
 
-N/A
+Not applicable.
 
 ## C509 Type 3 Certification Request
 
-N/A
+Not applicable.
 
 ## C509 Type 2 Certification Request
 
@@ -6155,7 +6177,7 @@ Plain hex (18 bytes):
 Annotated hex:
 
 [comment]: <> (replace-data:csrt/oneelement-csrt/c509csrt.diag)
-~~~~
+~~~~~
  0: 87             # C509CertificationRequestTemplate=array[7]
  1:   00             # [0]. c509CertificationRequestTemplateType=0
  2:   81             # [1]. c509CertificationRequestType=array[1]
@@ -6176,7 +6198,7 @@ Annotated hex:
 15:     03             # [0]. type=SubjectAlternativeName (3)
 16:     F4             # [1]. required
 17:     F7             # [2]. value=<undefined>
-~~~~
+~~~~~
 
 ## Complex Template {#complex-csrt}
 
@@ -6300,7 +6322,7 @@ FFFFFFFFFFF4F7
 Annotated hex:
 
 [comment]: <> (replace-data:csrt/8byte-id-csrt/c509csrt.diag)
-~~~~
+~~~~~
  0: 87             # C509CertificationRequestTemplate=array[7]
  1:   00             # [0]. c509CertificationRequestTemplateType=0
  2:   81             # [1]. c509CertificationRequestType=array[1]
@@ -6331,13 +6353,13 @@ Annotated hex:
                             #      (8142508126285856767)
 39:     F4             # [4]. required
 40:     F7             # [5]. value=<undefined>
-~~~~
+~~~~~
 
 # Security Considerations
 
 The private keys shown in this document are for example purposes only. They are not secret and MUST NOT be used in deployments.
 
-The examples use 1024-bit or 1536-bit RSA keys and reuse key pairs to keep the examples compact. In deployments, key pairs are expected to be generated uniquely and not reused. The examples also use RSA PKCS#1 v1.5 signatures and SHA-1 to cover all signature algorithms defined in [I-D.ietf-cose-cbor-encoded-cert]. These choices do not reflect current state-of-the-art security recommendations; at the time of writing, RSA keys of at least 3072 bits, stronger hash functions, and RSA-PSS are required for adequate security.
+The examples use 1024-bit or 1536-bit RSA keys and reuse key pairs to keep the examples compact. In deployments, key pairs are expected to be generated uniquely and not reused. The examples also use RSA PKCS#1 v1.5 signatures and SHA-1 to cover all signature algorithms defined in {{I-D.ietf-cose-cbor-encoded-cert}}. These choices do not reflect current state-of-the-art security recommendations; at the time of writing, RSA keys of at least 3072 bits, stronger hash functions, and RSA-PSS are required for adequate security.
 
 # Privacy Considerations
 
@@ -6350,12 +6372,12 @@ There are no IANA considerations.
 --- back
 
 # Acknowledgments {#acknowledgment}
-{: numbered="no"}
+{:numbered="false"}
 
 The authors thank Marco Tiloca for reviewing and commenting on intermediate versions of the draft.
 
 # Change log
-{:unnumbered}
+{:numbered="false"}
 
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
 
@@ -6364,11 +6386,12 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 
 - Align with draft-ietf-cose-cbor-encoded-cert-21
   - Remove extension Subject Directory Attributes
-- Add examples with values in the range [2^32, 2^63 - 1] and [-2^32, -2^63]
+- Add examples with values in the range \[2^32, 2^63 - 1\] and \[-2^32, -2^63\]
 - Replace abc.com with abc.example.com
 - Add Section Overview
-- Better annotated Hex
-- Merge separate leading line with only "8B" / "87" with other lines in the hex block.
+- Add section "Location of Test Vectors"
+- Improve annotated hex
+- Merge separate leading line with only "8B" / "87" with other lines in the hex block
 
 ## Since draft-ietf-cose-c509-test-vectors-01
 {:numbered="false"}
@@ -6380,7 +6403,7 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
   - 0x87 for C509CertificationRequest
   - 0x87 for C509CertificationRequestTemplate
 
-- Better indention for extensions, RDN attributes, CR attributes, certificate policies, etc.
+- Better indentation for extensions, RDN attributes, CR attributes, certificate policies, etc.
 
 - Fixed examples
   - Section 3.6: replace the empty subject of the self-signed certificate with non-empty one.
