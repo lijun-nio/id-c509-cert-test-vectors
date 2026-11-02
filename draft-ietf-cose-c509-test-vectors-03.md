@@ -1809,7 +1809,7 @@ Annotated hex:
   - title
   - name
 - Extensions:
-  - IPAddrBlocks with non-null `SAFI` and IntIPAddressChoice`
+  - IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
   - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
 
 ### Private Key
@@ -4823,7 +4823,7 @@ See {{ee-x25519}}.
 
   See {{selfsign-brainpoolp256r1}}.
 
-- IPAddrBlocks with non-null `SAFI` and IntIPAddressChoice`
+- IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
 - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
 
   See {{selfsign-brainpoolp384r1}}.
