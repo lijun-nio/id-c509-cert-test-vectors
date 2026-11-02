@@ -125,12 +125,12 @@ The test vectors in this document can also be found at <https://github.com/lijun
 | {{selfsign-secp384r1}} | Weierstrass EC Public Key On Curve secp384r1 | 539 | 309 | 43% |
 | {{selfsign-secp521r1}} | Weierstrass EC Public Key On Curve secp521r1 | 811 | 531 | 35% |
 | {{selfsign-sm2p256v1}} | Weierstrass EC Public Key On Curve sm2p256v1 | 644 | 326 | 49% |
-| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 577 | 246 | 57% |
-| {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 717 | 406 | 43% |
+| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 527 | 234 | 56% |
+| {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 558 | 291 | 48% |
 | {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 779 | 421 | 46% |
 | {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
-| {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 747 | 477 | 36% |
-| {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 572 | 367 | 36% |
+| {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 798 | 487 | 39% |
+| {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 732 | 480 | 34% |
 | {{selfsign-ed25519}} | Edwards EC Public Key On Curve ED25519 | 784 | 384 | 51% |
 | {{selfsign-ed448}} | Edwards EC Public Key On Curve ED448 | 503 | 261 | 48% |
 | {{selfsign-rsa-with-sha1}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
@@ -1584,9 +1584,7 @@ Annotated hex:
   - locality
   - postalCode
   - street
-- Extensions:
-  - ASIdentifiers
-  - ASIdentifiers V2
+- Extensions: a single non-critical `keyUsage` extension
 
 ### Private Key
 
@@ -1601,12 +1599,12 @@ MEICAQAwFAYHKoZIzj0CAQYJKyQDAwIIAQEHBCcwJQIBAQQgiOJE752KYXs1GZ0/
 ### X.509 Certificate {#x509-selfsign-brainpoolp256r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp256r1/x509cert.pem)
-PEM content (DER encoding: 577 bytes):
+PEM content (DER encoding: 527 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp256r1/x509cert.pem)
 ~~~~~
 -----BEGIN CERTIFICATE-----
-MIICPTCCAeWgAwIBAgICEjQwCgYIKwYBBQUHBiAwgYUxITAfBgNVBAMMGHNlbGZz
+MIICCzCCAbKgAwIBAgICEjQwCgYIKwYBBQUHBiAwgYUxITAfBgNVBAMMGHNlbGZz
 aWduLWJyYWlucG9vbHAyNTZyMTELMAkGA1UEBgwCREUxFDASBgNVBAcMC215IGxv
 Y2FsaXR5MREwDwYDVQQIDAhteSBzdGF0ZTESMBAGA1UECQwJbXkgc3RyZWV0MRYw
 FAYDVQQRDA1teSBwb3N0YWxDb2RlMB4XDTI1MDEwMjAwMDAwMFoXDTI2MDEwMjAw
@@ -1614,11 +1612,9 @@ MDAwMFowgYUxITAfBgNVBAMMGHNlbGZzaWduLWJyYWlucG9vbHAyNTZyMTELMAkG
 A1UEBgwCREUxFDASBgNVBAcMC215IGxvY2FsaXR5MREwDwYDVQQIDAhteSBzdGF0
 ZTESMBAGA1UECQwJbXkgc3RyZWV0MRYwFAYDVQQRDA1teSBwb3N0YWxDb2RlMFow
 FAYHKoZIzj0CAQYJKyQDAwIIAQEHA0IABHewd0Eu6YlQd57Ygv/LFkjgFCcjVEaW
-JPW84vFPMkKtSsxWhqhlCNWftyn9wpgRGI2L8BbOSlFRBU2viIxI1e2jQjBAMAsG
-A1UdDwQEAwIHgDAdBggrBgEFBQcBCAQRMA+gDTALAgECMAYCAQUCAQgwEgYIKwYB
-BQUHAR0EBjAEoAIFADAKBggrBgEFBQcGIANGADBDAh9bN1DxvMsKIAo61b5t+z2D
-VWwZqrH+XjOIvcThkJFHAiAqvXjTe61WI//ffXldwpkdiArkACI8C6WLiw2I2ekg
-kg==
+JPW84vFPMkKtSsxWhqhlCNWftyn9wpgRGI2L8BbOSlFRBU2viIxI1e2jDzANMAsG
+A1UdDwQEAwIHgDAKBggrBgEFBQcGIANHADBEAiBuzxOwqWfKHcdRcIhj1VGGfjkH
+rA+Ga0GOw9cXwoS7UQIgeioLi4+iXL7ugxzclkXiqMOPRnJpmVriZn/oQkUvj+I=
 -----END CERTIFICATE-----
 ~~~~~
 
@@ -1647,18 +1643,12 @@ Certificate:
   X509v3 extensions:
     X509v3 keyUsage:
       digitalSignature
-    X509v3 sbgp-autonomousSysNum:
-      Autonomous System Numbers:
-        2
-        5-8
-    X509v3 sbgp-autonomousSysNumV2:
-      Autonomous System Numbers: inherit
   Signature Algorithm: SHAKE128WITHECDSA
   Signature Value:
-    30:43:02:1f:5b:37:50:f1:bc:cb:0a:20:0a:3a:d5:be:6d:fb:
-    3d:83:55:6c:19:aa:b1:fe:5e:33:88:bd:c4:e1:90:91:47:02:
-    20:2a:bd:78:d3:7b:ad:56:23:ff:df:7d:79:5d:c2:99:1d:88:
-    0a:e4:00:22:3c:0b:a5:8b:8b:0d:88:d9:e9:20:92
+    30:44:02:20:6e:cf:13:b0:a9:67:ca:1d:c7:51:70:88:63:d5:
+    51:86:7e:39:07:ac:0f:86:6b:41:8e:c3:d7:17:c2:84:bb:51:
+    02:20:7a:2a:0b:8b:8f:a2:5c:be:ee:83:1c:dc:96:45:e2:a8:
+    c3:8f:46:72:69:99:5a:e2:66:7f:e8:42:45:2f:8f:e2
 ~~~~~
 
 ### C509 Type 3 Certificate
@@ -1666,7 +1656,7 @@ Certificate:
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-selfsign-brainpoolp256r1}}.
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp256r1/c509cert-t3.hex)
-Plain hex (246 bytes):
+Plain hex (234 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp256r1/c509cert-t3.hex)
 ~~~~~
@@ -1674,10 +1664,9 @@ Plain hex (246 bytes):
 6E706F6F6C70323536723104624445056B6D79206C6F63616C69747906686D792073
 7461746507696D79207374726565740C6D6D7920706F7374616C436F646518185841
 0477B077412EE98950779ED882FFCB1648E014272354469624F5BCE2F14F3242AD4A
-CC5686A86508D59FB729FDC29811188D8BF016CE4A5151054DAF888C48D5ED860201
-182182028203031823F65840005B3750F1BCCB0A200A3AD5BE6DFB3D83556C19AAB1
-FE5E3388BDC4E19091472ABD78D37BAD5623FFDF7D795DC2991D880AE400223C0BA5
-8B8B0D88D9E92092
+CC5686A86508D59FB729FDC29811188D8BF016CE4A5151054DAF888C48D5ED015840
+6ECF13B0A967CA1DC751708863D551867E3907AC0F866B418EC3D717C284BB517A2A
+0B8B8FA25CBEEE831CDC9645E2A8C38F467269995AE2667FE842452F8FE2
 ~~~~~
 
 Annotated hex:
@@ -1687,7 +1676,7 @@ Annotated hex:
 ### C509 Type 2 Certificate {#c509-selfsign-brainpoolp256r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp256r1/c509cert-t2.hex)
-Plain hex (246 bytes):
+Plain hex (234 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp256r1/c509cert-t2.hex)
 ~~~~~
@@ -1695,10 +1684,9 @@ Plain hex (246 bytes):
 6E706F6F6C70323536723104624445056B6D79206C6F63616C69747906686D792073
 7461746507696D79207374726565740C6D6D7920706F7374616C436F646518185841
 0477B077412EE98950779ED882FFCB1648E014272354469624F5BCE2F14F3242AD4A
-CC5686A86508D59FB729FDC29811188D8BF016CE4A5151054DAF888C48D5ED860201
-182182028203031823F65840161FCB5522009F98BA30D41CE37A39AE629EF866ABC4
-387960D8F13C72DAC2C83A3118EEF5C859E499A6DCB2FB3895A7E3B104BDE802EFB9
-D67C637400D62AE8
+CC5686A86508D59FB729FDC29811188D8BF016CE4A5151054DAF888C48D5ED015840
+59752E7778EE3554514B2AE659C7AAA9D05EFA187040175BC4E8BC370719F7EC1CF4
+CD207025D829F044D2345144A5EFF51EEC84FDF842BEB7BF2A7DC398C2FF
 ~~~~~
 
 Annotated hex:
@@ -1747,24 +1735,12 @@ Annotated hex:
 102:     0477B077412EE98950779ED882FFCB1648E014272354469624F5BCE2F1
 131:     4F3242AD4ACC5686A86508D59FB729FDC29811188D8BF016CE4A515105
 160:     4DAF888C48D5ED
-167:   86             # [9]. extensions=array[6]
-                        #---extension[0]---
-168:     02             # [0]. type=KeyUsage (2)
-169:     01             # [1]. value=1: [digitalSignature]
-                        #---extension[1]---
-170:     18 21          # [2]. type=ASIdentifiers (33)
-172:     82             # [3]. value=array[2]
-173:       02             # [0]. id=2
-174:       82             # [1]. range=array[2]
-175:         03             # [0]. min=3
-176:         03             # [1]. max=3
-                        #---extension[2]---
-177:     18 23          # [4]. type=ASIdentifiersV2 (35)
-179:     F6             # [5]. value=<null>
-180:   58 40          # [10]. signature value=byte[64]
-182:     161FCB5522009F98BA30D41CE37A39AE629EF866ABC4387960D8F13C72
-211:     DAC2C83A3118EEF5C859E499A6DCB2FB3895A7E3B104BDE802EFB9D67C
-240:     637400D62AE8
+167:   01             # [9]. extensions=1, KeyUsage:
+                      #      [digitalSignature]
+168:   58 40          # [10]. signature value=byte[64]
+170:     59752E7778EE3554514B2AE659C7AAA9D05EFA187040175BC4E8BC3707
+199:     19F7EC1CF4CD207025D829F044D2345144A5EFF51EEC84FDF842BEB7BF
+228:     2A7DC398C2FF
 ~~~~~
 
 ## Weierstrass EC Public Key On Curve brainpoolP384r1 {#selfsign-brainpoolp384r1}
@@ -1778,8 +1754,7 @@ Annotated hex:
   - title
   - name
 - Extensions:
-  - IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
-  - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
+  - Extensions: a single critical `keyUsage` extension
 
 ### Private Key
 
@@ -1794,12 +1769,12 @@ MFICAQAwFAYHKoZIzj0CAQYJKyQDAwIIAQELBDcwNQIBAQQwgGfwvtkU72CNx3/G
 ### X.509 Certificate {#x509-selfsign-brainpoolp384r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp384r1/x509cert.pem)
-PEM content (DER encoding: 717 bytes):
+PEM content (DER encoding: 558 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp384r1/x509cert.pem)
 ~~~~~
 -----BEGIN CERTIFICATE-----
-MIICyTCCAlCgAwIBAgICEjQwCgYIKoZIzj0EAwMwdDEhMB8GA1UEAwwYc2VsZnNp
+MIICKjCCAbGgAwIBAgICEjQwCgYIKoZIzj0EAwMwdDEhMB8GA1UEAwwYc2VsZnNp
 Z24tYnJhaW5wb29scDM4NHIxMRMwEQYDVQQEDApteSBzdXJuYW1lMREwDwYDVQQM
 DAhteSB0aXRsZTEVMBMGA1UEKgwMbXkgZ2l2ZW5OYW1lMRAwDgYDVQQpDAdteSBu
 YW1lMB4XDTI1MDEwMjAwMDAwMFoXDTI2MDEwMjAwMDAwMFowdDEhMB8GA1UEAwwY
@@ -1807,13 +1782,10 @@ c2VsZnNpZ24tYnJhaW5wb29scDM4NHIxMRMwEQYDVQQEDApteSBzdXJuYW1lMREw
 DwYDVQQMDAhteSB0aXRsZTEVMBMGA1UEKgwMbXkgZ2l2ZW5OYW1lMRAwDgYDVQQp
 DAdteSBuYW1lMHowFAYHKoZIzj0CAQYJKyQDAwIIAQELA2IABGcJyZKRm0nEj9kx
 0FxJfThl5ghMkd86TH54H0GFQ7Aj1Z6L8l0TP7GglOnULI+m7TtG6Yg6NavUsKnT
-Cq79m36I7TgAVl0efwYzE01lGSktSb1V7DChZxl/7A90KYIrlaOBsDCBrTALBgNV
-HQ8EBAMCB4AwSAYIKwYBBQUHAQcEPDA6MBkEAgABMBMDBADAAAIDBQTGM2QAAwQA
-ywBxMB0EAgACMBcDBwAgAQ24EjQwDAMEAD//BgMEAD//DzBUBggrBgEFBQcBHARI
-MEYwGgQDAAEBMBMDBADAAAIDBQTGM2QAAwQAywBxMCgEAwACATAhAwcAIAENuBI0
-MBYDBQA//wADAw0AP/8BIgAAIjMzRFVmMAoGCCqGSM49BAMDA2cAMGQCMGcJyZKR
-m0nEj9kx0FxJfThl5ghMkd86TH54H0GFQ7Aj1Z6L8l0TP7GglOnULI+m7QIwIO2f
-21owmyyHBN2l8UTxe7MWuYwpEST7pc/sbvl/JogGmubFLis84iMSjdEMKqcw
+Cq79m36I7TgAVl0efwYzE01lGSktSb1V7DChZxl/7A90KYIrlaMSMBAwDgYDVR0P
+AQH/BAQDAgeAMAoGCCqGSM49BAMDA2cAMGQCMGcJyZKRm0nEj9kx0FxJfThl5ghM
+kd86TH54H0GFQ7Aj1Z6L8l0TP7GglOnULI+m7QIwK4rcr5jkkQDb6UeKoTxlPjLG
+K5eBBWS+dQB1z56kdXIh4ie/JgiO/lyINsIHWGk6
 -----END CERTIFICATE-----
 ~~~~~
 
@@ -1842,32 +1814,16 @@ Certificate:
       7f:06:33:13:4d:65:19:29:2d:49:bd:55:ec:30:a1:67:19:7f:
       ec:0f:74:29:82:2b:95
   X509v3 extensions:
-    X509v3 keyUsage:
+    X509v3 keyUsage: critical
       digitalSignature
-    X509v3 sbgp-ipAddrBlock:
-      IPv4:
-        192.0.2.0/24
-        198.51.100.0/28
-        203.0.113.0/24
-      IPv6:
-        2001:db8:1234::/48
-        3fff:600:: - 3fff:fff:ffff:ffff:ffff:ffff:ffff:ffff
-    X509v3 sbgp-ipAddrBlockV2:
-      IPv4 unicast:
-        192.0.2.0/24
-        198.51.100.0/28
-        203.0.113.0/24
-      IPv6 unicast:
-        2001:db8:1234::/48
-        3fff:3:: - 3fff:122:0:2233:3344:5566:ffff:ffff
   Signature Algorithm: SHA384WITHECDSA
   Signature Value:
     30:64:02:30:67:09:c9:92:91:9b:49:c4:8f:d9:31:d0:5c:49:
     7d:38:65:e6:08:4c:91:df:3a:4c:7e:78:1f:41:85:43:b0:23:
     d5:9e:8b:f2:5d:13:3f:b1:a0:94:e9:d4:2c:8f:a6:ed:02:30:
-    20:ed:9f:db:5a:30:9b:2c:87:04:dd:a5:f1:44:f1:7b:b3:16:
-    b9:8c:29:11:24:fb:a5:cf:ec:6e:f9:7f:26:88:06:9a:e6:c5:
-    2e:2b:3c:e2:23:12:8d:d1:0c:2a:a7:30
+    2b:8a:dc:af:98:e4:91:00:db:e9:47:8a:a1:3c:65:3e:32:c6:
+    2b:97:81:05:64:be:75:00:75:cf:9e:a4:75:72:21:e2:27:bf:
+    26:08:8e:fe:5c:88:36:c2:07:58:69:3a
 ~~~~~
 
 ### C509 Type 3 Certificate
@@ -1875,7 +1831,7 @@ Certificate:
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-selfsign-brainpoolp384r1}}.
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp384r1/c509cert-t3.hex)
-Plain hex (406 bytes):
+Plain hex (291 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp384r1/c509cert-t3.hex)
 ~~~~~
@@ -1884,13 +1840,10 @@ Plain hex (406 bytes):
 6C6D7920676976656E4E616D651819676D79206E616D6518195861046709C992919B
 49C48FD931D05C497D3865E6084C91DF3A4C7E781F418543B023D59E8BF25D133FB1
 A094E9D42C8FA6ED3B46E9883A35ABD4B0A9D30AAEFD9B7E88ED3800565D1E7F0633
-134D6519292D49BD55EC30A167197FEC0F7429822B9586020118208601F6831A01C0
-00021B00000005C47363FE3B00000005C468638E02F6821B000120010DB81234823B
-000120010C78132D091822860101831A01C000021B00000005C47363FE3B00000005
-C468638E020182470020010DB812348245003FFF00034D003FFF0122000022333344
-556658606709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F418543
-B023D59E8BF25D133FB1A094E9D42C8FA6ED20ED9FDB5A309B2C8704DDA5F144F17B
-B316B98C291124FBA5CFEC6EF97F2688069AE6C52E2B3CE223128DD10C2AA730
+134D6519292D49BD55EC30A167197FEC0F7429822B952058606709C992919B49C48F
+D931D05C497D3865E6084C91DF3A4C7E781F418543B023D59E8BF25D133FB1A094E9
+D42C8FA6ED2B8ADCAF98E49100DBE9478AA13C653E32C62B97810564BE750075CF9E
+A4757221E227BF26088EFE5C8836C20758693A
 ~~~~~
 
 Annotated hex:
@@ -1900,7 +1853,7 @@ Annotated hex:
 ### C509 Type 2 Certificate {#c509-selfsign-brainpoolp384r1}
 
 [comment]: <> (replace-size:cert/selfsign-brainpoolp384r1/c509cert-t2.hex)
-Plain hex (406 bytes):
+Plain hex (291 bytes):
 
 [comment]: <> (replace-data:cert/selfsign-brainpoolp384r1/c509cert-t2.hex)
 ~~~~~
@@ -1909,13 +1862,10 @@ Plain hex (406 bytes):
 6C6D7920676976656E4E616D651819676D79206E616D6518195861046709C992919B
 49C48FD931D05C497D3865E6084C91DF3A4C7E781F418543B023D59E8BF25D133FB1
 A094E9D42C8FA6ED3B46E9883A35ABD4B0A9D30AAEFD9B7E88ED3800565D1E7F0633
-134D6519292D49BD55EC30A167197FEC0F7429822B9586020118208601F6831A01C0
-00021B00000005C47363FE3B00000005C468638E02F6821B000120010DB81234823B
-000120010C78132D091822860101831A01C000021B00000005C47363FE3B00000005
-C468638E020182470020010DB812348245003FFF00034D003FFF0122000022333344
-556658606709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F418543
-B023D59E8BF25D133FB1A094E9D42C8FA6ED01853890E65008EADEEAB4914203C9AE
-8EC9DA8908B30BFA61E9A1618C2047C3ECF3BAB63E2008D66C9DE3B4F3AE0193
+134D6519292D49BD55EC30A167197FEC0F7429822B952058606709C992919B49C48F
+D931D05C497D3865E6084C91DF3A4C7E781F418543B023D59E8BF25D133FB1A094E9
+D42C8FA6ED044B66390705F1CA0A28E46FE52335870695F63EC8361EC46BB9AF5FA0
+E7A3C19D4C9DED6C7F83EA83F837922AE10833
 ~~~~~
 
 Annotated hex:
@@ -1961,55 +1911,13 @@ Annotated hex:
 124:     8543B023D59E8BF25D133FB1A094E9D42C8FA6ED3B46E9883A35ABD4B0
 153:     A9D30AAEFD9B7E88ED3800565D1E7F0633134D6519292D49BD55EC30A1
 182:     67197FEC0F7429822B95
-192:   86             # [9]. extensions=array[6]
-                        #---extension[0]---
-193:     02             # [0]. type=KeyUsage (2)
-194:     01             # [1]. value=1: [digitalSignature]
-                        #---extension[1]---
-195:     18 20          # [2]. type=IPAddrBlocks (32)
-197:     86             # [3]. value=array[6]
-                          #---IPAddrBlocks[0]---
-198:       01             # [0]. AFI=1: IPv4
-199:       F6             # [1]. SAFI=<null>
-200:       83             # [2]. IntIPAddressChoice=array[3]
-201:         1A 01C00002    # [0]. AddressPrefix=29360130
-206:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
-215:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
-                          #---IPAddrBlocks[1]---
-224:       02             # [3]. AFI=2: IPv6
-225:       F6             # [4]. SAFI=<null>
-226:       82             # [5]. IntIPAddressChoice=array[2]
-227:         1B 000120010DB81234 # [0]. AddressPrefix=31666387393387
-                                 #      6
-236:         82             # [1]. AddressRange=array[2]
-237:           3B 000120010C78132D # [0]. min=-316663852962606
-246:           09             # [1]. max=9
-                        #---extension[2]---
-247:     18 22          # [4]. type=IPAddrBlocksV2 (34)
-249:     86             # [5]. value=array[6]
-                          #---IPAddrBlocks[0]---
-250:       01             # [0]. AFI=1: IPv4
-251:       01             # [1]. SAFI=1: unicast
-252:       83             # [2]. IntIPAddressChoice=array[3]
-253:         1A 01C00002    # [0]. AddressPrefix=29360130
-258:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
-267:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
-                          #---IPAddrBlocks[1]---
-276:       02             # [3]. AFI=2: IPv6
-277:       01             # [4]. SAFI=1: unicast
-278:       82             # [5]. IPAddressChoice=array[2]
-279:         47             # [0]. AddressPrefix=byte[7]
-280:           0020010DB81234
-287:         82             # [1]. AddressRange=array[2]
-288:           45             # [0]. min=byte[5]
-289:             003FFF0003
-294:           4D             # [1]. max=byte[13]
-295:             003FFF01220000223333445566
-308:   58 60          # [10]. signature value=byte[96]
-310:     6709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F4185
-339:     43B023D59E8BF25D133FB1A094E9D42C8FA6ED01853890E65008EADEEA
-368:     B4914203C9AE8EC9DA8908B30BFA61E9A1618C2047C3ECF3BAB63E2008
-397:     D66C9DE3B4F3AE0193
+192:   20             # [9]. extensions=-1, KeyUsage, critical:
+                      #      [digitalSignature]
+193:   58 60          # [10]. signature value=byte[96]
+195:     6709C992919B49C48FD931D05C497D3865E6084C91DF3A4C7E781F4185
+224:     43B023D59E8BF25D133FB1A094E9D42C8FA6ED044B66390705F1CA0A28
+253:     E46FE52335870695F63EC8361EC46BB9AF5FA0E7A3C19D4C9DED6C7F83
+282:     EA83F837922AE10833
 ~~~~~
 
 ## Weierstrass EC Public Key On Curve brainpoolP512r1 {#selfsign-brainpoolp512r1}
@@ -2439,6 +2347,8 @@ Annotated hex:
 
 - X25519 public key
 - Extensions
+  - ASIdentifiers
+  - ASIdentifiers V2
   - IPAddrBlocks with `SAFI` = `null` and IP Address Choice = `null`
   - IPAddrBlocks V2 with `SAFI` = `null` and IP Address Choice = `null`
   - authorityKeyIdentifier containing only the `keyIdentifier` component
@@ -2459,14 +2369,14 @@ MC4CAQAwBQYDK2VuBCIEIPJNe3l0Mqeq8Fwp4DL6opcnehT4qMe0d+/4nSIVodQc
 - Issued by the CA in {{x509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x25519/x509cert.pem)
-PEM content (DER encoding: 747 bytes):
+PEM content (DER encoding: 798 bytes):
 
 [comment]: <> (replace-data:cert/ee-x25519/x509cert.pem)
 ~~~~~
 -----BEGIN CERTIFICATE-----
-MIIC5zCCApmgAwIBAgICEjQwBQYDK2VwMBIxEDAOBgNVBAMMB3Rlc3QgY2EwHhcN
+MIIDGjCCAsygAwIBAgICEjQwBQYDK2VwMBIxEDAOBgNVBAMMB3Rlc3QgY2EwHhcN
 MjUwMTAyMDAwMDAwWhcNMjYwMTAyMDAwMDAwWjAAMCowBQYDK2VuAyEAiv9Rb6xx
-JEFQ5w+Sd/St9/sp9Bp6SogovUdnIvwbfwijggIjMIICHzALBgNVHQ8EBAMCAygw
+JEFQ5w+Sd/St9/sp9Bp6SogovUdnIvwbfwijggJWMIICUjALBgNVHQ8EBAMCAygw
 HwYDVR0jBBgwFoAUf824LQSVLho2uQrzejzxZtFe+SEwggGTBggrBgEFBQcBAQSC
 AYUwggGBMCMGCCsGAQUFBzABhhdodHRwOi8vb2NzcC5leGFtcGxlLmNvbTAoBggr
 BgEFBQcwAoYcaHR0cDovL2NhaXNzdWVycy5leGFtcGxlLmNvbTArBggrBgEFBQcw
@@ -2477,9 +2387,10 @@ L3Jwa2ltYW5pZmVzdC5leGFtcGxlLmNvbTArBggrBgEFBQcwC4YfaHR0cDovL3Np
 Z25lZG9iamVjdC5leGFtcGxlLmNvbTApBggrBgEFBQcwDYYdaHR0cDovL3Jwa2lu
 b3RpZnkuZXhhbXBsZS5jb20wJAYJKwYBBAGB/VkDhhdodHRwOi8vMTIzNC5leGFt
 cGxlLmNvbTAWBgNVHRIEDzANggtleGFtcGxlLmNvbTAeBggrBgEFBQcBBwQSMBAw
-BgQCAAEFADAGBAIAAgUAMCAGCCsGAQUFBwEcBBQwEjAHBAMAAQEFADAHBAMAAgEF
-ADAFBgMrZXADQQALr/Q9I/6WuQTY3TjOE5tmq6qzyMZqq8fjwnaNx0Z+tA9gQ6rW
-683ER0jFD1MgTINjvEaqoM/cciSptJtcHRoJ
+BgQCAAEFADAGBAIAAgUAMB0GCCsGAQUFBwEIBBEwD6ANMAsCAQIwBgIBBQIBCDAg
+BggrBgEFBQcBHAQUMBIwBwQDAAEBBQAwBwQDAAIBBQAwEgYIKwYBBQUHAR0EBjAE
+oAIFADAFBgMrZXADQQCcW5no7y3X/5sF08jQrXp+aPjk1tJuBUiZQiwZXmEG/8c1
+iJqN4SR8WLAZBUSZFOgjdm7pzZ64m+eQa8DDg1kG
 -----END CERTIFICATE-----
 ~~~~~
 
@@ -2521,15 +2432,21 @@ Certificate:
     X509v3 sbgp-ipAddrBlock:
       IPv4: inherit
       IPv6: inherit
+    X509v3 sbgp-autonomousSysNum:
+      Autonomous System Numbers:
+        2
+        5-8
     X509v3 sbgp-ipAddrBlockV2:
       IPv4 unicast: inherit
       IPv6 unicast: inherit
+    X509v3 sbgp-autonomousSysNumV2:
+      Autonomous System Numbers: inherit
   Signature Algorithm: ED25519
   Signature Value:
-    0b:af:f4:3d:23:fe:96:b9:04:d8:dd:38:ce:13:9b:66:ab:aa:
-    b3:c8:c6:6a:ab:c7:e3:c2:76:8d:c7:46:7e:b4:0f:60:43:aa:
-    d6:eb:cd:c4:47:48:c5:0f:53:20:4c:83:63:bc:46:aa:a0:cf:
-    dc:72:24:a9:b4:9b:5c:1d:1a:09
+    9c:5b:99:e8:ef:2d:d7:ff:9b:05:d3:c8:d0:ad:7a:7e:68:f8:
+    e4:d6:d2:6e:05:48:99:42:2c:19:5e:61:06:ff:c7:35:88:9a:
+    8d:e1:24:7c:58:b0:19:05:44:99:14:e8:23:76:6e:e9:cd:9e:
+    b8:9b:e7:90:6b:c0:c3:83:59:06
 ~~~~~
 
 ### C509 Type 3 Certificate
@@ -2537,12 +2454,12 @@ Certificate:
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-ee-x25519}}.
 
 [comment]: <> (replace-size:cert/ee-x25519/c509cert-t3.hex)
-Plain hex (477 bytes):
+Plain hex (487 bytes):
 
 [comment]: <> (replace-data:cert/ee-x25519/c509cert-t3.hex)
 ~~~~~
 8B034212340C67746573742063611A6775D7001A69570A80800858208AFF516FAC71
-244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC1B7F088C021407547FCDB8
+244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC1B7F0890021407547FCDB8
 2D04952E1A36B90AF37A3CF166D15EF92109920177687474703A2F2F6F6373702E65
 78616D706C652E636F6D02781C687474703A2F2F6361697373756572732E6578616D
 706C652E636F6D05781F687474703A2F2F63617265706F7369746F72792E6578616D
@@ -2552,10 +2469,10 @@ Plain hex (477 bytes):
 706C652E636F6D0B781F687474703A2F2F7369676E65646F626A6563742E6578616D
 706C652E636F6D0D781D687474703A2F2F72706B696E6F746966792E6578616D706C
 652E636F6D492B0601040181FD590377687474703A2F2F313233342E6578616D706C
-652E636F6D18196B6578616D706C652E636F6D18208601F6F602F6F61822860101F6
-0201F658400BAFF43D23FE96B904D8DD38CE139B66ABAAB3C8C66AABC7E3C2768DC7
-467EB40F6043AAD6EBCDC44748C50F53204C8363BC46AAA0CFDC7224A9B49B5C1D1A
-09
+652E636F6D18196B6578616D706C652E636F6D18208601F6F602F6F6182182028203
+031822860101F60201F61823F658409C5B99E8EF2DD7FF9B05D3C8D0AD7A7E68F8E4
+D6D26E054899422C195E6106FFC735889A8DE1247C58B01905449914E823766EE9CD
+9EB89BE7906BC0C3835906
 ~~~~~
 
 Annotated hex:
@@ -2567,12 +2484,12 @@ Annotated hex:
 - Issued by the CA in {{c509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x25519/c509cert-t2.hex)
-Plain hex (477 bytes):
+Plain hex (487 bytes):
 
 [comment]: <> (replace-data:cert/ee-x25519/c509cert-t2.hex)
 ~~~~~
 8B024212340C67746573742063611A6775D7001A69570A80800858208AFF516FAC71
-244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC1B7F088C021407540369D7
+244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC1B7F0890021407540369D7
 1F96FE1258A746AC2B208E756E6D1D3ED909920177687474703A2F2F6F6373702E65
 78616D706C652E636F6D02781C687474703A2F2F6361697373756572732E6578616D
 706C652E636F6D05781F687474703A2F2F63617265706F7369746F72792E6578616D
@@ -2582,10 +2499,10 @@ Plain hex (477 bytes):
 706C652E636F6D0B781F687474703A2F2F7369676E65646F626A6563742E6578616D
 706C652E636F6D0D781D687474703A2F2F72706B696E6F746966792E6578616D706C
 652E636F6D492B0601040181FD590377687474703A2F2F313233342E6578616D706C
-652E636F6D18196B6578616D706C652E636F6D18208601F6F602F6F61822860101F6
-0201F658401744C0129FF983F900D345C147F4405859C56D676C872A7E7120E1EB53
-9EB6584CC2CDA2CE63312D5EF5B63FCC6134306BD5A372813042472CA54F66874004
-08
+652E636F6D18196B6578616D706C652E636F6D18208601F6F602F6F6182182028203
+031822860101F60201F61823F6584014644423BAED670A0980AF13D6745A4826895E
+829E017ED156FC6CF065608C53C16A4BCCB4233F6C395BA26F575A719860851E289E
+2E8740B0A838F67164960C
 ~~~~~
 
 Annotated hex:
@@ -2608,7 +2525,7 @@ Annotated hex:
  26:   58 20          # [8]. subject public key=EC point=byte[32]
  28:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
  57:     1B7F08
- 60:   8C             # [9]. extensions=array[12]
+ 60:   90             # [9]. extensions=array[16]
                         #---extension[0]---
  61:     02             # [0]. type=KeyUsage (2)
  62:     14             # [1]. value=20: [keyEncipherment,
@@ -2682,20 +2599,30 @@ Annotated hex:
 400:       F6             # [4]. SAFI=<null>
 401:       F6             # [5]. IP Address Choice=<null>
                         #---extension[5]---
-402:     18 22          # [10]. type=IPAddrBlocksV2 (34)
-404:     86             # [11]. value=array[6]
+402:     18 21          # [10]. type=ASIdentifiers (33)
+404:     82             # [11]. value=array[2]
+405:       02             # [0]. id=2
+406:       82             # [1]. range=array[2]
+407:         03             # [0]. min=3
+408:         03             # [1]. max=3
+                        #---extension[6]---
+409:     18 22          # [12]. type=IPAddrBlocksV2 (34)
+411:     86             # [13]. value=array[6]
                           #---IPAddrBlocks[0]---
-405:       01             # [0]. AFI=1: IPv4
-406:       01             # [1]. SAFI=1: unicast
-407:       F6             # [2]. IP Address Choice=<null>
+412:       01             # [0]. AFI=1: IPv4
+413:       01             # [1]. SAFI=1: unicast
+414:       F6             # [2]. IP Address Choice=<null>
                           #---IPAddrBlocks[1]---
-408:       02             # [3]. AFI=2: IPv6
-409:       01             # [4]. SAFI=1: unicast
-410:       F6             # [5]. IP Address Choice=<null>
-411:   58 40          # [10]. signature value=byte[64]
-413:     1744C0129FF983F900D345C147F4405859C56D676C872A7E7120E1EB53
-442:     9EB6584CC2CDA2CE63312D5EF5B63FCC6134306BD5A372813042472CA5
-471:     4F6687400408
+415:       02             # [3]. AFI=2: IPv6
+416:       01             # [4]. SAFI=1: unicast
+417:       F6             # [5]. IP Address Choice=<null>
+                        #---extension[7]---
+418:     18 23          # [14]. type=ASIdentifiersV2 (35)
+420:     F6             # [15]. value=<null>
+421:   58 40          # [10]. signature value=byte[64]
+423:     14644423BAED670A0980AF13D6745A4826895E829E017ED156FC6CF065
+452:     608C53C16A4BCCB4233F6C395BA26F575A719860851E289E2E8740B0A8
+481:     38F67164960C
 ~~~~~
 
 ## Montgomery EC Public Key On Curve X448 {#ee-x448}
@@ -2705,6 +2632,8 @@ Annotated hex:
   - authorityKeyIdentifier containing all fields
   - crlDistributionPoints
   - freshestCRL
+  - IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
+  - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
 
 ### Private Key
 
@@ -2721,23 +2650,27 @@ iOJE752KYXs1GZ0/+ETWNoBn8L7ZFO9g
 - Issued by the CA in {{x509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x448/x509cert.pem)
-PEM content (DER encoding: 572 bytes):
+PEM content (DER encoding: 732 bytes):
 
 [comment]: <> (replace-data:cert/ee-x448/x509cert.pem)
 ~~~~~
 -----BEGIN CERTIFICATE-----
-MIICODCCAeqgAwIBAgICEjQwBQYDK2VwMBIxEDAOBgNVBAMMB3Rlc3QgY2EwHhcN
+MIIC2DCCAoqgAwIBAgICEjQwBQYDK2VwMBIxEDAOBgNVBAMMB3Rlc3QgY2EwHhcN
 MjUwMTAyMDAwMDAwWhcNMjYwMTAyMDAwMDAwWjASMRAwDgYDVQQDDAdlZS14NDQ4
 MEIwBQYDK2VvAzkAHDfvq+qShHs28mSJCu/byWQDnFxhoxEcCQvk0KQpeaZmfitk
-J1dg/2/U/wP8WWa1Dj2aqstI9DujggFKMIIBRjALBgNVHQ8EBAMCAygwJwYDVR0f
+J1dg/2/U/wP8WWa1Dj2aqstI9DujggHqMIIB5jALBgNVHQ8EBAMCAygwJwYDVR0f
 BCAwHjAcoBqgGIYWaHR0cDovL2NybC5leGFtcGxlLmNvbTA6BgNVHSMEMzAxgBR/
 zbgtBJUuGja5CvN6PPFm0V75IaEWpBQwEjEQMA4GA1UEAwwHdGVzdCBjYYIBATCB
 0QYDVR0uBIHJMIHGMFagI6Ahhh9odHRwOi8vZnJlc2hlc3RjcmwxLmV4YW1wbGUu
 Y29tgQIGwKIrpCkwJzELMAkGA1UEBgwCREUxGDAWBgNVBAMMD015IENSTCBpc3N1
 ZXIgMTBsoEagRIYgaHR0cDovL2ZyZXNoZXN0Y3JsMjEuZXhhbXBsZS5jb22GIGh0
 dHA6Ly9mcmVzaGVzdGNybDIyLmV4YW1wbGUuY29tgQIBAqIepBwwGjEYMBYGA1UE
-AwwPTXkgQ1JMIGlzc3VlciAyMAUGAytlcANBANPIPA29PT7nPbnrdkLEjfiT5i+Z
-wPRwCmb6CfG1E3U0HnRsLMvmmJI/AxdayWaDsjDHKTIuGX470J36lw2vWwc=
+AwwPTXkgQ1JMIGlzc3VlciAyMEgGCCsGAQUFBwEHBDwwOjAZBAIAATATAwQAwAAC
+AwUExjNkAAMEAMsAcTAdBAIAAjAXAwcAIAENuBI0MAwDBAA//wYDBAA//w8wVAYI
+KwYBBQUHARwESDBGMBoEAwABATATAwQAwAACAwUExjNkAAMEAMsAcTAoBAMAAgEw
+IQMHACABDbgSNDAWAwUAP/8AAwMNAD//ASIAACIzM0RVZjAFBgMrZXADQQAsJ8sP
+5H4bgjtiyR65YFBU4mwA8JGPypikMoRa7V5aoRh9ZwdjRYnLM0MxYoZsED9KZAzU
+KdFESpw0F9WSA6MO
 -----END CERTIFICATE-----
 ~~~~~
 
@@ -2784,12 +2717,28 @@ Certificate:
       Full Name:
         URI: http://freshestcrl21.example.com
         URI: http://freshestcrl22.example.com
+    X509v3 sbgp-ipAddrBlock:
+      IPv4:
+        192.0.2.0/24
+        198.51.100.0/28
+        203.0.113.0/24
+      IPv6:
+        2001:db8:1234::/48
+        3fff:600:: - 3fff:fff:ffff:ffff:ffff:ffff:ffff:ffff
+    X509v3 sbgp-ipAddrBlockV2:
+      IPv4 unicast:
+        192.0.2.0/24
+        198.51.100.0/28
+        203.0.113.0/24
+      IPv6 unicast:
+        2001:db8:1234::/48
+        3fff:3:: - 3fff:122:0:2233:3344:5566:ffff:ffff
   Signature Algorithm: ED25519
   Signature Value:
-    d3:c8:3c:0d:bd:3d:3e:e7:3d:b9:eb:76:42:c4:8d:f8:93:e6:
-    2f:99:c0:f4:70:0a:66:fa:09:f1:b5:13:75:34:1e:74:6c:2c:
-    cb:e6:98:92:3f:03:17:5a:c9:66:83:b2:30:c7:29:32:2e:19:
-    7e:3b:d0:9d:fa:97:0d:af:5b:07
+    2c:27:cb:0f:e4:7e:1b:82:3b:62:c9:1e:b9:60:50:54:e2:6c:
+    00:f0:91:8f:ca:98:a4:32:84:5a:ed:5e:5a:a1:18:7d:67:07:
+    63:45:89:cb:33:43:31:62:86:6c:10:3f:4a:64:0c:d4:29:d1:
+    44:4a:9c:34:17:d5:92:03:a3:0e
 ~~~~~
 
 ### C509 Type 3 Certificate
@@ -2797,21 +2746,25 @@ Certificate:
 - C509 type 3 certificate converted from the X.509 certificate in {{x509-ee-x448}}.
 
 [comment]: <> (replace-size:cert/ee-x448/c509cert-t3.hex)
-Plain hex (367 bytes):
+Plain hex (480 bytes):
 
 [comment]: <> (replace-data:cert/ee-x448/c509cert-t3.hex)
 ~~~~~
 8B034212340C67746573742063611A6775D7001A69570A806765652D783434380958
 381C37EFABEA92847B36F264890AEFDBC964039C5C61A3111C090BE4D0A42979A666
-7E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B8802140576687474703A2F
+7E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B8C02140576687474703A2F
 2F63726C2E6578616D706C652E636F6D0783547FCDB82D04952E1A36B90AF37A3CF1
 66D15EF921820467746573742063614101181D8283781F687474703A2F2F66726573
 6865737463726C312E6578616D706C652E636F6D038404624445016F4D792043524C
 20697373756572203183827820687474703A2F2F667265736865737463726C32312E
 6578616D706C652E636F6D7820687474703A2F2F667265736865737463726C32322E
-6578616D706C652E636F6D18406F4D792043524C2069737375657220325840D3C83C
-0DBD3D3EE73DB9EB7642C48DF893E62F99C0F4700A66FA09F1B51375341E746C2CCB
-E698923F03175AC96683B230C729322E197E3BD09DFA970DAF5B07
+6578616D706C652E636F6D18406F4D792043524C20697373756572203218208601F6
+831A01C000021B00000005C47363FE3B00000005C468638E02F6821B000120010DB8
+1234823B000120010C78132D091822860101831A01C000021B00000005C47363FE3B
+00000005C468638E020182470020010DB812348245003FFF00034D003FFF01220000
+22333344556658402C27CB0FE47E1B823B62C91EB9605054E26C00F0918FCA98A432
+845AED5E5AA1187D6707634589CB33433162866C103F4A640CD429D1444A9C3417D5
+9203A30E
 ~~~~~
 
 Annotated hex:
@@ -2823,21 +2776,25 @@ Annotated hex:
 - Issued by the CA in {{c509-ca}}.
 
 [comment]: <> (replace-size:cert/ee-x448/c509cert-t2.hex)
-Plain hex (367 bytes):
+Plain hex (480 bytes):
 
 [comment]: <> (replace-data:cert/ee-x448/c509cert-t2.hex)
 ~~~~~
 8B024212340C67746573742063611A6775D7001A69570A806765652D783434380958
 381C37EFABEA92847B36F264890AEFDBC964039C5C61A3111C090BE4D0A42979A666
-7E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B8802140576687474703A2F
+7E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B8C02140576687474703A2F
 2F63726C2E6578616D706C652E636F6D0783540369D71F96FE1258A746AC2B208E75
 6E6D1D3ED9820467746573742063614101181D8283781F687474703A2F2F66726573
 6865737463726C312E6578616D706C652E636F6D038404624445016F4D792043524C
 20697373756572203183827820687474703A2F2F667265736865737463726C32312E
 6578616D706C652E636F6D7820687474703A2F2F667265736865737463726C32322E
-6578616D706C652E636F6D18406F4D792043524C20697373756572203258409D8153
-5FF622AE3C60E29391DBF16C22A411ED3F0FFBCF90E985F12D6F26160F8744DD7BC7
-DB893F2855EF433539F6E501A7843EDE246C0C9E97615B7191120D
+6578616D706C652E636F6D18406F4D792043524C20697373756572203218208601F6
+831A01C000021B00000005C47363FE3B00000005C468638E02F6821B000120010DB8
+1234823B000120010C78132D091822860101831A01C000021B00000005C47363FE3B
+00000005C468638E020182470020010DB812348245003FFF00034D003FFF01220000
+2233334455665840025DEF6470DBC00E051E38E16CB1C90EE2B74B6809738A70D09A
+0F1E02E52ADD47F6F1544137069C7D851AA1FD373C170872E47EF5D6AE13D31699C9
+A1E7E500
 ~~~~~
 
 Annotated hex:
@@ -2861,7 +2818,7 @@ Annotated hex:
  33:   58 38          # [8]. subject public key=EC point=byte[56]
  35:     1C37EFABEA92847B36F264890AEFDBC964039C5C61A3111C090BE4D0A4
  64:     2979A6667E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B
- 91:   88             # [9]. extensions=array[8]
+ 91:   8C             # [9]. extensions=array[12]
                         #---extension[0]---
  92:     02             # [0]. type=KeyUsage (2)
  93:     14             # [1]. value=20: [keyEncipherment,
@@ -2915,10 +2872,50 @@ Annotated hex:
 283:         18 40          # [1]. reasons=64: [certificateHold]
 285:         6F             # [2]. cRLIssuer=char[15]
 286:           4D792043524C206973737565722032 # "My CRL issuer 2"
-301:   58 40          # [10]. signature value=byte[64]
-303:     9D81535FF622AE3C60E29391DBF16C22A411ED3F0FFBCF90E985F12D6F
-332:     26160F8744DD7BC7DB893F2855EF433539F6E501A7843EDE246C0C9E97
-361:     615B7191120D
+                        #---extension[4]---
+301:     18 20          # [8]. type=IPAddrBlocks (32)
+303:     86             # [9]. value=array[6]
+                          #---IPAddrBlocks[0]---
+304:       01             # [0]. AFI=1: IPv4
+305:       F6             # [1]. SAFI=<null>
+306:       83             # [2]. IntIPAddressChoice=array[3]
+307:         1A 01C00002    # [0]. AddressPrefix=29360130
+312:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+321:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+330:       02             # [3]. AFI=2: IPv6
+331:       F6             # [4]. SAFI=<null>
+332:       82             # [5]. IntIPAddressChoice=array[2]
+333:         1B 000120010DB81234 # [0]. AddressPrefix=31666387393387
+                                 #      6
+342:         82             # [1]. AddressRange=array[2]
+343:           3B 000120010C78132D # [0]. min=-316663852962606
+352:           09             # [1]. max=9
+                        #---extension[5]---
+353:     18 22          # [10]. type=IPAddrBlocksV2 (34)
+355:     86             # [11]. value=array[6]
+                          #---IPAddrBlocks[0]---
+356:       01             # [0]. AFI=1: IPv4
+357:       01             # [1]. SAFI=1: unicast
+358:       83             # [2]. IntIPAddressChoice=array[3]
+359:         1A 01C00002    # [0]. AddressPrefix=29360130
+364:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+373:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+382:       02             # [3]. AFI=2: IPv6
+383:       01             # [4]. SAFI=1: unicast
+384:       82             # [5]. IPAddressChoice=array[2]
+385:         47             # [0]. AddressPrefix=byte[7]
+386:           0020010DB81234
+393:         82             # [1]. AddressRange=array[2]
+394:           45             # [0]. min=byte[5]
+395:             003FFF0003
+400:           4D             # [1]. max=byte[13]
+401:             003FFF01220000223333445566
+414:   58 40          # [10]. signature value=byte[64]
+416:     025DEF6470DBC00E051E38E16CB1C90EE2B74B6809738A70D09A0F1E02
+445:     E52ADD47F6F1544137069C7D851AA1FD373C170872E47EF5D6AE13D316
+474:     99C9A1E7E500
 ~~~~~
 
 ## Edwards EC Public Key On Curve ED25519 {#selfsign-ed25519}
@@ -4745,13 +4742,13 @@ Not applicable to certificates; see {{csr-dhsig-sha512}} for examples in certifi
 
 - Extensions: a single non-critical `keyUsage` extension
 
-See {{selfsign-rsa}}.
+See {{selfsign-rsa}} and {{selfsign-brainpoolp256r1}}.
 
 ## One Extension: Critical keyUsage
 
 - Extensions: a single critical `keyUsage` extension
 
-See {{selfsign-rsa-f5}}.
+See {{selfsign-rsa-f5}} and {{selfsign-brainpoolp384r1}}.
 
 ## Authority Information Access
 
@@ -4772,7 +4769,7 @@ See {{ee-x25519}}.
 - `ASIdentifiers` set to `null`
 - A non-empty array of `ASIdOrRange`
 
-See {{selfsign-brainpoolp256r1}}.
+See {{ee-x25519}}.
 
 ## Basic Constraints
 
@@ -4823,12 +4820,12 @@ See {{ee-x25519}}.
 - With `SAFI` = `null` and IP Address Choice = `null`
 - With `SAFI` = `null` and IP Address Choice = `null`
 
-  See {{selfsign-brainpoolp256r1}}.
+  See {{ee-x25519}}.
 
 - IPAddrBlocks with non-null `SAFI` and `IntIPAddressChoice`
 - IPAddrBlocks V2 with non-null `SAFI`, `IntIPAddressChoice` and `IPAddressChoice`
 
-  See {{selfsign-brainpoolp384r1}}.
+  See {{ee-x448}}.
 
 ## Name Constraints
 
