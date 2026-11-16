@@ -70,8 +70,6 @@ Private keys are also provided to enable the creation of signatures and the veri
 
 The examples are structured as follows:
 
-* {{sec-overview}} compares the sizes of the X.509 and C509 encodings of the examples.
-
 * {{sec-ca}} contains a CA certificate used in later sections.
 
 * {{sec-cert-different-keys}} contains certificates with different subject public key types, including RSA, Weierstrass EC, Edwards EC, and Montgomery EC keys.
@@ -111,59 +109,6 @@ The test vectors in this document align with draft-ietf-cose-cbor-encoded-cert-2
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
 
 The test vectors in this document can also be found at <https://github.com/lijun-nio/id-c509-cert-test-vectors>.
-
-# Overview {#sec-overview}
-
-{{tab-cert-examples-overview}} shows the size in bytes and the size reduction of C509 certificates compared to X.509 certificates.
-
-| Section       | Description           | Size (X.509) | Size (C509) | Size Reduction |
-|:--------------|:----------------------|:-----------|:-----------|:----------------------|
-| {{sec-ca}} | CA Certificate | 249 | 101 | 59% |
-| {{selfsign-rsa}} | RSA Public Key With Public Exponent 65537 | 464 | 284 | 39% |
-| {{selfsign-rsa-f5}} | RSA Public Key With Public Exponent 4294967297 | 467 | 298 | 36% |
-| {{selfsign-secp256r1}} | Weierstrass EC Public Key On Curve secp256r1 | 383 | 190 | 50% |
-| {{selfsign-compress-secp256r1}} | Compressed Weierstrass EC Public Key On Curve secp256r1 | 383 | 158 | 59% |
-| {{selfsign-secp384r1}} | Weierstrass EC Public Key On Curve secp384r1 | 539 | 309 | 43% |
-| {{selfsign-secp521r1}} | Weierstrass EC Public Key On Curve secp521r1 | 811 | 531 | 35% |
-| {{selfsign-sm2p256v1}} | Weierstrass EC Public Key On Curve sm2p256v1 | 644 | 326 | 49% |
-| {{selfsign-brainpoolp256r1}} | Weierstrass EC Public Key On Curve brainpoolP256r1  | 527 | 234 | 56% |
-| {{selfsign-brainpoolp384r1}} | Weierstrass EC Public Key On Curve brainpoolP384r1  | 558 | 291 | 48% |
-| {{selfsign-brainpoolp512r1}} | Weierstrass EC Public Key On Curve brainpoolP512r1  | 779 | 421 | 46% |
-| {{selfsign-frp256v1}} | Weierstrass EC Public Key On Curve frp256v1 | 584 | 303 | 48% |
-| {{ee-x25519}} | Montgomery EC Public Key On Curve X25519 | 798 | 487 | 39% |
-| {{ee-x448}} | Montgomery EC Public Key On Curve X448 | 732 | 480 | 34% |
-| {{selfsign-ed25519}} | Ed25519 Public Key | 784 | 384 | 51% |
-| {{selfsign-ed448}} | Ed448 Public Key | 503 | 261 | 48% |
-| {{selfsign-rsa-with-sha1}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-1 | 463 | 303 | 35% |
-| {{selfsign-rsa-with-sha512}} | Signature Algorithm RSASSA-PKCS1-v1_5 With SHA-512 | 467 | 306 | 34% |
-| {{selfsign-rsassa-pss-sha256}} | Signature Algorithm RSASSA-PSS With SHA-256 | 575 | 308 | 46% |
-| {{selfsign-rsassa-pss-sha384}} | Signature Algorithm RSASSA-PSS With SHA-384 | 575 | 308 | 46% |
-| {{selfsign-rsassa-pss-sha512}} | Signature Algorithm RSASSA-PSS With SHA-512 | 703 | 436 | 38% |
-| {{selfsign-rsassa-pss-shake128}} | Signature Algorithm RSASSA-PSS With SHAKE128 | 469 | 310 | 34% |
-| {{selfsign-rsassa-pss-shake256}} | Signature Algorithm RSASSA-PSS With SHAKE256 | 597 | 438 | 27% |
-| {{sec-cert-unconvertible}} | X.509 Certificate With Unconvertible RDN Attributes And Extensions | 387 | 257 | 34% |
-{: #tab-cert-examples-overview title="Size comparison of certificates in examples"}
-
-The certificates differ in content, e.g., in the number of RDN attributes and extensions, so the size reductions are not comparable across rows.
-
-The sections {{sec-cert-different-attrs}} and {{sec-cert-different-extns}} are not listed because they only refer to certificates in other sections. The certificate in {{sec-cert-8byte}} is not listed because it has no X.509 counterpart.
-
-{{tab-csr-examples-overview}} shows the size in bytes and the size reduction of C509 certification requests compared to X.509 certification requests.
-
-| Section       | Description           | Size (X.509) | Size (C509) | Size Reduction |
-|:--------------|:----------------------|:-----------|:-----------|:----------------------|
-| {{csr-ecdsa-p256}} | Signature Algorithm ECDSA With SHA-256 | 253 | 164 | 35% |
-| {{csr-ecdsa-p384}} | Signature Algorithm ECDSA With SHA-384 | 300 | 228 | 24% |
-| {{csr-dhsig-sha256}} | Signature Algorithm PoP With SHA-256 And HMAC-SHA256 | 206 | 132 | 36% |
-| {{csr-dhsig-sha384}} | Signature Algorithm PoP With SHA-384 And HMAC-SHA384 | 261 | 190 | 27% |
-| {{csr-dhsig-sha512}} | Signature Algorithm PoP With SHA-512 And HMAC-SHA512 | 278 | 219 | 21% |
-| {{csr-x25519}} | Signature Algorithm Unsigned PoP With X25519 Key | 135 | 64 | 53% |
-| {{csr-x25519-withcert}} | Signature Algorithm Unsigned PoP With X25519 Key And Cert | 433 | 230 | 47% |
-{: #tab-csr-examples-overview title="Size comparison of certification requests in examples"}
-
-As for certificates, the size reductions are not comparable across rows.
-
-{{sec-csr-different-attrs}} is not listed because it only refers to certification requests in other sections. The certification request in {{sec-csr-8byte}} is not listed because it has no X.509 counterpart.
 
 # CA Certificate {#sec-ca}
 
@@ -6343,6 +6288,11 @@ The authors thank Marco Tiloca for reviewing and commenting on intermediate vers
 {:numbered="false"}
 
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
+
+## Since draft-ietf-cose-c509-test-vectors-03
+{:numbered="false"}
+
+- Remove Section Overview
 
 ## Since draft-ietf-cose-c509-test-vectors-02
 {:numbered="false"}
