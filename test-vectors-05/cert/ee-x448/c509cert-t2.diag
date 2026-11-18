@@ -1,0 +1,115 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0C             # [2]. signature alg=Ed25519 (12)
+  6:   67             # [3]. issuer=char[7]
+  7:     74657374206361  # "test ca"
+ 14:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 19:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 24:   67             # [6]. subject=char[7]
+ 25:     65652D78343438  # "ee-x448"
+ 32:   09             # [7]. subjectPublicKeyAlg=X448 (9)
+ 33:   58 38          # [8]. subject public key=EC point=byte[56]
+ 35:     1C37EFABEA92847B36F264890AEFDBC964039C5C61A3111C090BE4D0A4
+ 64:     2979A6667E2B64275760FF6FD4FF03FC5966B50E3D9AAACB48F43B
+ 91:   8C             # [9]. extensions=array[12]
+                        #---extension[0]---
+ 92:     02             # [0]. type=KeyUsage (2)
+ 93:     14             # [1]. value=20: [keyEncipherment,
+                        #      keyAgreement]
+                        #---extension[1]---
+ 94:     05             # [2]. type=CRLDistributionPoints (5)
+ 95:     76             # [3]. value=fullName=char[22]
+ 96:       687474703A2F2F63726C2E6578616D70 # "http://crl.examp"
+112:       6C652E636F6D                     # "le.com"
+                        #---extension[2]---
+118:     07             # [4]. type=AuthorityKeyIdentifier (7)
+119:     83             # [5]. value=array[3]
+120:       54             # [0]. keyIdentifier=byte[20]
+121:         0369D71F96FE1258A746AC2B208E756E6D1D3ED9
+141:       82             # [1]. authorityCertIssuer=array[2]
+                            #---GeneralName[0]---
+142:         04             # [0]. GeneralNameType=4: directoryName
+143:         67             # [1]. GeneralNameValue=char[7]
+144:           74657374206361 # "test ca"
+151:       41             # [2]. authorityCertSerialNumber=byte[1]
+152:         01
+                        #---extension[3]---
+153:     18 1D          # [6]. type=FreshestCRL (29)
+155:     82             # [7]. value=array[2]
+156:       83             # DistributionPoint[0]=array[3]
+157:         78 1F          # [0]. fullName=char[31]
+159:           687474703A2F2F6672657368657374 # "http://freshest"
+174:           63726C312E6578616D706C652E636F # "crl1.example.co"
+189:           6D                             # "m"
+190:         03             # [1]. reasons=3: [unused,
+                            #      keyCompromise]
+191:         84             # [2]. cRLIssuer=array[4], 2 attributes
+                              #---attribute[0]---
+192:           04             # [0]. type=4: country
+193:           62             # [1]. value=char[2]
+194:             4445           # "DE"
+                              #---attribute[1]---
+196:           01             # [2]. type=1: commonName
+197:           6F             # [3]. value=char[15]
+198:             4D792043524C206973737565722031 # "My CRL issuer 1"
+213:       83             # DistributionPoint[1]=array[3]
+214:         82             # [0]. fullName=array[2]
+215:           78 20          # [0]=char[32]
+217:             687474703A2F2F6672657368657374 # "http://freshest"
+232:             63726C32312E6578616D706C652E63 # "crl21.example.c"
+247:             6F6D                           # "om"
+249:           78 20          # [1]=char[32]
+251:             687474703A2F2F6672657368657374 # "http://freshest"
+266:             63726C32322E6578616D706C652E63 # "crl22.example.c"
+281:             6F6D                           # "om"
+283:         18 40          # [1]. reasons=64: [certificateHold]
+285:         6F             # [2]. cRLIssuer=char[15]
+286:           4D792043524C206973737565722032 # "My CRL issuer 2"
+                        #---extension[4]---
+301:     18 20          # [8]. type=IPAddrBlocks (32)
+303:     86             # [9]. value=array[6]
+                          #---IPAddrBlocks[0]---
+304:       01             # [0]. AFI=1: IPv4
+305:       F6             # [1]. SAFI=<null>
+306:       83             # [2]. IntIPAddressChoice=array[3]
+307:         1A 01C00002    # [0]. AddressPrefix=29360130
+312:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+321:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+330:       02             # [3]. AFI=2: IPv6
+331:       F6             # [4]. SAFI=<null>
+332:       82             # [5]. IntIPAddressChoice=array[2]
+333:         1B 000120010DB81234 # [0]. AddressPrefix=31666387393387
+                                 #      6
+342:         82             # [1]. AddressRange=array[2]
+343:           3B 000120010C78132D # [0]. min=-316663852962606
+352:           09             # [1]. max=9
+                        #---extension[5]---
+353:     18 22          # [10]. type=IPAddrBlocksV2 (34)
+355:     86             # [11]. value=array[6]
+                          #---IPAddrBlocks[0]---
+356:       01             # [0]. AFI=1: IPv4
+357:       01             # [1]. SAFI=1: unicast
+358:       83             # [2]. IntIPAddressChoice=array[3]
+359:         1A 01C00002    # [0]. AddressPrefix=29360130
+364:         1B 00000005C47363FE # [1]. AddressPrefix=24770733054
+373:         3B 00000005C468638E # [2]. AddressPrefix=-24770012047
+                          #---IPAddrBlocks[1]---
+382:       02             # [3]. AFI=2: IPv6
+383:       01             # [4]. SAFI=1: unicast
+384:       82             # [5]. IPAddressChoice=array[2]
+385:         47             # [0]. AddressPrefix=byte[7]
+386:           0020010DB81234
+393:         82             # [1]. AddressRange=array[2]
+394:           45             # [0]. min=byte[5]
+395:             003FFF0003
+400:           4D             # [1]. max=byte[13]
+401:             003FFF01220000223333445566
+414:   58 40          # [10]. signature value=byte[64]
+416:     025DEF6470DBC00E051E38E16CB1C90EE2B74B6809738A70D09A0F1E02
+445:     E52ADD47F6F1544137069C7D851AA1FD373C170872E47EF5D6AE13D316
+474:     99C9A1E7E500

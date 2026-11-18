@@ -1,0 +1,35 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0C             # [2]. signature alg=Ed25519 (12)
+  6:   67             # [3]. issuer=char[7]
+  7:     74657374206361  # "test ca"
+ 14:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 19:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 24:   6A             # [6]. subject=char[10]
+ 25:     63726C2D7369676E6572 # "crl-signer"
+ 35:   01             # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve secp256r1 (1)
+ 36:   58 41          # [8]. subject public key=EC point=byte[65]
+ 38:     04C4D4A3378FEC90005CBB0D3EAF1309B482929AF56614AF26A9F22DB8
+ 67:     3C4F3477B0BA9712DF8213749F918D7DEFDFB32A6C43DF09715D00E47B
+ 96:     E0519D20E4B314
+103:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+104:     01             # [0]. type=SubjectKeyIdentifier (1)
+105:     54             # [1]. value=byte[20]
+106:       9BB34596E1A9091CC03FD016790B0F4127045EAE
+                        #---extension[1]---
+126:     21             # [2]. type=KeyUsage, critical (-2)
+127:     18 40          # [3]. value=64: [cRLSign]
+                        #---extension[2]---
+129:     07             # [4]. type=AuthorityKeyIdentifier (7)
+130:     54             # [5]. value: keyIdentifier=byte[20]
+131:       0369D71F96FE1258A746AC2B208E756E6D1D3ED9
+151:   58 40          # [10]. signature value=byte[64]
+153:     5ABC70DB00A743A478A7DDD3ECE43DDD2D35BF07ADC38FE75396E09187
+182:     AC3CFCEA032B06B20913FEE3AD45AFB9C628002DF59A534DAD44292A13
+211:     360F0F6AC403

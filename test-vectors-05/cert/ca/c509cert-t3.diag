@@ -1,0 +1,33 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   03             # [0]. certificate type=3
+  2:   41             # [1]. certificateSerialNumber=byte[1]
+  3:     01
+  4:   05             # [2]. signature alg=unsigned (5)
+  5:   F6             # [3]. issuer=<null>
+  6:   1A 67748580    # [4]. notBefore=1735689600:
+                      #      2025-01-01T00:00:00Z
+ 11:   1A 6B36EC7F    # [5]. notAfter=1798761599:
+                      #      2026-12-31T23:59:59Z
+ 16:   67             # [6]. subject=char[7]
+ 17:     74657374206361  # "test ca"
+ 24:   0C             # [7]. subjectPublicKeyAlg=Ed25519 (12)
+ 25:   58 20          # [8]. subject public key=EC point=byte[32]
+ 27:     5A9414AC56D1B6AF0C966FC53B9476B5C95D0EEAAEF764D9EFE86DB732
+ 56:     0C36E1
+ 59:   88             # [9]. extensions=array[8]
+                        #---extension[0]---
+ 60:     01             # [0]. type=SubjectKeyIdentifier (1)
+ 61:     54             # [1]. value=byte[20]
+ 62:       7FCDB82D04952E1A36B90AF37A3CF166D15EF921
+                        #---extension[1]---
+ 82:     21             # [2]. type=KeyUsage, critical (-2)
+ 83:     18 60          # [3]. value=96: [keyCertSign, cRLSign]
+                        #---extension[2]---
+ 85:     03             # [4]. type=SubjectAlternativeName (3)
+ 86:     6B             # [5]. value: DNS, value=char[11]
+ 87:       6578616D706C652E636F6D # "example.com"
+                        #---extension[3]---
+ 98:     23             # [6]. type=BasicConstraints, critical (-4)
+ 99:     20             # [7]. value=-1: CA: true,
+                        #      pathLenConstraint: unlimited
+100:   40             # [10]. signature value=byte[0]

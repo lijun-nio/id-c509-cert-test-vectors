@@ -1,0 +1,69 @@
+  0: 87             # C509CertificationRequestTemplate=array[7]
+  1:   00             # [0]. c509CertificationRequestTemplateType=0
+  2:   82             # [1]. c509CertificationRequestType=array[2]
+  3:     02             # [0]. Type 2
+  4:     03             # [1]. Type 3
+  5:   83             # [2]. subjectSignatureAlgorithm: array[3]
+  6:     01             # [0]. ecdsa-with-sha384 (1)
+  7:     49             # [1]. byte[9]:
+  8:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
+ 17:     82             # [2]. array[2]
+ 18:       49             # [0]. algorithm=byte[9]:
+ 19:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
+ 28:       42             # [1]. parameters=byte[2]
+ 29:         0500
+ 31:   90             # [3]. subject=array[16], 4 attributes
+                        #---attribute[0]---
+ 32:     01             # [0]. type=1: commonName
+ 33:     01             # [1]. minOccurs=1
+ 34:     01             # [2]. maxOccurs=1
+ 35:     F7             # [3]. value=<undefined>
+                        #---attribute[1]---
+ 36:     04             # [4]. type=4: country
+ 37:     01             # [5]. minOccurs=1
+ 38:     01             # [6]. maxOccurs=1
+ 39:     62             # [7]. value=char[2]
+ 40:       4445            # "DE"
+                        #---attribute[2]---
+ 42:     49             # [8]. type=byte[9]:
+ 43:       2B0601040181FD590B # oid: 1.3.6.1.4.1.32473.11
+ 52:     01             # [9]. minOccurs=1
+ 53:     01             # [10]. maxOccurs=1
+ 54:     F7             # [11]. value=<undefined>
+                        #---attribute[3]---
+ 55:     49             # [12]. type=byte[9]:
+ 56:       2B0601040181FD590C # oid: 1.3.6.1.4.1.32473.12
+ 65:     01             # [13]. minOccurs=1
+ 66:     01             # [14]. maxOccurs=1
+ 67:     4D             # [15]. value=byte[13]
+ 68:       0C0B636F6E73742D76616C7565
+ 81:   83             # [4]. subjectPublicKeyAlgorithm: array[3]
+ 82:     01             # [0]. EC public key on curve secp256r1 (1)
+ 83:     49             # [1]. byte[9]:
+ 84:       2B0601040181FD5909 # oid: 1.3.6.1.4.1.32473.9
+ 93:     82             # [2]. array[2]
+ 94:       49             # [0]. algorithm=byte[9]:
+ 95:         2B0601040181FD590A # oid: 1.3.6.1.4.1.32473.10
+104:       42             # [1]. parameters=byte[2]
+105:         0500
+107:   F7             # [5]. subjectPublicKey=<undefined>
+108:   8C             # [6]. extensionsRequest=array[12]
+                        #---extension[0]---
+109:     08             # [0]. type=ExtendedKeyUsage (8)
+110:     F4             # [1]. required
+111:     F7             # [2]. value=<undefined>
+                        #---extension[1]---
+112:     02             # [3]. type=KeyUsage (2)
+113:     F5             # [4]. optional
+114:     18 60          # [5]. value=96: [keyCertSign, cRLSign]
+                        #---extension[2]---
+116:     49             # [6]. type=byte[9]:
+117:       2B0601040181FD590D # oid: 1.3.6.1.4.1.32473.13
+126:     F4             # [7]. required
+127:     F7             # [8]. value=<undefined>
+                        #---extension[3]---
+128:     49             # [9]. type=byte[9]:
+129:       2B0601040181FD590E # oid: 1.3.6.1.4.1.32473.14
+138:     F4             # [10]. required
+139:     4D             # [11]. value=byte[13]
+140:       0C0B636F6E73742D76616C7565

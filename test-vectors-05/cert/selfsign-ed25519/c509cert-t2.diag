@@ -1,0 +1,85 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0C             # [2]. signature alg=Ed25519 (12)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   8E             # [6]. subject=array[14], 7 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     70             # [1]. value=char[16]
+ 20:       73656C667369676E2D65643235353139 # "selfsign-ed25519"
+                        #---attribute[1]---
+ 36:     0F             # [2]. type=15: generationQualifier
+ 37:     76             # [3]. value=char[22]
+ 38:       6D792067656E65726174696F6E517561 # "my generationQua"
+ 54:       6C6966696572                     # "lifier"
+                        #---attribute[2]---
+ 60:     10             # [4]. type=16: DNQualifier
+ 61:     6E             # [5]. value=char[14]
+ 62:       6D7920646E5175616C6966696572 # "my dnQualifier"
+                        #---attribute[3]---
+ 76:     16             # [6]. type=22: domainComponent
+ 77:     72             # [7]. value=char[18]
+ 78:       6D7920646F6D61696E436F6D706F6E65 # "my domainCompone"
+ 94:       6E74                             # "nt"
+                        #---attribute[4]---
+ 96:     18 1B          # [8]. type=27: DMDName
+ 98:     6A             # [9]. value=char[10]
+ 99:       6D7920646D644E616D65 # "my dmdName"
+                        #---attribute[5]---
+109:     18 1D          # [10]. type=29: unstructuredName
+111:     73             # [11]. value=char[19]
+112:       6D7920756E737472756374757265644E # "my unstructuredN"
+128:       616D65                           # "ame"
+                        #---attribute[6]---
+131:     18 1E          # [12]. type=30: unstructuredAddress
+133:     76             # [13]. value=char[22]
+134:       6D7920756E7374727563747572656441 # "my unstructuredA"
+150:       646472657373                     # "ddress"
+156:   0C             # [7]. subjectPublicKeyAlg=Ed25519 (12)
+157:   58 20          # [8]. subject public key=EC point=byte[32]
+159:     46270AEC0F32837E128779D30B249C531D6D42C1AC29E402328EDC79FA
+188:     C2BE95
+191:   86             # [9]. extensions=array[6]
+                        #---extension[0]---
+192:     02             # [0]. type=KeyUsage (2)
+193:     01             # [1]. value=1: [digitalSignature]
+                        #---extension[1]---
+194:     18 1A          # [2]. type=NameConstraints (26)
+196:     82             # [3]. value=array[2]
+197:       84             # [0]. permittedSubtrees=array[4]
+                            #---GeneralName[0]---
+198:         02             # [0]. GeneralNameType=2: dNSName
+199:         78 1A          # [1]. GeneralNameValue=char[26]
+201:           7065726D69747465642E646E73312E # "permitted.dns1."
+216:           6578616D706C652E636F6D         # "example.com"
+                            #---GeneralName[1]---
+227:         02             # [2]. GeneralNameType=2: dNSName
+228:         78 1A          # [3]. GeneralNameValue=char[26]
+230:           7065726D69747465642E646E73322E # "permitted.dns2."
+245:           6578616D706C652E636F6D         # "example.com"
+256:       84             # [1]. excludedSubtrees=array[4]
+                            #---GeneralName[0]---
+257:         02             # [0]. GeneralNameType=2: dNSName
+258:         78 19          # [1]. GeneralNameValue=char[25]
+260:           6578636C756465642E646E73312E65 # "excluded.dns1.e"
+275:           78616D706C652E636F6D           # "xample.com"
+                            #---GeneralName[1]---
+285:         02             # [2]. GeneralNameType=2: dNSName
+286:         78 19          # [3]. GeneralNameValue=char[25]
+288:           6578636C756465642E646E73322E65 # "excluded.dns2.e"
+303:           78616D706C652E636F6D           # "xample.com"
+                        #---extension[2]---
+313:     18 1C          # [4]. type=PolicyConstraints (28)
+315:     82             # [5]. value=array[2]
+316:       01             # [0]. requireExplicitPolicy=1
+317:       02             # [1]. inhibitPolicyMapping=2
+318:   58 40          # [10]. signature value=byte[64]
+320:     213CF14F253BCECA58A1CDF0AAD3565E01D6612461F86DBACC6E014099
+349:     5AC3EEF507AF1341D604243751562CCB363B0C72C989E9D2F260C59422
+378:     8342AFAC7B00

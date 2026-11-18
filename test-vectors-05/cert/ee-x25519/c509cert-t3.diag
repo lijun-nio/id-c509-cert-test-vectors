@@ -1,0 +1,114 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   03             # [0]. certificate type=3
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   0C             # [2]. signature alg=Ed25519 (12)
+  6:   67             # [3]. issuer=char[7]
+  7:     74657374206361  # "test ca"
+ 14:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 19:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 24:   80             # [6]. subject=array[0], 0 attribute
+ 25:   08             # [7]. subjectPublicKeyAlg=X25519 (8)
+ 26:   58 20          # [8]. subject public key=EC point=byte[32]
+ 28:     8AFF516FAC71244150E70F9277F4ADF7FB29F41A7A4A8828BD476722FC
+ 57:     1B7F08
+ 60:   90             # [9]. extensions=array[16]
+                        #---extension[0]---
+ 61:     02             # [0]. type=KeyUsage (2)
+ 62:     14             # [1]. value=20: [keyEncipherment,
+                        #      keyAgreement]
+                        #---extension[1]---
+ 63:     07             # [2]. type=AuthorityKeyIdentifier (7)
+ 64:     54             # [3]. value: keyIdentifier=byte[20]
+ 65:       7FCDB82D04952E1A36B90AF37A3CF166D15EF921
+                        #---extension[2]---
+ 85:     09             # [4]. type=AuthorityInfoAccess (9)
+ 86:     92             # [5]. value=array[18]
+                          #---AccessDescription[0]---
+ 87:       01             # [0]. accessMethod=ocsp (1)
+ 88:       77             # [1]. uri=char[23]
+ 89:         687474703A2F2F6F6373702E6578616D # "http://ocsp.exam"
+105:         706C652E636F6D                   # "ple.com"
+                          #---AccessDescription[1]---
+112:       02             # [2]. accessMethod=caIssuers (2)
+113:       78 1C          # [3]. uri=char[28]
+115:         687474703A2F2F636169737375657273 # "http://caissuers"
+131:         2E6578616D706C652E636F6D         # ".example.com"
+                          #---AccessDescription[2]---
+143:       05             # [4]. accessMethod=caRepository (5)
+144:       78 1F          # [5]. uri=char[31]
+146:         687474703A2F2F63617265706F736974 # "http://careposit"
+162:         6F72792E6578616D706C652E636F6D   # "ory.example.com"
+                          #---AccessDescription[3]---
+177:       03             # [6]. accessMethod=timeStamping (3)
+178:       78 1F          # [7]. uri=char[31]
+180:         687474703A2F2F74696D657374616D70 # "http://timestamp"
+196:         696E672E6578616D706C652E636F6D   # "ing.example.com"
+                          #---AccessDescription[4]---
+211:       05             # [8]. accessMethod=caRepository (5)
+212:       78 1F          # [9]. uri=char[31]
+214:         687474703A2F2F63617265706F736974 # "http://careposit"
+230:         6F72792E6578616D706C652E636F6D   # "ory.example.com"
+                          #---AccessDescription[5]---
+245:       0A             # [10]. accessMethod=rpkiManifest (10)
+246:       78 1F          # [11]. uri=char[31]
+248:         687474703A2F2F72706B696D616E6966 # "http://rpkimanif"
+264:         6573742E6578616D706C652E636F6D   # "est.example.com"
+                          #---AccessDescription[6]---
+279:       0B             # [12]. accessMethod=signedObject (11)
+280:       78 1F          # [13]. uri=char[31]
+282:         687474703A2F2F7369676E65646F626A # "http://signedobj"
+298:         6563742E6578616D706C652E636F6D   # "ect.example.com"
+                          #---AccessDescription[7]---
+313:       0D             # [14]. accessMethod=rpkiNotify (13)
+314:       78 1D          # [15]. uri=char[29]
+316:         687474703A2F2F72706B696E6F746966 # "http://rpkinotif"
+332:         792E6578616D706C652E636F6D       # "y.example.com"
+                          #---AccessDescription[8]---
+345:       49             # [16]. accessMethod=byte[9]:
+346:         2B0601040181FD5903 # oid: 1.3.6.1.4.1.32473.3
+355:       77             # [17]. uri=char[23]
+356:         687474703A2F2F313233342E6578616D # "http://1234.exam"
+372:         706C652E636F6D                   # "ple.com"
+                        #---extension[3]---
+379:     18 19          # [6]. type=IssuerAlternativeName (25)
+381:     6B             # [7]. value: DNS, value=char[11]
+382:       6578616D706C652E636F6D # "example.com"
+                        #---extension[4]---
+393:     18 20          # [8]. type=IPAddrBlocks (32)
+395:     86             # [9]. value=array[6]
+                          #---IPAddrBlocks[0]---
+396:       01             # [0]. AFI=1: IPv4
+397:       F6             # [1]. SAFI=<null>
+398:       F6             # [2]. IP Address Choice=<null>
+                          #---IPAddrBlocks[1]---
+399:       02             # [3]. AFI=2: IPv6
+400:       F6             # [4]. SAFI=<null>
+401:       F6             # [5]. IP Address Choice=<null>
+                        #---extension[5]---
+402:     18 21          # [10]. type=ASIdentifiers (33)
+404:     82             # [11]. value=array[2]
+405:       02             # [0]. id=2
+406:       82             # [1]. range=array[2]
+407:         03             # [0]. min=3
+408:         03             # [1]. max=3
+                        #---extension[6]---
+409:     18 22          # [12]. type=IPAddrBlocksV2 (34)
+411:     86             # [13]. value=array[6]
+                          #---IPAddrBlocks[0]---
+412:       01             # [0]. AFI=1: IPv4
+413:       01             # [1]. SAFI=1: unicast
+414:       F6             # [2]. IP Address Choice=<null>
+                          #---IPAddrBlocks[1]---
+415:       02             # [3]. AFI=2: IPv6
+416:       01             # [4]. SAFI=1: unicast
+417:       F6             # [5]. IP Address Choice=<null>
+                        #---extension[7]---
+418:     18 23          # [14]. type=ASIdentifiersV2 (35)
+420:     F6             # [15]. value=<null>
+421:   58 40          # [10]. signature value=byte[64]
+423:     9C5B99E8EF2DD7FF9B05D3C8D0AD7A7E68F8E4D6D26E054899422C195E
+452:     6106FFC735889A8DE1247C58B01905449914E823766EE9CD9EB89BE790
+481:     6BC0C3835906

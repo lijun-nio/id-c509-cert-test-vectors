@@ -1,0 +1,48 @@
+  0: 8B             # C509Certificate=array[11]
+  1:   02             # [0]. certificate type=2
+  2:   42             # [1]. certificateSerialNumber=byte[2]
+  3:     1234
+  5:   03             # [2]. signature alg=ecdsa-with-shake128 (3)
+  6:   F6             # [3]. issuer=<null>
+  7:   1A 6775D700    # [4]. notBefore=1735776000:
+                      #      2025-01-02T00:00:00Z
+ 12:   1A 69570A80    # [5]. notAfter=1767312000:
+                      #      2026-01-02T00:00:00Z
+ 17:   8C             # [6]. subject=array[12], 6 attributes
+                        #---attribute[0]---
+ 18:     01             # [0]. type=1: commonName
+ 19:     78 18          # [1]. value=char[24]
+ 21:       73656C667369676E2D627261696E706F # "selfsign-brainpo"
+ 37:       6F6C703235367231                 # "olp256r1"
+                        #---attribute[1]---
+ 45:     04             # [2]. type=4: country
+ 46:     62             # [3]. value=char[2]
+ 47:       4445            # "DE"
+                        #---attribute[2]---
+ 49:     05             # [4]. type=5: locality
+ 50:     6B             # [5]. value=char[11]
+ 51:       6D79206C6F63616C697479 # "my locality"
+                        #---attribute[3]---
+ 62:     06             # [6]. type=6: state
+ 63:     68             # [7]. value=char[8]
+ 64:       6D79207374617465 # "my state"
+                        #---attribute[4]---
+ 72:     07             # [8]. type=7: street
+ 73:     69             # [9]. value=char[9]
+ 74:       6D7920737472656574 # "my street"
+                        #---attribute[5]---
+ 83:     0C             # [10]. type=12: postalCode
+ 84:     6D             # [11]. value=char[13]
+ 85:       6D7920706F7374616C436F6465 # "my postalCode"
+ 98:   18 18          # [7]. subjectPublicKeyAlg=EC public key on
+                      #      curve brainpoolp256r1 (24)
+100:   58 41          # [8]. subject public key=EC point=byte[65]
+102:     0477B077412EE98950779ED882FFCB1648E014272354469624F5BCE2F1
+131:     4F3242AD4ACC5686A86508D59FB729FDC29811188D8BF016CE4A515105
+160:     4DAF888C48D5ED
+167:   01             # [9]. extensions=1, KeyUsage:
+                      #      [digitalSignature]
+168:   58 40          # [10]. signature value=byte[64]
+170:     59752E7778EE3554514B2AE659C7AAA9D05EFA187040175BC4E8BC3707
+199:     19F7EC1CF4CD207025D829F044D2345144A5EFF51EEC84FDF842BEB7BF
+228:     2A7DC398C2FF
