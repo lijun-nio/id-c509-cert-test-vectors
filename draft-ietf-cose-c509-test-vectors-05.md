@@ -6321,12 +6321,21 @@ There are no IANA considerations.
 # Acknowledgments {#acknowledgment}
 {:numbered="false"}
 
-The authors thank Marco Tiloca for reviewing and commenting on intermediate versions of the draft.
+Special thanks go to Joel Höglund and Gefei Li for implementing the specification and verifying the test vectors. The authors also thank Marco Tiloca for reviewing and commenting on intermediate versions of the draft.
 
 # Change log
 {:numbered="false"}
 
 > **Note to RFC Editor:** Please remove this section prior to publication of the final version of this document.
+
+## Since draft-ietf-cose-c509-test-vectors-04
+{:numbered="false"}
+
+- Fix the encoding of the compressed EC public key in the C509 type 2 certificate in {{selfsign-compress-secp256r1}}
+- Add the annotated hex of the C509 type 3 certificate in {{selfsign-compress-secp256r1}}
+- Regenerate the ECDSA and SM2 signatures so that the signatures no longer share the same value r
+- Fix the rendering of the section title "C509 Type 3 Certificate" in {{selfsign-frp256v1}}
+- Update the acknowledgments
 
 ## Since draft-ietf-cose-c509-test-vectors-03
 {:numbered="false"}
